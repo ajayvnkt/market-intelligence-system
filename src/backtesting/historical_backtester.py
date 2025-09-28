@@ -308,7 +308,9 @@ class HistoricalRecommendationBacktester:
                 "pre_market_volume": np.nan,
             }
             row["holding_period_days"] = self.engine._estimate_holding_period(row)  # noqa: SLF001
-            row["exit_strategy"] = self.engine._determine_exit_strategy(row)  # noqa: SLF001
+            exit_plan = self.engine._determine_exit_strategy(row)  # noqa: SLF001
+            row.update(exit_plan)
+            row["exit_strategy"] = row.get("exit_plan", "")
             rows.append(row)
 
             histories[symbol] = past
