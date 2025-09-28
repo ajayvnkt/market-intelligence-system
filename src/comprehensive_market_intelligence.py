@@ -802,70 +802,91 @@ class ComprehensiveMarketIntelligence:
         histories: Dict[str, pd.DataFrame] = {}
 
         def worker(symbol: str) -> Optional[Tuple[Dict[str, object], pd.DataFrame]]:
-            try:
-                # Add small delay to avoid rate limiting
-                import time
-                time.sleep(0.1)
-                
-                ticker = yf.Ticker(symbol)
-                info = ticker.info
-                
-                # Handle case where info is None
-                if info is None:
-                    return None
-                
-                hist = ticker.history(period=f"{self.config.lookback_days}d", auto_adjust=False)
-                if hist.empty:
-                    return None
-                hist = hist.dropna(subset=["Close"]).tail(self.config.lookback_days)
-
-                # Handle case where Close column doesn't exist or is empty
-                if "Close" not in hist.columns or hist["Close"].empty:
-                    return None
+            max_retries = 3
+            retry_delay = 2.0  # Start with 2 seconds
+            
+            for attempt in range(max_retries):
+                try:
+                    # Progressive delay to avoid rate limiting
+                    import time
+                    time.sleep(retry_delay + (attempt * 1.0))  # 2s, 3s, 4s delays
                     
-                latest_close = float(hist["Close"].iloc[-1])
-                if latest_close < self.config.min_price:
-                    return None
+                    ticker = yf.Ticker(symbol)
+                    info = ticker.info
+                
+                    # Handle case where info is None
+                    if info is None:
+                        if attempt < max_retries - 1:
+                            logger.debug(f"Retrying {symbol} - info is None (attempt {attempt + 1})")
+                            continue
+                        return None
+                
+                    hist = ticker.history(period=f"{self.config.lookback_days}d", auto_adjust=False)
+                    if hist.empty:
+                        if attempt < max_retries - 1:
+                            logger.debug(f"Retrying {symbol} - empty history (attempt {attempt + 1})")
+                            continue
+                        return None
+                    hist = hist.dropna(subset=["Close"]).tail(self.config.lookback_days)
+
+                    # Handle case where Close column doesn't exist or is empty
+                    if "Close" not in hist.columns or hist["Close"].empty:
+                        if attempt < max_retries - 1:
+                            logger.debug(f"Retrying {symbol} - no Close data (attempt {attempt + 1})")
+                            continue
+                        return None
                     
-                # Handle case where Volume column doesn't exist
-                if "Volume" not in hist.columns:
-                    avg_vol = 0
-                else:
-                    avg_vol = float(hist["Volume"].tail(30).mean())
-                if avg_vol < self.config.min_volume:
-                    return None
+                    latest_close = float(hist["Close"].iloc[-1])
+                    if latest_close < self.config.min_price:
+                        return None
+                    
+                    # Handle case where Volume column doesn't exist
+                    if "Volume" not in hist.columns:
+                        avg_vol = 0
+                    else:
+                        avg_vol = float(hist["Volume"].tail(30).mean())
+                    if avg_vol < self.config.min_volume:
+                        return None
 
-                metrics = self._compute_advanced_metrics(hist)
-                premarket = self.premarket_fetcher.fetch(symbol)
-                patterns = self.pattern_detector.detect(hist["Close"])
+                    metrics = self._compute_advanced_metrics(hist)
+                    premarket = self.premarket_fetcher.fetch(symbol)
+                    patterns = self.pattern_detector.detect(hist["Close"])
 
-                row = {
-                    "ticker": symbol,
-                    "company": info.get("shortName", symbol),
-                    "sector": info.get("sector", "Unknown"),
-                    "price": latest_close,
-                    "market_cap": info.get("marketCap", np.nan),
-                    "pe_ratio": info.get("trailingPE", np.nan),
-                    "forward_pe": info.get("forwardPE", np.nan),
-                    "peg_ratio": info.get("pegRatio", np.nan),
-                    "profit_margin": info.get("profitMargins", np.nan),
-                    "revenue_growth": info.get("revenueGrowth", np.nan),
-                    "return_on_equity": info.get("returnOnEquity", np.nan),
-                    "beta": info.get("beta", np.nan),
-                    **metrics,
-                    **premarket,
-                    "pattern_signals": ", ".join(patterns) if patterns else "None",
-                }
+                    row = {
+                        "ticker": symbol,
+                        "company": info.get("shortName", symbol),
+                        "sector": info.get("sector", "Unknown"),
+                        "price": latest_close,
+                        "market_cap": info.get("marketCap", np.nan),
+                        "pe_ratio": info.get("trailingPE", np.nan),
+                        "forward_pe": info.get("forwardPE", np.nan),
+                        "peg_ratio": info.get("pegRatio", np.nan),
+                        "profit_margin": info.get("profitMargins", np.nan),
+                        "revenue_growth": info.get("revenueGrowth", np.nan),
+                        "return_on_equity": info.get("returnOnEquity", np.nan),
+                        "beta": info.get("beta", np.nan),
+                        **metrics,
+                        **premarket,
+                        "pattern_signals": ", ".join(patterns) if patterns else "None",
+                    }
 
-                row["holding_period_days"] = self._estimate_holding_period(row)
-                exit_plan = self._determine_exit_strategy(row)
-                row.update(exit_plan)
-                row["exit_strategy"] = row.get("exit_plan", "")
-                histories[symbol] = hist
-                return row, hist
-            except Exception as exc:  # pragma: no cover - per ticker resilience
-                logger.debug(f"Ticker {symbol} processing error: {exc}")
-                return None
+                    row["holding_period_days"] = self._estimate_holding_period(row)
+                    exit_plan = self._determine_exit_strategy(row)
+                    row.update(exit_plan)
+                    row["exit_strategy"] = row.get("exit_plan", "")
+                    histories[symbol] = hist
+                    return row, hist
+                    
+                except Exception as exc:  # pragma: no cover - per ticker resilience
+                    if attempt < max_retries - 1:
+                        logger.debug(f"Retrying {symbol} - error: {exc} (attempt {attempt + 1})")
+                        continue
+                    else:
+                        logger.debug(f"Ticker {symbol} processing failed after {max_retries} attempts: {exc}")
+                        return None
+            
+            # If we get here, all retries failed
+            return None
 
         with ThreadPoolExecutor(max_workers=self.config.max_workers) as executor:
             futures = {executor.submit(worker, symbol): symbol for symbol in tickers}

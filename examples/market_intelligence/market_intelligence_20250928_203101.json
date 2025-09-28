@@ -1,0 +1,2930 @@
+{
+  "timestamp": "2025-09-28T20:31:01.664771",
+  "summary": {
+    "total_stocks_analyzed": 17,
+    "recommendations_generated": 10,
+    "strong_buys": 0,
+    "buys": 9,
+    "data_sources_active": 10,
+    "avg_risk_reward": 2.0
+  },
+  "market_intelligence": {
+    "insider_trades": [
+      {
+        "date": "2025-09-27",
+        "ticker": "AMZN",
+        "insider_name": "Andy Jassy",
+        "title": "CEO",
+        "transaction": "BUY",
+        "shares": 10000,
+        "price": 146.2,
+        "value": 1462000,
+        "signal_strength": "STRONG_BUY"
+      }
+    ],
+    "institutional_activity": [
+      {
+        "date": "2025-09-25",
+        "institution": "ARK Invest",
+        "ticker": "TSLA",
+        "action": "BUY",
+        "shares": 450000,
+        "value": 70000000
+      },
+      {
+        "date": "2025-09-23",
+        "institution": "BlackRock",
+        "ticker": "MSFT",
+        "action": "BUY",
+        "shares": 1200000,
+        "value": 360000000
+      }
+    ],
+    "social_trends": [
+      {
+        "ticker": "AAPL",
+        "platform": "Reddit",
+        "trend_type": "r/wallstreetbets momentum",
+        "sentiment": "POSITIVE",
+        "influence_score": 82,
+        "timestamp": "2025-09-28T20:30:52.542978"
+      },
+      {
+        "ticker": "TSLA",
+        "platform": "Twitter",
+        "trend_type": "AI partnership chatter",
+        "sentiment": "POSITIVE",
+        "influence_score": 75,
+        "timestamp": "2025-09-28T20:30:52.542978"
+      }
+    ],
+    "news_sentiment": [
+      {
+        "timestamp": "2025-09-28T20:30:52.544702",
+        "ticker": "MSFT",
+        "headline": "Microsoft launches Copilot upgrades, analysts cheer AI roadmap",
+        "sentiment_score": 0.5106
+      },
+      {
+        "timestamp": "2025-09-28T20:30:52.544702",
+        "ticker": "TSLA",
+        "headline": "Tesla faces supply-chain hiccups but demand remains strong",
+        "sentiment_score": 0.5719
+      },
+      {
+        "timestamp": "2025-09-28T20:30:52.544702",
+        "ticker": "AAPL",
+        "headline": "Apple supplier hints at robust iPhone 16 pre-orders",
+        "sentiment_score": 0.34
+      },
+      {
+        "timestamp": "2025-09-28T20:30:52.544702",
+        "ticker": "NVDA",
+        "headline": "Nvidia beats earnings estimates as AI demand accelerates",
+        "sentiment_score": -0.128
+      }
+    ],
+    "options_flow": [
+      {
+        "timestamp": "2025-09-28T20:30:52.544431",
+        "ticker": "NVDA",
+        "type": "CALL SWEEP",
+        "expiry": "2025-10-05",
+        "strike": 500,
+        "premium": 4200000,
+        "spot_vs_strike": 1.02,
+        "sweep_ratio": 0.85
+      },
+      {
+        "timestamp": "2025-09-28T20:30:52.544431",
+        "ticker": "AAPL",
+        "type": "CALL BLOCK",
+        "expiry": "2025-10-12",
+        "strike": 200,
+        "premium": 3100000,
+        "spot_vs_strike": 0.98,
+        "sweep_ratio": 0.65
+      }
+    ],
+    "congressional_trades": [
+      {
+        "date": "2025-09-27",
+        "member": "Nancy Pelosi",
+        "party": "D-CA",
+        "ticker": "NVDA",
+        "transaction": "BUY",
+        "amount": "100K-250K"
+      },
+      {
+        "date": "2025-09-26",
+        "member": "Tommy Tuberville",
+        "party": "R-AL",
+        "ticker": "TSLA",
+        "transaction": "BUY",
+        "amount": "50K-100K"
+      }
+    ],
+    "economic_calendar": [
+      {
+        "date": "2025-09-29",
+        "time": "12:30",
+        "event": "CPI MoM",
+        "importance": "HIGH",
+        "expected": "0.3%",
+        "previous": "0.2%"
+      },
+      {
+        "date": "2025-10-01",
+        "time": "18:00",
+        "event": "FOMC Rate Decision",
+        "importance": "HIGH",
+        "expected": "5.25%",
+        "previous": "5.25%"
+      }
+    ],
+    "sec_filings": [],
+    "sector_rotation": [
+      {
+        "sector": "Technology",
+        "etf": "XLK",
+        "quarter_return": "Ticker\nXLK    0.102549\ndtype: float64",
+        "relative_to_spy": "Ticker\nSPY   NaN\nXLK   NaN\ndtype: float64",
+        "momentum_20d": "Ticker\nXLK    0.047491\nName: 2025-09-26 00:00:00, dtype: float64"
+      },
+      {
+        "sector": "Financials",
+        "etf": "XLF",
+        "quarter_return": "Ticker\nXLF    0.031837\ndtype: float64",
+        "relative_to_spy": "Ticker\nSPY   NaN\nXLF   NaN\ndtype: float64",
+        "momentum_20d": "Ticker\nXLF    0.003478\nName: 2025-09-26 00:00:00, dtype: float64"
+      },
+      {
+        "sector": "Industrials",
+        "etf": "XLI",
+        "quarter_return": "Ticker\nXLI    0.038574\ndtype: float64",
+        "relative_to_spy": "Ticker\nSPY   NaN\nXLI   NaN\ndtype: float64",
+        "momentum_20d": "Ticker\nXLI   -0.001366\nName: 2025-09-26 00:00:00, dtype: float64"
+      },
+      {
+        "sector": "Energy",
+        "etf": "XLE",
+        "quarter_return": "Ticker\nXLE    0.093916\ndtype: float64",
+        "relative_to_spy": "Ticker\nSPY   NaN\nXLE   NaN\ndtype: float64",
+        "momentum_20d": "Ticker\nXLE    0.03198\nName: 2025-09-26 00:00:00, dtype: float64"
+      },
+      {
+        "sector": "Healthcare",
+        "etf": "XLV",
+        "quarter_return": "Ticker\nXLV    0.009865\ndtype: float64",
+        "relative_to_spy": "Ticker\nSPY   NaN\nXLV   NaN\ndtype: float64",
+        "momentum_20d": "Ticker\nXLV   -0.002275\nName: 2025-09-26 00:00:00, dtype: float64"
+      },
+      {
+        "sector": "Consumer Discretionary",
+        "etf": "XLY",
+        "quarter_return": "Ticker\nXLY    0.104922\ndtype: float64",
+        "relative_to_spy": "Ticker\nSPY   NaN\nXLY   NaN\ndtype: float64",
+        "momentum_20d": "Ticker\nXLY    0.025551\nName: 2025-09-26 00:00:00, dtype: float64"
+      }
+    ],
+    "stock_screening": [
+      {
+        "ticker": "ARE",
+        "company": "Alexandria Real Estate Equities",
+        "sector": "Unknown",
+        "price": 83.8499984741211,
+        "market_cap": 14314958848,
+        "pe_ratio": NaN,
+        "forward_pe": 24.375,
+        "peg_ratio": NaN,
+        "profit_margin": NaN,
+        "revenue_growth": NaN,
+        "return_on_equity": NaN,
+        "beta": NaN,
+        "ret_1m": 2.4685281655460134,
+        "ret_3m": 15.448164181467195,
+        "ret_6m": -12.290795175253821,
+        "ret_12m": -32.520523875258355,
+        "volume_avg": 1303075.0,
+        "rsi": 43.187252158572306,
+        "sma_50": 80.61540023803711,
+        "sma_200": 85.25450016021729,
+        "volatility_3m": 0.28764597099675115,
+        "max_drawdown": -0.4541284350157153,
+        "vwap_10": 86.02090956430077,
+        "obv": -7784900.0,
+        "unusual_volume_ratio": 1.0232718761391324,
+        "atr": 1.8707144601004464,
+        "pattern_signals": "Double Bottom, Cup & Handle",
+        "holding_period_days": 9,
+        "entry_price": 83.8499984741211,
+        "stop_loss_price": 80.1085695539202,
+        "target_price": 89.46214185442243,
+        "exit_review_days": 9,
+        "exit_plan": "Enter near $83.85; place stop around $80.11 (2\u00d7ATR); target about $89.46 (3\u00d7ATR); reassess after 9 days.",
+        "exit_strategy": "Enter near $83.85; place stop around $80.11 (2\u00d7ATR); target about $89.46 (3\u00d7ATR); reassess after 9 days.",
+        "ml_probability": 0.5205264479598866,
+        "forecast_volatility": 0.24899101996142672,
+        "risk_reward_ratio": 1.999999999999995
+      },
+      {
+        "ticker": "ABNB",
+        "company": "Airbnb, Inc.",
+        "sector": "Consumer Cyclical",
+        "price": 123.69999694824219,
+        "market_cap": 75733549056,
+        "pe_ratio": 30.024271,
+        "forward_pe": 27.488888,
+        "peg_ratio": NaN,
+        "profit_margin": 0.22668,
+        "revenue_growth": 0.127,
+        "return_on_equity": 0.33262002,
+        "beta": 1.131,
+        "ret_1m": -5.1816720969909635,
+        "ret_3m": -6.528638075211046,
+        "ret_6m": 2.4939882723900464,
+        "ret_12m": -5.363024562434893,
+        "volume_avg": 5054835.0,
+        "rsi": 47.46694383445219,
+        "sma_50": 127.86900054931641,
+        "sma_200": 130.33222564697266,
+        "volatility_3m": 0.28123771043763063,
+        "max_drawdown": -0.34524839771842253,
+        "vwap_10": 123.72466017270273,
+        "obv": 53730600.0,
+        "unusual_volume_ratio": 0.5732926989703917,
+        "atr": 2.5165721348353793,
+        "pattern_signals": "Double Top",
+        "holding_period_days": 8,
+        "entry_price": 123.69999694824219,
+        "stop_loss_price": 118.66685267857143,
+        "target_price": 131.24971335274833,
+        "exit_review_days": 8,
+        "exit_plan": "Enter near $123.70; place stop around $118.67 (2\u00d7ATR); target about $131.25 (3\u00d7ATR); reassess after 8 days.",
+        "exit_strategy": "Enter near $123.70; place stop around $118.67 (2\u00d7ATR); target about $131.25 (3\u00d7ATR); reassess after 8 days.",
+        "ml_probability": 0.5057219301776639,
+        "forecast_volatility": 0.2441858854201523,
+        "risk_reward_ratio": 2.0
+      },
+      {
+        "ticker": "AES",
+        "company": "The AES Corporation",
+        "sector": "Utilities",
+        "price": 13.239999771118164,
+        "market_cap": 9427535872,
+        "pe_ratio": 10.184615,
+        "forward_pe": 6.5221677,
+        "peg_ratio": NaN,
+        "profit_margin": 0.076630004,
+        "revenue_growth": -0.03,
+        "return_on_equity": 0.01742,
+        "beta": 0.907,
+        "ret_1m": -1.78041379279118,
+        "ret_3m": 25.855505655868626,
+        "ret_6m": 6.68815418139701,
+        "ret_12m": -32.206864794574265,
+        "volume_avg": 9443125.0,
+        "rsi": 61.711709196133576,
+        "sma_50": 13.174799976348877,
+        "sma_200": 11.858099994659424,
+        "volatility_3m": 0.511520150197401,
+        "max_drawdown": -0.524209475131387,
+        "vwap_10": 12.992975305019892,
+        "obv": -155861600.0,
+        "unusual_volume_ratio": 0.6243272221854523,
+        "atr": 0.34857157298496794,
+        "pattern_signals": "Double Bottom, Cup & Handle",
+        "holding_period_days": 3,
+        "entry_price": 13.239999771118164,
+        "stop_loss_price": 12.542856625148229,
+        "target_price": 14.285714490073069,
+        "exit_review_days": 3,
+        "exit_plan": "Enter near $13.24; place stop around $12.54 (2\u00d7ATR); target about $14.29 (3\u00d7ATR); reassess after 3 days.",
+        "exit_strategy": "Enter near $13.24; place stop around $12.54 (2\u00d7ATR); target about $14.29 (3\u00d7ATR); reassess after 3 days.",
+        "ml_probability": 0.49940524040225803,
+        "forecast_volatility": 0.31666709604081295,
+        "risk_reward_ratio": 2.0
+      },
+      {
+        "ticker": "AKAM",
+        "company": "Akamai Technologies, Inc.",
+        "sector": "Technology",
+        "price": 76.05000305175781,
+        "market_cap": 10904470528,
+        "pe_ratio": 26.872793,
+        "forward_pe": 11.384731,
+        "peg_ratio": NaN,
+        "profit_margin": 0.10399,
+        "revenue_growth": 0.065,
+        "return_on_equity": 0.092080005,
+        "beta": 0.77,
+        "ret_1m": -2.985069978453947,
+        "ret_3m": -4.651453090655588,
+        "ret_6m": -4.996876761408398,
+        "ret_12m": -23.67522730067517,
+        "volume_avg": 1900220.0,
+        "rsi": 40.09800210462136,
+        "sma_50": 76.72679931640624,
+        "sma_200": 82.68659992218018,
+        "volatility_3m": 0.2616905741647039,
+        "max_drawdown": -0.36055123038025383,
+        "vwap_10": 76.29501153440549,
+        "obv": -11767600.0,
+        "unusual_volume_ratio": 0.8473755670396059,
+        "atr": 1.7214300973074776,
+        "pattern_signals": "Double Top",
+        "holding_period_days": 9,
+        "entry_price": 76.05000305175781,
+        "stop_loss_price": 72.60714285714286,
+        "target_price": 81.21429334368024,
+        "exit_review_days": 9,
+        "exit_plan": "Enter near $76.05; place stop around $72.61 (2\u00d7ATR); target about $81.21 (3\u00d7ATR); reassess after 9 days.",
+        "exit_strategy": "Enter near $76.05; place stop around $72.61 (2\u00d7ATR); target about $81.21 (3\u00d7ATR); reassess after 9 days.",
+        "ml_probability": 0.49903330072700486,
+        "forecast_volatility": 0.2533296936741639,
+        "risk_reward_ratio": 1.9999999999999944
+      },
+      {
+        "ticker": "ALGN",
+        "company": "Align Technology, Inc.",
+        "sector": "Healthcare",
+        "price": 126.19000244140625,
+        "market_cap": 9147055104,
+        "pe_ratio": 21.315878,
+        "forward_pe": 12.29922,
+        "peg_ratio": NaN,
+        "profit_margin": 0.110369995,
+        "revenue_growth": -0.016,
+        "return_on_equity": 0.1141,
+        "beta": 1.654,
+        "ret_1m": -10.585985916893936,
+        "ret_3m": -33.34917803782113,
+        "ret_6m": -20.739905081346176,
+        "ret_12m": -47.952153421414536,
+        "volume_avg": 1271970.0,
+        "rsi": 30.24808912339772,
+        "sma_50": 148.27460098266602,
+        "sma_200": 180.2412504196167,
+        "volatility_3m": 0.8177289162811,
+        "max_drawdown": -0.5099093503005049,
+        "vwap_10": 129.7058391346434,
+        "obv": -32906800.0,
+        "unusual_volume_ratio": 0.7145608780081292,
+        "atr": 3.9428563799176897,
+        "pattern_signals": "Double Top",
+        "holding_period_days": 3,
+        "entry_price": 126.19000244140625,
+        "stop_loss_price": 118.30428968157086,
+        "target_price": 138.0185715811593,
+        "exit_review_days": 3,
+        "exit_plan": "Enter near $126.19; place stop around $118.30 (2\u00d7ATR); target about $138.02 (3\u00d7ATR); reassess after 3 days.",
+        "exit_strategy": "Enter near $126.19; place stop around $118.30 (2\u00d7ATR); target about $138.02 (3\u00d7ATR); reassess after 3 days.",
+        "ml_probability": 0.49727221723258774,
+        "forecast_volatility": 0.5321845661101943,
+        "risk_reward_ratio": 2.0
+      },
+      {
+        "ticker": "MMM",
+        "company": "3M Company",
+        "sector": "Industrials",
+        "price": 152.80999755859375,
+        "market_cap": 81391140864,
+        "pe_ratio": 21.223612,
+        "forward_pe": 19.343037,
+        "peg_ratio": NaN,
+        "profit_margin": 0.16011,
+        "revenue_growth": 0.014,
+        "return_on_equity": 0.9476,
+        "beta": 1.098,
+        "ret_1m": -3.014724596091445,
+        "ret_3m": 0.374403602773965,
+        "ret_6m": 5.502624566566738,
+        "ret_12m": 11.866757489596424,
+        "volume_avg": 2825965.0,
+        "rsi": 47.25932079736517,
+        "sma_50": 153.84060089111327,
+        "sma_200": 146.5193501663208,
+        "volatility_3m": 0.23158136535961493,
+        "max_drawdown": -0.18714543381313142,
+        "vwap_10": 155.36393015577718,
+        "obv": 14570900.0,
+        "unusual_volume_ratio": 0.7416935453906895,
+        "atr": 3.3757149832589284,
+        "pattern_signals": "Double Bottom, Cup & Handle",
+        "holding_period_days": 9,
+        "entry_price": 152.80999755859375,
+        "stop_loss_price": 146.0585675920759,
+        "target_price": 162.93714250837053,
+        "exit_review_days": 9,
+        "exit_plan": "Enter near $152.81; place stop around $146.06 (2\u00d7ATR); target about $162.94 (3\u00d7ATR); reassess after 9 days.",
+        "exit_strategy": "Enter near $152.81; place stop around $146.06 (2\u00d7ATR); target about $162.94 (3\u00d7ATR); reassess after 9 days.",
+        "ml_probability": 0.4888558853518229,
+        "forecast_volatility": 0.2197815244886501,
+        "risk_reward_ratio": 2.0
+      },
+      {
+        "ticker": "A",
+        "company": "Agilent Technologies, Inc.",
+        "sector": "Unknown",
+        "price": 123.38999938964844,
+        "market_cap": 34981117952,
+        "pe_ratio": 28.829437,
+        "forward_pe": 21.838938,
+        "peg_ratio": NaN,
+        "profit_margin": NaN,
+        "revenue_growth": NaN,
+        "return_on_equity": NaN,
+        "beta": NaN,
+        "ret_1m": -1.2564018136419053,
+        "ret_3m": 4.558933273475674,
+        "ret_6m": 5.741706065698704,
+        "ret_12m": -11.510329009426224,
+        "volume_avg": 1760085.0,
+        "rsi": 39.550263126380045,
+        "sma_50": 120.8756004333496,
+        "sma_200": 123.13880001068115,
+        "volatility_3m": 0.29860655845638917,
+        "max_drawdown": -0.34934471202986483,
+        "vwap_10": 125.87108510096097,
+        "obv": -13469800.0,
+        "unusual_volume_ratio": 0.6624111903686469,
+        "atr": 2.5678580147879466,
+        "pattern_signals": "Double Bottom, Cup & Handle",
+        "holding_period_days": 8,
+        "entry_price": 123.38999938964844,
+        "stop_loss_price": 118.25428336007255,
+        "target_price": 131.09357343401228,
+        "exit_review_days": 8,
+        "exit_plan": "Enter near $123.39; place stop around $118.25 (2\u00d7ATR); target about $131.09 (3\u00d7ATR); reassess after 8 days.",
+        "exit_strategy": "Enter near $123.39; place stop around $118.25 (2\u00d7ATR); target about $131.09 (3\u00d7ATR); reassess after 8 days.",
+        "ml_probability": 0.4883722186371667,
+        "forecast_volatility": 0.26527385787561625,
+        "risk_reward_ratio": 2.0
+      },
+      {
+        "ticker": "ABT",
+        "company": "Abbott Laboratories",
+        "sector": "Healthcare",
+        "price": 133.5500030517578,
+        "market_cap": 232438300672,
+        "pe_ratio": 16.756588,
+        "forward_pe": 25.881784,
+        "peg_ratio": NaN,
+        "profit_margin": 0.32426998,
+        "revenue_growth": 0.074,
+        "return_on_equity": 0.30931,
+        "beta": 0.688,
+        "ret_1m": 1.6594412846142381,
+        "ret_3m": -1.8086843279406795,
+        "ret_6m": 2.086833492351947,
+        "ret_12m": 18.595153474745075,
+        "volume_avg": 5341375.0,
+        "rsi": 53.658556756962405,
+        "sma_50": 130.95659912109375,
+        "sma_200": 128.83800022125243,
+        "volatility_3m": 0.23734681910201452,
+        "max_drawdown": -0.1405648189479728,
+        "vwap_10": 134.31698478819413,
+        "obv": 191074800.0,
+        "unusual_volume_ratio": 0.7829631883176148,
+        "atr": 2.694286891392299,
+        "pattern_signals": "Double Bottom",
+        "holding_period_days": 9,
+        "entry_price": 133.5500030517578,
+        "stop_loss_price": 128.16142926897322,
+        "target_price": 141.6328637259347,
+        "exit_review_days": 9,
+        "exit_plan": "Enter near $133.55; place stop around $128.16 (2\u00d7ATR); target about $141.63 (3\u00d7ATR); reassess after 9 days.",
+        "exit_strategy": "Enter near $133.55; place stop around $128.16 (2\u00d7ATR); target about $141.63 (3\u00d7ATR); reassess after 9 days.",
+        "ml_probability": 0.48823301213781445,
+        "forecast_volatility": 0.1813577405645368,
+        "risk_reward_ratio": 1.999999999999993
+      },
+      {
+        "ticker": "ALLE",
+        "company": "Allegion plc",
+        "sector": "Industrials",
+        "price": 175.00999450683594,
+        "market_cap": 15023998976,
+        "pe_ratio": 24.34075,
+        "forward_pe": 22.46598,
+        "peg_ratio": NaN,
+        "profit_margin": 0.16153,
+        "revenue_growth": 0.058,
+        "return_on_equity": 0.38994,
+        "beta": 1.077,
+        "ret_1m": 2.362983714855127,
+        "ret_3m": 21.43352791854525,
+        "ret_6m": 36.41749447792137,
+        "ret_12m": 22.05174367234861,
+        "volume_avg": 927435.0,
+        "rsi": 53.663197584343415,
+        "sma_50": 168.6436004638672,
+        "sma_200": 143.09569995880128,
+        "volatility_3m": 0.24112915447379926,
+        "max_drawdown": -0.2271779070724228,
+        "vwap_10": 177.30189198827085,
+        "obv": 23281200.0,
+        "unusual_volume_ratio": 0.6657070306813955,
+        "atr": 3.3800016130719865,
+        "pattern_signals": "Double Bottom, Cup & Handle",
+        "holding_period_days": 9,
+        "entry_price": 175.00999450683594,
+        "stop_loss_price": 168.24999128069197,
+        "target_price": 185.14999934605189,
+        "exit_review_days": 9,
+        "exit_plan": "Enter near $175.01; place stop around $168.25 (2\u00d7ATR); target about $185.15 (3\u00d7ATR); reassess after 9 days.",
+        "exit_strategy": "Enter near $175.01; place stop around $168.25 (2\u00d7ATR); target about $185.15 (3\u00d7ATR); reassess after 9 days.",
+        "ml_probability": 0.4855989492779618,
+        "forecast_volatility": 0.2115575836497548,
+        "risk_reward_ratio": 1.9999999999999944
+      },
+      {
+        "ticker": "AOS",
+        "company": "A.O. Smith Corporation",
+        "sector": "Industrials",
+        "price": 72.44999694824219,
+        "market_cap": 10152387584,
+        "pe_ratio": 20.181059,
+        "forward_pe": 17.800982,
+        "peg_ratio": NaN,
+        "profit_margin": 0.13683,
+        "revenue_growth": -0.013,
+        "return_on_equity": 0.27603,
+        "beta": 1.25,
+        "ret_1m": 1.1588860232203402,
+        "ret_3m": 10.492599184747364,
+        "ret_6m": 10.42523437625369,
+        "ret_12m": -15.598788398058161,
+        "volume_avg": 1053665.0,
+        "rsi": 42.69117626422388,
+        "sma_50": 71.9413998413086,
+        "sma_200": 68.28545015335084,
+        "volatility_3m": 0.2389323264345231,
+        "max_drawdown": -0.3417595377120676,
+        "vwap_10": 72.7689945532542,
+        "obv": -46147100.0,
+        "unusual_volume_ratio": 0.604746290329469,
+        "atr": 1.409285409109933,
+        "pattern_signals": "Double Bottom, Cup & Handle",
+        "holding_period_days": 9,
+        "entry_price": 72.44999694824219,
+        "stop_loss_price": 69.63142613002232,
+        "target_price": 76.67785317557198,
+        "exit_review_days": 9,
+        "exit_plan": "Enter near $72.45; place stop around $69.63 (2\u00d7ATR); target about $76.68 (3\u00d7ATR); reassess after 9 days.",
+        "exit_strategy": "Enter near $72.45; place stop around $69.63 (2\u00d7ATR); target about $76.68 (3\u00d7ATR); reassess after 9 days.",
+        "ml_probability": 0.48303992823833763,
+        "forecast_volatility": 0.20896709177208714,
+        "risk_reward_ratio": 2.0
+      },
+      {
+        "ticker": "ALB",
+        "company": "Albemarle Corporation",
+        "sector": "Basic Materials",
+        "price": 88.0999984741211,
+        "market_cap": 10367865856,
+        "pe_ratio": NaN,
+        "forward_pe": 47.880432,
+        "peg_ratio": NaN,
+        "profit_margin": -0.18614,
+        "revenue_growth": -0.07,
+        "return_on_equity": -0.081070006,
+        "beta": 1.652,
+        "ret_1m": 3.744701335072187,
+        "ret_3m": 40.577630522059025,
+        "ret_6m": 22.03905734125491,
+        "ret_12m": 1.755597841210954,
+        "volume_avg": 3831945.0,
+        "rsi": 60.119447959464445,
+        "sma_50": 78.61100021362304,
+        "sma_200": 74.15700000762939,
+        "volatility_3m": 0.6544835658873471,
+        "max_drawdown": -0.5439353375585417,
+        "vwap_10": 82.3166904213936,
+        "obv": 36040400.0,
+        "unusual_volume_ratio": 1.0916388413716793,
+        "atr": 4.485713958740234,
+        "pattern_signals": "Double Bottom, Cup & Handle",
+        "holding_period_days": 5,
+        "entry_price": 88.0999984741211,
+        "stop_loss_price": 79.12857055664062,
+        "target_price": 101.5571403503418,
+        "exit_review_days": 5,
+        "exit_plan": "Enter near $88.10; place stop around $79.13 (2\u00d7ATR); target about $101.56 (3\u00d7ATR); reassess after 5 days.",
+        "exit_strategy": "Enter near $88.10; place stop around $79.13 (2\u00d7ATR); target about $101.56 (3\u00d7ATR); reassess after 5 days.",
+        "ml_probability": 0.47787785505451097,
+        "forecast_volatility": 0.5727402747183539,
+        "risk_reward_ratio": 2.0
+      },
+      {
+        "ticker": "ABBV",
+        "company": "AbbVie Inc.",
+        "sector": "Healthcare",
+        "price": 220.61000061035156,
+        "market_cap": 389720408064,
+        "pe_ratio": 105.05238,
+        "forward_pe": 18.18714,
+        "peg_ratio": NaN,
+        "profit_margin": 0.06451,
+        "revenue_growth": 0.066,
+        "return_on_equity": 1.1285399,
+        "beta": 0.525,
+        "ret_1m": 6.10331019294017,
+        "ret_3m": 18.850342858307823,
+        "ret_6m": 7.462617675117644,
+        "ret_12m": 15.345606476249586,
+        "volume_avg": 5292965.0,
+        "rsi": 70.12647521301537,
+        "sma_50": 205.85540008544922,
+        "sma_200": 192.8739500427246,
+        "volatility_3m": 0.19777847256265613,
+        "max_drawdown": -0.2146219847412112,
+        "vwap_10": 220.74007015066437,
+        "obv": 49676200.0,
+        "unusual_volume_ratio": 0.7907855049107636,
+        "atr": 3.8228628976004466,
+        "pattern_signals": "Double Bottom, Cup & Handle",
+        "holding_period_days": 10,
+        "entry_price": 220.61000061035156,
+        "stop_loss_price": 212.96427481515067,
+        "target_price": 232.0785893031529,
+        "exit_review_days": 10,
+        "exit_plan": "Enter near $220.61; place stop around $212.96 (2\u00d7ATR); target about $232.08 (3\u00d7ATR); reassess after 10 days.",
+        "exit_strategy": "Enter near $220.61; place stop around $212.96 (2\u00d7ATR); target about $232.08 (3\u00d7ATR); reassess after 10 days.",
+        "ml_probability": 0.47156595098005955,
+        "forecast_volatility": 0.18256473453136768,
+        "risk_reward_ratio": 2.0
+      },
+      {
+        "ticker": "ALL",
+        "company": "Allstate Corporation (The)",
+        "sector": "Financial Services",
+        "price": 212.75999450683594,
+        "market_cap": 56063393792,
+        "pe_ratio": 10.012235,
+        "forward_pe": 11.180241,
+        "peg_ratio": NaN,
+        "profit_margin": 0.087919995,
+        "revenue_growth": 0.058,
+        "return_on_equity": 0.27005,
+        "beta": 0.365,
+        "ret_1m": 4.416961249818874,
+        "ret_3m": 5.687743821520597,
+        "ret_6m": 3.056428990975335,
+        "ret_12m": 11.978944477282072,
+        "volume_avg": 1445280.0,
+        "rsi": 74.55621586709981,
+        "sma_50": 202.9737991333008,
+        "sma_200": 198.21939918518066,
+        "volatility_3m": 0.2532326385060839,
+        "max_drawdown": -0.14106953530168675,
+        "vwap_10": 204.1646461804932,
+        "obv": 8114200.0,
+        "unusual_volume_ratio": 0.8002601572013728,
+        "atr": 3.497143336704799,
+        "pattern_signals": "Double Bottom, Cup & Handle",
+        "holding_period_days": 9,
+        "entry_price": 212.75999450683594,
+        "stop_loss_price": 205.76570783342635,
+        "target_price": 223.25142451695032,
+        "exit_review_days": 9,
+        "exit_plan": "Enter near $212.76; place stop around $205.77 (2\u00d7ATR); target about $223.25 (3\u00d7ATR); reassess after 9 days.",
+        "exit_strategy": "Enter near $212.76; place stop around $205.77 (2\u00d7ATR); target about $223.25 (3\u00d7ATR); reassess after 9 days.",
+        "ml_probability": 0.46905804467723367,
+        "forecast_volatility": 0.23271564673111755,
+        "risk_reward_ratio": 1.9999999999999947
+      },
+      {
+        "ticker": "APD",
+        "company": "Air Products and Chemicals, Inc",
+        "sector": "Basic Materials",
+        "price": 266.7799987792969,
+        "market_cap": 59372859392,
+        "pe_ratio": 37.894886,
+        "forward_pe": 18.827099,
+        "peg_ratio": NaN,
+        "profit_margin": 0.12859,
+        "revenue_growth": 0.012,
+        "return_on_equity": 0.09336001,
+        "beta": 0.833,
+        "ret_1m": -9.572229437330193,
+        "ret_3m": -5.417286716143677,
+        "ret_6m": -8.721384744426363,
+        "ret_12m": -9.786285108191795,
+        "volume_avg": 935130.0,
+        "rsi": 29.46741145704148,
+        "sma_50": 289.8919995117187,
+        "sma_200": 291.34989921569826,
+        "volatility_3m": 0.19439212822033589,
+        "max_drawdown": -0.2646197674319938,
+        "vwap_10": 280.60128264759487,
+        "obv": 16231300.0,
+        "unusual_volume_ratio": 1.2604664592088801,
+        "atr": 6.646427699497768,
+        "pattern_signals": "Double Top, Cup & Handle",
+        "holding_period_days": 9,
+        "entry_price": 266.7799987792969,
+        "stop_loss_price": 253.48714338030135,
+        "target_price": 286.7192818777902,
+        "exit_review_days": 9,
+        "exit_plan": "Enter near $266.78; place stop around $253.49 (2\u00d7ATR); target about $286.72 (3\u00d7ATR); reassess after 9 days.",
+        "exit_strategy": "Enter near $266.78; place stop around $253.49 (2\u00d7ATR); target about $286.72 (3\u00d7ATR); reassess after 9 days.",
+        "ml_probability": 0.4569065655326615,
+        "forecast_volatility": 0.22575642764379197,
+        "risk_reward_ratio": 2.0
+      },
+      {
+        "ticker": "AMD",
+        "company": "Advanced Micro Devices, Inc.",
+        "sector": "Technology",
+        "price": 159.4600067138672,
+        "market_cap": 258778660864,
+        "pe_ratio": 95.48504,
+        "forward_pe": 31.266668,
+        "peg_ratio": NaN,
+        "profit_margin": 0.095740005,
+        "revenue_growth": 0.317,
+        "return_on_equity": 0.04699,
+        "beta": 1.916,
+        "ret_1m": -5.409891456951854,
+        "ret_3m": 12.374921474762557,
+        "ret_6m": 54.48556949046408,
+        "ret_12m": -1.5800502969304575,
+        "volume_avg": 44176905.0,
+        "rsi": 64.91295019546985,
+        "sma_50": 165.37019989013672,
+        "sma_200": 127.1412999343872,
+        "volatility_3m": 0.41273592349677646,
+        "max_drawdown": -0.547395846624801,
+        "vwap_10": 158.93225371491377,
+        "obv": 302184700.0,
+        "unusual_volume_ratio": 0.6854531796648045,
+        "atr": 5.662143162318638,
+        "pattern_signals": "Double Bottom, Cup & Handle",
+        "holding_period_days": 7,
+        "entry_price": 159.4600067138672,
+        "stop_loss_price": 148.1357203892299,
+        "target_price": 176.4464362008231,
+        "exit_review_days": 7,
+        "exit_plan": "Enter near $159.46; place stop around $148.14 (2\u00d7ATR); target about $176.45 (3\u00d7ATR); reassess after 7 days.",
+        "exit_strategy": "Enter near $159.46; place stop around $148.14 (2\u00d7ATR); target about $176.45 (3\u00d7ATR); reassess after 7 days.",
+        "ml_probability": 0.4526138997809548,
+        "forecast_volatility": 0.3422887442906659,
+        "risk_reward_ratio": 2.0
+      },
+      {
+        "ticker": "LNT",
+        "company": "Alliant Energy Corporation",
+        "sector": "Unknown",
+        "price": 66.06999969482422,
+        "market_cap": 16983530496,
+        "pe_ratio": 20.391975,
+        "forward_pe": 20.455109,
+        "peg_ratio": NaN,
+        "profit_margin": NaN,
+        "revenue_growth": NaN,
+        "return_on_equity": NaN,
+        "beta": NaN,
+        "ret_1m": 1.6148925037968054,
+        "ret_3m": 9.260787764303569,
+        "ret_6m": 3.9163224159476595,
+        "ret_12m": 10.208505177648131,
+        "volume_avg": 1677750.0,
+        "rsi": 68.98487749263235,
+        "sma_50": 65.03400024414063,
+        "sma_200": 62.065500011444094,
+        "volatility_3m": 0.14787021366231745,
+        "max_drawdown": -0.10978194881119963,
+        "vwap_10": 64.6204912050955,
+        "obv": 44454000.0,
+        "unusual_volume_ratio": 1.0490239904634182,
+        "atr": 0.8121433258056641,
+        "pattern_signals": "Double Bottom, Cup & Handle",
+        "holding_period_days": 10,
+        "entry_price": 66.06999969482422,
+        "stop_loss_price": 64.44571304321289,
+        "target_price": 68.50642967224121,
+        "exit_review_days": 10,
+        "exit_plan": "Enter near $66.07; place stop around $64.45 (2\u00d7ATR); target about $68.51 (3\u00d7ATR); reassess after 10 days.",
+        "exit_strategy": "Enter near $66.07; place stop around $64.45 (2\u00d7ATR); target about $68.51 (3\u00d7ATR); reassess after 10 days.",
+        "ml_probability": 0.4492848774177666,
+        "forecast_volatility": 0.13347080209742695,
+        "risk_reward_ratio": 2.0
+      },
+      {
+        "ticker": "AFL",
+        "company": "AFLAC Incorporated",
+        "sector": "Unknown",
+        "price": 111.36000061035156,
+        "market_cap": 59558834176,
+        "pe_ratio": 25.081081,
+        "forward_pe": 15.531381,
+        "peg_ratio": NaN,
+        "profit_margin": NaN,
+        "revenue_growth": NaN,
+        "return_on_equity": NaN,
+        "beta": NaN,
+        "ret_1m": 4.957589266613827,
+        "ret_3m": 5.594539708987711,
+        "ret_6m": 1.4207627643310738,
+        "ret_12m": 1.5224707190952813,
+        "volume_avg": 2573210.0,
+        "rsi": 71.12795542585876,
+        "sma_50": 105.35,
+        "sma_200": 105.1524500656128,
+        "volatility_3m": 0.17832006549619445,
+        "max_drawdown": -0.14896759916806113,
+        "vwap_10": 108.47423854017559,
+        "obv": 71679300.0,
+        "unusual_volume_ratio": 0.7300220347348254,
+        "atr": 1.5921412876674108,
+        "pattern_signals": "Double Bottom, Cup & Handle",
+        "holding_period_days": 10,
+        "entry_price": 111.36000061035156,
+        "stop_loss_price": 108.17571803501674,
+        "target_price": 116.1364244733538,
+        "exit_review_days": 10,
+        "exit_plan": "Enter near $111.36; place stop around $108.18 (2\u00d7ATR); target about $116.14 (3\u00d7ATR); reassess after 10 days.",
+        "exit_strategy": "Enter near $111.36; place stop around $108.18 (2\u00d7ATR); target about $116.14 (3\u00d7ATR); reassess after 10 days.",
+        "ml_probability": 0.44381871258401784,
+        "forecast_volatility": 0.16186671187706755,
+        "risk_reward_ratio": 2.0
+      }
+    ]
+  },
+  "recommendations": [
+    {
+      "ticker": "ABT",
+      "company": "Abbott Laboratories",
+      "sector": "Healthcare",
+      "price": 133.5500030517578,
+      "recommendation": "BUY",
+      "conviction_score": 67.28,
+      "technical_score": 77.0,
+      "fundamental_score": 66.0,
+      "quality_score": 68.0,
+      "risk_score": 80.0,
+      "volume_score": 50.0,
+      "pattern_score": 62.0,
+      "ml_score": 47.6,
+      "premarket_score": 50,
+      "options_score": 50,
+      "news_score": 50,
+      "rotation_score": 50.0,
+      "volatility_score": 70,
+      "insider_score": 50,
+      "institutional_score": 50,
+      "social_score": 50,
+      "macro_score": 50,
+      "congressional_score": 50,
+      "ml_probability": 0.4882,
+      "holding_period_days": 9,
+      "exit_strategy": "Enter near $133.55; place stop around $128.16 (2\u00d7ATR); target about $141.63 (3\u00d7ATR); reassess after 9 days.",
+      "exit_plan": "Enter near $133.55; place stop around $128.16 (2\u00d7ATR); target about $141.63 (3\u00d7ATR); reassess after 9 days.",
+      "entry_price": 133.55,
+      "stop_loss_price": 128.16,
+      "target_price": 141.63,
+      "exit_review_days": 9,
+      "technical_drivers": "RSI 54; Price above 50-day trend; Golden cross bias (50d > 200d); Patterns: Double Bottom; ML upside odds 49%",
+      "risk_reward_ratio": 2.0,
+      "pattern_signals": "Double Bottom",
+      "unusual_volume_ratio": 0.78,
+      "pre_market_change_pct": NaN,
+      "pre_market_volume": NaN,
+      "forecast_volatility": 0.181,
+      "key_catalysts": "Double Bottom"
+    },
+    {
+      "ticker": "ALLE",
+      "company": "Allegion plc",
+      "sector": "Industrials",
+      "price": 175.00999450683594,
+      "recommendation": "BUY",
+      "conviction_score": 66.44,
+      "technical_score": 85.0,
+      "fundamental_score": 50.0,
+      "quality_score": 68.0,
+      "risk_score": 65.0,
+      "volume_score": 50.0,
+      "pattern_score": 74.0,
+      "ml_score": 47.1,
+      "premarket_score": 50,
+      "options_score": 50,
+      "news_score": 50,
+      "rotation_score": 50.0,
+      "volatility_score": 70,
+      "insider_score": 50,
+      "institutional_score": 50,
+      "social_score": 50,
+      "macro_score": 50,
+      "congressional_score": 50,
+      "ml_probability": 0.4856,
+      "holding_period_days": 9,
+      "exit_strategy": "Enter near $175.01; place stop around $168.25 (2\u00d7ATR); target about $185.15 (3\u00d7ATR); reassess after 9 days.",
+      "exit_plan": "Enter near $175.01; place stop around $168.25 (2\u00d7ATR); target about $185.15 (3\u00d7ATR); reassess after 9 days.",
+      "entry_price": 175.01,
+      "stop_loss_price": 168.25,
+      "target_price": 185.15,
+      "exit_review_days": 9,
+      "technical_drivers": "RSI 54; Price above 50-day trend; Golden cross bias (50d > 200d); 3M +21.4% momentum; Patterns: Double Bottom, Cup & Handle; ML upside odds 49%",
+      "risk_reward_ratio": 2.0,
+      "pattern_signals": "Double Bottom, Cup & Handle",
+      "unusual_volume_ratio": 0.67,
+      "pre_market_change_pct": NaN,
+      "pre_market_volume": NaN,
+      "forecast_volatility": 0.212,
+      "key_catalysts": "Double Bottom, Cup & Handle"
+    },
+    {
+      "ticker": "MMM",
+      "company": "3M Company",
+      "sector": "Industrials",
+      "price": 152.80999755859375,
+      "recommendation": "BUY",
+      "conviction_score": 66.14,
+      "technical_score": 72.0,
+      "fundamental_score": 60.0,
+      "quality_score": 68.0,
+      "risk_score": 75.0,
+      "volume_score": 50.0,
+      "pattern_score": 74.0,
+      "ml_score": 47.8,
+      "premarket_score": 50,
+      "options_score": 50,
+      "news_score": 50,
+      "rotation_score": 50.0,
+      "volatility_score": 70,
+      "insider_score": 50,
+      "institutional_score": 50,
+      "social_score": 50,
+      "macro_score": 50,
+      "congressional_score": 50,
+      "ml_probability": 0.4889,
+      "holding_period_days": 9,
+      "exit_strategy": "Enter near $152.81; place stop around $146.06 (2\u00d7ATR); target about $162.94 (3\u00d7ATR); reassess after 9 days.",
+      "exit_plan": "Enter near $152.81; place stop around $146.06 (2\u00d7ATR); target about $162.94 (3\u00d7ATR); reassess after 9 days.",
+      "entry_price": 152.81,
+      "stop_loss_price": 146.06,
+      "target_price": 162.94,
+      "exit_review_days": 9,
+      "technical_drivers": "RSI 47; Price below 50-day trend; Golden cross bias (50d > 200d); Patterns: Double Bottom, Cup & Handle; ML upside odds 49%",
+      "risk_reward_ratio": 2.0,
+      "pattern_signals": "Double Bottom, Cup & Handle",
+      "unusual_volume_ratio": 0.74,
+      "pre_market_change_pct": NaN,
+      "pre_market_volume": NaN,
+      "forecast_volatility": 0.22,
+      "key_catalysts": "Double Bottom, Cup & Handle"
+    },
+    {
+      "ticker": "AOS",
+      "company": "A.O. Smith Corporation",
+      "sector": "Industrials",
+      "price": 72.44999694824219,
+      "recommendation": "BUY",
+      "conviction_score": 63.99,
+      "technical_score": 75.0,
+      "fundamental_score": 60.0,
+      "quality_score": 50.0,
+      "risk_score": 65.0,
+      "volume_score": 45.0,
+      "pattern_score": 74.0,
+      "ml_score": 46.6,
+      "premarket_score": 50,
+      "options_score": 50,
+      "news_score": 50,
+      "rotation_score": 50.0,
+      "volatility_score": 70,
+      "insider_score": 50,
+      "institutional_score": 50,
+      "social_score": 50,
+      "macro_score": 50,
+      "congressional_score": 50,
+      "ml_probability": 0.483,
+      "holding_period_days": 9,
+      "exit_strategy": "Enter near $72.45; place stop around $69.63 (2\u00d7ATR); target about $76.68 (3\u00d7ATR); reassess after 9 days.",
+      "exit_plan": "Enter near $72.45; place stop around $69.63 (2\u00d7ATR); target about $76.68 (3\u00d7ATR); reassess after 9 days.",
+      "entry_price": 72.45,
+      "stop_loss_price": 69.63,
+      "target_price": 76.68,
+      "exit_review_days": 9,
+      "technical_drivers": "RSI 43; Price above 50-day trend; Golden cross bias (50d > 200d); 3M +10.5% momentum; Patterns: Double Bottom, Cup & Handle; ML upside odds 48%",
+      "risk_reward_ratio": 2.0,
+      "pattern_signals": "Double Bottom, Cup & Handle",
+      "unusual_volume_ratio": 0.6,
+      "pre_market_change_pct": NaN,
+      "pre_market_volume": NaN,
+      "forecast_volatility": 0.209,
+      "key_catalysts": "Double Bottom, Cup & Handle"
+    },
+    {
+      "ticker": "LNT",
+      "company": "Alliant Energy Corporation",
+      "sector": "Unknown",
+      "price": 66.06999969482422,
+      "recommendation": "BUY",
+      "conviction_score": 62.5,
+      "technical_score": 62.0,
+      "fundamental_score": 60.0,
+      "quality_score": 50.0,
+      "risk_score": 75.0,
+      "volume_score": 55.0,
+      "pattern_score": 74.0,
+      "ml_score": 39.9,
+      "premarket_score": 50,
+      "options_score": 50,
+      "news_score": 50,
+      "rotation_score": 50.0,
+      "volatility_score": 70,
+      "insider_score": 50,
+      "institutional_score": 50,
+      "social_score": 50,
+      "macro_score": 50,
+      "congressional_score": 50,
+      "ml_probability": 0.4493,
+      "holding_period_days": 10,
+      "exit_strategy": "Enter near $66.07; place stop around $64.45 (2\u00d7ATR); target about $68.51 (3\u00d7ATR); reassess after 10 days.",
+      "exit_plan": "Enter near $66.07; place stop around $64.45 (2\u00d7ATR); target about $68.51 (3\u00d7ATR); reassess after 10 days.",
+      "entry_price": 66.07,
+      "stop_loss_price": 64.45,
+      "target_price": 68.51,
+      "exit_review_days": 10,
+      "technical_drivers": "RSI 69 (momentum run); Price above 50-day trend; Golden cross bias (50d > 200d); 3M +9.3% momentum; Patterns: Double Bottom, Cup & Handle; ML upside odds 45%",
+      "risk_reward_ratio": 2.0,
+      "pattern_signals": "Double Bottom, Cup & Handle",
+      "unusual_volume_ratio": 1.05,
+      "pre_market_change_pct": NaN,
+      "pre_market_volume": NaN,
+      "forecast_volatility": 0.133,
+      "key_catalysts": "Double Bottom, Cup & Handle"
+    },
+    {
+      "ticker": "ALL",
+      "company": "Allstate Corporation (The)",
+      "sector": "Financial Services",
+      "price": 212.75999450683594,
+      "recommendation": "BUY",
+      "conviction_score": 62.22,
+      "technical_score": 52.0,
+      "fundamental_score": 60.0,
+      "quality_score": 58.0,
+      "risk_score": 80.0,
+      "volume_score": 50.0,
+      "pattern_score": 74.0,
+      "ml_score": 43.8,
+      "premarket_score": 50,
+      "options_score": 50,
+      "news_score": 50,
+      "rotation_score": 50.0,
+      "volatility_score": 70,
+      "insider_score": 50,
+      "institutional_score": 50,
+      "social_score": 50,
+      "macro_score": 55,
+      "congressional_score": 50,
+      "ml_probability": 0.4691,
+      "holding_period_days": 9,
+      "exit_strategy": "Enter near $212.76; place stop around $205.77 (2\u00d7ATR); target about $223.25 (3\u00d7ATR); reassess after 9 days.",
+      "exit_plan": "Enter near $212.76; place stop around $205.77 (2\u00d7ATR); target about $223.25 (3\u00d7ATR); reassess after 9 days.",
+      "entry_price": 212.76,
+      "stop_loss_price": 205.77,
+      "target_price": 223.25,
+      "exit_review_days": 9,
+      "technical_drivers": "RSI 75 (momentum run); Price above 50-day trend; Golden cross bias (50d > 200d); 3M +5.7% momentum; Patterns: Double Bottom, Cup & Handle; ML upside odds 47%",
+      "risk_reward_ratio": 2.0,
+      "pattern_signals": "Double Bottom, Cup & Handle",
+      "unusual_volume_ratio": 0.8,
+      "pre_market_change_pct": NaN,
+      "pre_market_volume": NaN,
+      "forecast_volatility": 0.233,
+      "key_catalysts": "Double Bottom, Cup & Handle"
+    },
+    {
+      "ticker": "ABNB",
+      "company": "Airbnb, Inc.",
+      "sector": "Consumer Cyclical",
+      "price": 123.69999694824219,
+      "recommendation": "BUY",
+      "conviction_score": 60.97,
+      "technical_score": 54.0,
+      "fundamental_score": 50.0,
+      "quality_score": 78.0,
+      "risk_score": 65.0,
+      "volume_score": 50.0,
+      "pattern_score": 38.0,
+      "ml_score": 51.1,
+      "premarket_score": 50,
+      "options_score": 50,
+      "news_score": 50,
+      "rotation_score": 50.0,
+      "volatility_score": 70,
+      "insider_score": 50,
+      "institutional_score": 50,
+      "social_score": 50,
+      "macro_score": 50,
+      "congressional_score": 50,
+      "ml_probability": 0.5057,
+      "holding_period_days": 8,
+      "exit_strategy": "Enter near $123.70; place stop around $118.67 (2\u00d7ATR); target about $131.25 (3\u00d7ATR); reassess after 8 days.",
+      "exit_plan": "Enter near $123.70; place stop around $118.67 (2\u00d7ATR); target about $131.25 (3\u00d7ATR); reassess after 8 days.",
+      "entry_price": 123.7,
+      "stop_loss_price": 118.67,
+      "target_price": 131.25,
+      "exit_review_days": 8,
+      "technical_drivers": "RSI 47; Price below 50-day trend; Long-term trend weak (50d < 200d); 1M -5.2% pullback; 3M -6.5% pullback; Patterns: Double Top; ML upside odds 51%",
+      "risk_reward_ratio": 2.0,
+      "pattern_signals": "Double Top",
+      "unusual_volume_ratio": 0.57,
+      "pre_market_change_pct": NaN,
+      "pre_market_volume": NaN,
+      "forecast_volatility": 0.244,
+      "key_catalysts": "Double Top"
+    },
+    {
+      "ticker": "APD",
+      "company": "Air Products and Chemicals, Inc",
+      "sector": "Basic Materials",
+      "price": 266.7799987792969,
+      "recommendation": "BUY",
+      "conviction_score": 60.91,
+      "technical_score": 69.0,
+      "fundamental_score": 50.0,
+      "quality_score": 50.0,
+      "risk_score": 65.0,
+      "volume_score": 55.0,
+      "pattern_score": 50.0,
+      "ml_score": 41.4,
+      "premarket_score": 50,
+      "options_score": 50,
+      "news_score": 50,
+      "rotation_score": 50.0,
+      "volatility_score": 70,
+      "insider_score": 50,
+      "institutional_score": 50,
+      "social_score": 50,
+      "macro_score": 50,
+      "congressional_score": 50,
+      "ml_probability": 0.4569,
+      "holding_period_days": 9,
+      "exit_strategy": "Enter near $266.78; place stop around $253.49 (2\u00d7ATR); target about $286.72 (3\u00d7ATR); reassess after 9 days.",
+      "exit_plan": "Enter near $266.78; place stop around $253.49 (2\u00d7ATR); target about $286.72 (3\u00d7ATR); reassess after 9 days.",
+      "entry_price": 266.78,
+      "stop_loss_price": 253.49,
+      "target_price": 286.72,
+      "exit_review_days": 9,
+      "technical_drivers": "RSI 29 (oversold rebound); Price below 50-day trend; Long-term trend weak (50d < 200d); 1M -9.6% pullback; 3M -5.4% pullback; Patterns: Double Top, Cup & Handle; ML upside odds 46%",
+      "risk_reward_ratio": 2.0,
+      "pattern_signals": "Double Top, Cup & Handle",
+      "unusual_volume_ratio": 1.26,
+      "pre_market_change_pct": NaN,
+      "pre_market_volume": NaN,
+      "forecast_volatility": 0.226,
+      "key_catalysts": "Double Top, Cup & Handle"
+    },
+    {
+      "ticker": "ABBV",
+      "company": "AbbVie Inc.",
+      "sector": "Healthcare",
+      "price": 220.61000061035156,
+      "recommendation": "BUY",
+      "conviction_score": 60.62,
+      "technical_score": 56.0,
+      "fundamental_score": 46.0,
+      "quality_score": 58.0,
+      "risk_score": 70.0,
+      "volume_score": 50.0,
+      "pattern_score": 74.0,
+      "ml_score": 44.3,
+      "premarket_score": 50,
+      "options_score": 50,
+      "news_score": 50,
+      "rotation_score": 50.0,
+      "volatility_score": 70,
+      "insider_score": 50,
+      "institutional_score": 50,
+      "social_score": 50,
+      "macro_score": 50,
+      "congressional_score": 50,
+      "ml_probability": 0.4716,
+      "holding_period_days": 10,
+      "exit_strategy": "Enter near $220.61; place stop around $212.96 (2\u00d7ATR); target about $232.08 (3\u00d7ATR); reassess after 10 days.",
+      "exit_plan": "Enter near $220.61; place stop around $212.96 (2\u00d7ATR); target about $232.08 (3\u00d7ATR); reassess after 10 days.",
+      "entry_price": 220.61,
+      "stop_loss_price": 212.96,
+      "target_price": 232.08,
+      "exit_review_days": 10,
+      "technical_drivers": "RSI 70 (momentum run); Price above 50-day trend; Golden cross bias (50d > 200d); 1M +6.1% momentum; 3M +18.9% momentum; Patterns: Double Bottom, Cup & Handle; ML upside odds 47%",
+      "risk_reward_ratio": 2.0,
+      "pattern_signals": "Double Bottom, Cup & Handle",
+      "unusual_volume_ratio": 0.79,
+      "pre_market_change_pct": NaN,
+      "pre_market_volume": NaN,
+      "forecast_volatility": 0.183,
+      "key_catalysts": "Double Bottom, Cup & Handle"
+    },
+    {
+      "ticker": "ARE",
+      "company": "Alexandria Real Estate Equities",
+      "sector": "Unknown",
+      "price": 83.8499984741211,
+      "recommendation": "HOLD",
+      "conviction_score": 59.7,
+      "technical_score": 51.0,
+      "fundamental_score": 50.0,
+      "quality_score": 50.0,
+      "risk_score": 55.0,
+      "volume_score": 50.0,
+      "pattern_score": 74.0,
+      "ml_score": 54.1,
+      "premarket_score": 50,
+      "options_score": 50,
+      "news_score": 50,
+      "rotation_score": 50.0,
+      "volatility_score": 70,
+      "insider_score": 50,
+      "institutional_score": 50,
+      "social_score": 50,
+      "macro_score": 50,
+      "congressional_score": 50,
+      "ml_probability": 0.5205,
+      "holding_period_days": 9,
+      "exit_strategy": "Enter near $83.85; place stop around $80.11 (2\u00d7ATR); target about $89.46 (3\u00d7ATR); reassess after 9 days.",
+      "exit_plan": "Enter near $83.85; place stop around $80.11 (2\u00d7ATR); target about $89.46 (3\u00d7ATR); reassess after 9 days.",
+      "entry_price": 83.85,
+      "stop_loss_price": 80.11,
+      "target_price": 89.46,
+      "exit_review_days": 9,
+      "technical_drivers": "RSI 43; Price above 50-day trend; Long-term trend weak (50d < 200d); 3M +15.4% momentum; Patterns: Double Bottom, Cup & Handle; ML upside odds 52%",
+      "risk_reward_ratio": 2.0,
+      "pattern_signals": "Double Bottom, Cup & Handle",
+      "unusual_volume_ratio": 1.02,
+      "pre_market_change_pct": NaN,
+      "pre_market_volume": NaN,
+      "forecast_volatility": 0.249,
+      "key_catalysts": "Double Bottom, Cup & Handle"
+    }
+  ],
+  "top_picks": [
+    {
+      "ticker": "ABT",
+      "company": "Abbott Laboratories",
+      "sector": "Healthcare",
+      "price": 133.5500030517578,
+      "recommendation": "BUY",
+      "conviction_score": 67.28,
+      "technical_score": 77.0,
+      "fundamental_score": 66.0,
+      "quality_score": 68.0,
+      "risk_score": 80.0,
+      "volume_score": 50.0,
+      "pattern_score": 62.0,
+      "ml_score": 47.6,
+      "premarket_score": 50,
+      "options_score": 50,
+      "news_score": 50,
+      "rotation_score": 50.0,
+      "volatility_score": 70,
+      "insider_score": 50,
+      "institutional_score": 50,
+      "social_score": 50,
+      "macro_score": 50,
+      "congressional_score": 50,
+      "ml_probability": 0.4882,
+      "holding_period_days": 9,
+      "exit_strategy": "Enter near $133.55; place stop around $128.16 (2\u00d7ATR); target about $141.63 (3\u00d7ATR); reassess after 9 days.",
+      "exit_plan": "Enter near $133.55; place stop around $128.16 (2\u00d7ATR); target about $141.63 (3\u00d7ATR); reassess after 9 days.",
+      "entry_price": 133.55,
+      "stop_loss_price": 128.16,
+      "target_price": 141.63,
+      "exit_review_days": 9,
+      "technical_drivers": "RSI 54; Price above 50-day trend; Golden cross bias (50d > 200d); Patterns: Double Bottom; ML upside odds 49%",
+      "risk_reward_ratio": 2.0,
+      "pattern_signals": "Double Bottom",
+      "unusual_volume_ratio": 0.78,
+      "pre_market_change_pct": NaN,
+      "pre_market_volume": NaN,
+      "forecast_volatility": 0.181,
+      "key_catalysts": "Double Bottom"
+    },
+    {
+      "ticker": "ALLE",
+      "company": "Allegion plc",
+      "sector": "Industrials",
+      "price": 175.00999450683594,
+      "recommendation": "BUY",
+      "conviction_score": 66.44,
+      "technical_score": 85.0,
+      "fundamental_score": 50.0,
+      "quality_score": 68.0,
+      "risk_score": 65.0,
+      "volume_score": 50.0,
+      "pattern_score": 74.0,
+      "ml_score": 47.1,
+      "premarket_score": 50,
+      "options_score": 50,
+      "news_score": 50,
+      "rotation_score": 50.0,
+      "volatility_score": 70,
+      "insider_score": 50,
+      "institutional_score": 50,
+      "social_score": 50,
+      "macro_score": 50,
+      "congressional_score": 50,
+      "ml_probability": 0.4856,
+      "holding_period_days": 9,
+      "exit_strategy": "Enter near $175.01; place stop around $168.25 (2\u00d7ATR); target about $185.15 (3\u00d7ATR); reassess after 9 days.",
+      "exit_plan": "Enter near $175.01; place stop around $168.25 (2\u00d7ATR); target about $185.15 (3\u00d7ATR); reassess after 9 days.",
+      "entry_price": 175.01,
+      "stop_loss_price": 168.25,
+      "target_price": 185.15,
+      "exit_review_days": 9,
+      "technical_drivers": "RSI 54; Price above 50-day trend; Golden cross bias (50d > 200d); 3M +21.4% momentum; Patterns: Double Bottom, Cup & Handle; ML upside odds 49%",
+      "risk_reward_ratio": 2.0,
+      "pattern_signals": "Double Bottom, Cup & Handle",
+      "unusual_volume_ratio": 0.67,
+      "pre_market_change_pct": NaN,
+      "pre_market_volume": NaN,
+      "forecast_volatility": 0.212,
+      "key_catalysts": "Double Bottom, Cup & Handle"
+    },
+    {
+      "ticker": "MMM",
+      "company": "3M Company",
+      "sector": "Industrials",
+      "price": 152.80999755859375,
+      "recommendation": "BUY",
+      "conviction_score": 66.14,
+      "technical_score": 72.0,
+      "fundamental_score": 60.0,
+      "quality_score": 68.0,
+      "risk_score": 75.0,
+      "volume_score": 50.0,
+      "pattern_score": 74.0,
+      "ml_score": 47.8,
+      "premarket_score": 50,
+      "options_score": 50,
+      "news_score": 50,
+      "rotation_score": 50.0,
+      "volatility_score": 70,
+      "insider_score": 50,
+      "institutional_score": 50,
+      "social_score": 50,
+      "macro_score": 50,
+      "congressional_score": 50,
+      "ml_probability": 0.4889,
+      "holding_period_days": 9,
+      "exit_strategy": "Enter near $152.81; place stop around $146.06 (2\u00d7ATR); target about $162.94 (3\u00d7ATR); reassess after 9 days.",
+      "exit_plan": "Enter near $152.81; place stop around $146.06 (2\u00d7ATR); target about $162.94 (3\u00d7ATR); reassess after 9 days.",
+      "entry_price": 152.81,
+      "stop_loss_price": 146.06,
+      "target_price": 162.94,
+      "exit_review_days": 9,
+      "technical_drivers": "RSI 47; Price below 50-day trend; Golden cross bias (50d > 200d); Patterns: Double Bottom, Cup & Handle; ML upside odds 49%",
+      "risk_reward_ratio": 2.0,
+      "pattern_signals": "Double Bottom, Cup & Handle",
+      "unusual_volume_ratio": 0.74,
+      "pre_market_change_pct": NaN,
+      "pre_market_volume": NaN,
+      "forecast_volatility": 0.22,
+      "key_catalysts": "Double Bottom, Cup & Handle"
+    },
+    {
+      "ticker": "AOS",
+      "company": "A.O. Smith Corporation",
+      "sector": "Industrials",
+      "price": 72.44999694824219,
+      "recommendation": "BUY",
+      "conviction_score": 63.99,
+      "technical_score": 75.0,
+      "fundamental_score": 60.0,
+      "quality_score": 50.0,
+      "risk_score": 65.0,
+      "volume_score": 45.0,
+      "pattern_score": 74.0,
+      "ml_score": 46.6,
+      "premarket_score": 50,
+      "options_score": 50,
+      "news_score": 50,
+      "rotation_score": 50.0,
+      "volatility_score": 70,
+      "insider_score": 50,
+      "institutional_score": 50,
+      "social_score": 50,
+      "macro_score": 50,
+      "congressional_score": 50,
+      "ml_probability": 0.483,
+      "holding_period_days": 9,
+      "exit_strategy": "Enter near $72.45; place stop around $69.63 (2\u00d7ATR); target about $76.68 (3\u00d7ATR); reassess after 9 days.",
+      "exit_plan": "Enter near $72.45; place stop around $69.63 (2\u00d7ATR); target about $76.68 (3\u00d7ATR); reassess after 9 days.",
+      "entry_price": 72.45,
+      "stop_loss_price": 69.63,
+      "target_price": 76.68,
+      "exit_review_days": 9,
+      "technical_drivers": "RSI 43; Price above 50-day trend; Golden cross bias (50d > 200d); 3M +10.5% momentum; Patterns: Double Bottom, Cup & Handle; ML upside odds 48%",
+      "risk_reward_ratio": 2.0,
+      "pattern_signals": "Double Bottom, Cup & Handle",
+      "unusual_volume_ratio": 0.6,
+      "pre_market_change_pct": NaN,
+      "pre_market_volume": NaN,
+      "forecast_volatility": 0.209,
+      "key_catalysts": "Double Bottom, Cup & Handle"
+    },
+    {
+      "ticker": "LNT",
+      "company": "Alliant Energy Corporation",
+      "sector": "Unknown",
+      "price": 66.06999969482422,
+      "recommendation": "BUY",
+      "conviction_score": 62.5,
+      "technical_score": 62.0,
+      "fundamental_score": 60.0,
+      "quality_score": 50.0,
+      "risk_score": 75.0,
+      "volume_score": 55.0,
+      "pattern_score": 74.0,
+      "ml_score": 39.9,
+      "premarket_score": 50,
+      "options_score": 50,
+      "news_score": 50,
+      "rotation_score": 50.0,
+      "volatility_score": 70,
+      "insider_score": 50,
+      "institutional_score": 50,
+      "social_score": 50,
+      "macro_score": 50,
+      "congressional_score": 50,
+      "ml_probability": 0.4493,
+      "holding_period_days": 10,
+      "exit_strategy": "Enter near $66.07; place stop around $64.45 (2\u00d7ATR); target about $68.51 (3\u00d7ATR); reassess after 10 days.",
+      "exit_plan": "Enter near $66.07; place stop around $64.45 (2\u00d7ATR); target about $68.51 (3\u00d7ATR); reassess after 10 days.",
+      "entry_price": 66.07,
+      "stop_loss_price": 64.45,
+      "target_price": 68.51,
+      "exit_review_days": 10,
+      "technical_drivers": "RSI 69 (momentum run); Price above 50-day trend; Golden cross bias (50d > 200d); 3M +9.3% momentum; Patterns: Double Bottom, Cup & Handle; ML upside odds 45%",
+      "risk_reward_ratio": 2.0,
+      "pattern_signals": "Double Bottom, Cup & Handle",
+      "unusual_volume_ratio": 1.05,
+      "pre_market_change_pct": NaN,
+      "pre_market_volume": NaN,
+      "forecast_volatility": 0.133,
+      "key_catalysts": "Double Bottom, Cup & Handle"
+    }
+  ],
+  "analytics": {
+    "top_pick_history": {
+      "ABT": [
+        {
+          "Date": "2025-04-07 00:00:00-04:00",
+          "Close": 124.86000061035156
+        },
+        {
+          "Date": "2025-04-08 00:00:00-04:00",
+          "Close": 123.94999694824219
+        },
+        {
+          "Date": "2025-04-09 00:00:00-04:00",
+          "Close": 127.04000091552734
+        },
+        {
+          "Date": "2025-04-10 00:00:00-04:00",
+          "Close": 124.5
+        },
+        {
+          "Date": "2025-04-11 00:00:00-04:00",
+          "Close": 126.87999725341797
+        },
+        {
+          "Date": "2025-04-14 00:00:00-04:00",
+          "Close": 127.95999908447266
+        },
+        {
+          "Date": "2025-04-15 00:00:00-04:00",
+          "Close": 126.22000122070312
+        },
+        {
+          "Date": "2025-04-16 00:00:00-04:00",
+          "Close": 129.6999969482422
+        },
+        {
+          "Date": "2025-04-17 00:00:00-04:00",
+          "Close": 130.97999572753906
+        },
+        {
+          "Date": "2025-04-21 00:00:00-04:00",
+          "Close": 129.88999938964844
+        },
+        {
+          "Date": "2025-04-22 00:00:00-04:00",
+          "Close": 131.72999572753906
+        },
+        {
+          "Date": "2025-04-23 00:00:00-04:00",
+          "Close": 129.83999633789062
+        },
+        {
+          "Date": "2025-04-24 00:00:00-04:00",
+          "Close": 129.3800048828125
+        },
+        {
+          "Date": "2025-04-25 00:00:00-04:00",
+          "Close": 128.85000610351562
+        },
+        {
+          "Date": "2025-04-28 00:00:00-04:00",
+          "Close": 129.52999877929688
+        },
+        {
+          "Date": "2025-04-29 00:00:00-04:00",
+          "Close": 130.5
+        },
+        {
+          "Date": "2025-04-30 00:00:00-04:00",
+          "Close": 130.75
+        },
+        {
+          "Date": "2025-05-01 00:00:00-04:00",
+          "Close": 130.8800048828125
+        },
+        {
+          "Date": "2025-05-02 00:00:00-04:00",
+          "Close": 132.82000732421875
+        },
+        {
+          "Date": "2025-05-05 00:00:00-04:00",
+          "Close": 132.60000610351562
+        },
+        {
+          "Date": "2025-05-06 00:00:00-04:00",
+          "Close": 133.05999755859375
+        },
+        {
+          "Date": "2025-05-07 00:00:00-04:00",
+          "Close": 133.9499969482422
+        },
+        {
+          "Date": "2025-05-08 00:00:00-04:00",
+          "Close": 134.0
+        },
+        {
+          "Date": "2025-05-09 00:00:00-04:00",
+          "Close": 133.24000549316406
+        },
+        {
+          "Date": "2025-05-12 00:00:00-04:00",
+          "Close": 131.99000549316406
+        },
+        {
+          "Date": "2025-05-13 00:00:00-04:00",
+          "Close": 129.0500030517578
+        },
+        {
+          "Date": "2025-05-14 00:00:00-04:00",
+          "Close": 128.55999755859375
+        },
+        {
+          "Date": "2025-05-15 00:00:00-04:00",
+          "Close": 133.35000610351562
+        },
+        {
+          "Date": "2025-05-16 00:00:00-04:00",
+          "Close": 134.8000030517578
+        },
+        {
+          "Date": "2025-05-19 00:00:00-04:00",
+          "Close": 135.5500030517578
+        },
+        {
+          "Date": "2025-05-20 00:00:00-04:00",
+          "Close": 135.1999969482422
+        },
+        {
+          "Date": "2025-05-21 00:00:00-04:00",
+          "Close": 133.0500030517578
+        },
+        {
+          "Date": "2025-05-22 00:00:00-04:00",
+          "Close": 131.5
+        },
+        {
+          "Date": "2025-05-23 00:00:00-04:00",
+          "Close": 131.3000030517578
+        },
+        {
+          "Date": "2025-05-27 00:00:00-04:00",
+          "Close": 132.94000244140625
+        },
+        {
+          "Date": "2025-05-28 00:00:00-04:00",
+          "Close": 132.02000427246094
+        },
+        {
+          "Date": "2025-05-29 00:00:00-04:00",
+          "Close": 132.85000610351562
+        },
+        {
+          "Date": "2025-05-30 00:00:00-04:00",
+          "Close": 133.5800018310547
+        },
+        {
+          "Date": "2025-06-02 00:00:00-04:00",
+          "Close": 133.57000732421875
+        },
+        {
+          "Date": "2025-06-03 00:00:00-04:00",
+          "Close": 133.7100067138672
+        },
+        {
+          "Date": "2025-06-04 00:00:00-04:00",
+          "Close": 132.9600067138672
+        },
+        {
+          "Date": "2025-06-05 00:00:00-04:00",
+          "Close": 133.94000244140625
+        },
+        {
+          "Date": "2025-06-06 00:00:00-04:00",
+          "Close": 133.5800018310547
+        },
+        {
+          "Date": "2025-06-09 00:00:00-04:00",
+          "Close": 133.39999389648438
+        },
+        {
+          "Date": "2025-06-10 00:00:00-04:00",
+          "Close": 134.1300048828125
+        },
+        {
+          "Date": "2025-06-11 00:00:00-04:00",
+          "Close": 135.27999877929688
+        },
+        {
+          "Date": "2025-06-12 00:00:00-04:00",
+          "Close": 136.4499969482422
+        },
+        {
+          "Date": "2025-06-13 00:00:00-04:00",
+          "Close": 135.6199951171875
+        },
+        {
+          "Date": "2025-06-16 00:00:00-04:00",
+          "Close": 134.00999450683594
+        },
+        {
+          "Date": "2025-06-17 00:00:00-04:00",
+          "Close": 132.27999877929688
+        },
+        {
+          "Date": "2025-06-18 00:00:00-04:00",
+          "Close": 132.41000366210938
+        },
+        {
+          "Date": "2025-06-20 00:00:00-04:00",
+          "Close": 132.99000549316406
+        },
+        {
+          "Date": "2025-06-23 00:00:00-04:00",
+          "Close": 133.25999450683594
+        },
+        {
+          "Date": "2025-06-24 00:00:00-04:00",
+          "Close": 138.0800018310547
+        },
+        {
+          "Date": "2025-06-25 00:00:00-04:00",
+          "Close": 137.39999389648438
+        },
+        {
+          "Date": "2025-06-26 00:00:00-04:00",
+          "Close": 133.6699981689453
+        },
+        {
+          "Date": "2025-06-27 00:00:00-04:00",
+          "Close": 134.3800048828125
+        },
+        {
+          "Date": "2025-06-30 00:00:00-04:00",
+          "Close": 136.00999450683594
+        },
+        {
+          "Date": "2025-07-01 00:00:00-04:00",
+          "Close": 136.25999450683594
+        },
+        {
+          "Date": "2025-07-02 00:00:00-04:00",
+          "Close": 134.11000061035156
+        },
+        {
+          "Date": "2025-07-03 00:00:00-04:00",
+          "Close": 134.44000244140625
+        },
+        {
+          "Date": "2025-07-07 00:00:00-04:00",
+          "Close": 133.6999969482422
+        },
+        {
+          "Date": "2025-07-08 00:00:00-04:00",
+          "Close": 133.36000061035156
+        },
+        {
+          "Date": "2025-07-09 00:00:00-04:00",
+          "Close": 133.22000122070312
+        },
+        {
+          "Date": "2025-07-10 00:00:00-04:00",
+          "Close": 133.60000610351562
+        },
+        {
+          "Date": "2025-07-11 00:00:00-04:00",
+          "Close": 132.02000427246094
+        },
+        {
+          "Date": "2025-07-14 00:00:00-04:00",
+          "Close": 132.02999877929688
+        },
+        {
+          "Date": "2025-07-15 00:00:00-04:00",
+          "Close": 131.49000549316406
+        },
+        {
+          "Date": "2025-07-16 00:00:00-04:00",
+          "Close": 131.74000549316406
+        },
+        {
+          "Date": "2025-07-17 00:00:00-04:00",
+          "Close": 120.51000213623047
+        },
+        {
+          "Date": "2025-07-18 00:00:00-04:00",
+          "Close": 123.66999816894531
+        },
+        {
+          "Date": "2025-07-21 00:00:00-04:00",
+          "Close": 124.41999816894531
+        },
+        {
+          "Date": "2025-07-22 00:00:00-04:00",
+          "Close": 125.7300033569336
+        },
+        {
+          "Date": "2025-07-23 00:00:00-04:00",
+          "Close": 125.83000183105469
+        },
+        {
+          "Date": "2025-07-24 00:00:00-04:00",
+          "Close": 125.63999938964844
+        },
+        {
+          "Date": "2025-07-25 00:00:00-04:00",
+          "Close": 126.54000091552734
+        },
+        {
+          "Date": "2025-07-28 00:00:00-04:00",
+          "Close": 126.3499984741211
+        },
+        {
+          "Date": "2025-07-29 00:00:00-04:00",
+          "Close": 128.00999450683594
+        },
+        {
+          "Date": "2025-07-30 00:00:00-04:00",
+          "Close": 128.5500030517578
+        },
+        {
+          "Date": "2025-07-31 00:00:00-04:00",
+          "Close": 126.19000244140625
+        },
+        {
+          "Date": "2025-08-01 00:00:00-04:00",
+          "Close": 127.29000091552734
+        },
+        {
+          "Date": "2025-08-04 00:00:00-04:00",
+          "Close": 129.92999267578125
+        },
+        {
+          "Date": "2025-08-05 00:00:00-04:00",
+          "Close": 130.69000244140625
+        },
+        {
+          "Date": "2025-08-06 00:00:00-04:00",
+          "Close": 130.92999267578125
+        },
+        {
+          "Date": "2025-08-07 00:00:00-04:00",
+          "Close": 132.05999755859375
+        },
+        {
+          "Date": "2025-08-08 00:00:00-04:00",
+          "Close": 134.27999877929688
+        },
+        {
+          "Date": "2025-08-11 00:00:00-04:00",
+          "Close": 131.36000061035156
+        },
+        {
+          "Date": "2025-08-12 00:00:00-04:00",
+          "Close": 131.02000427246094
+        },
+        {
+          "Date": "2025-08-13 00:00:00-04:00",
+          "Close": 129.39999389648438
+        },
+        {
+          "Date": "2025-08-14 00:00:00-04:00",
+          "Close": 129.27999877929688
+        },
+        {
+          "Date": "2025-08-15 00:00:00-04:00",
+          "Close": 131.75
+        },
+        {
+          "Date": "2025-08-18 00:00:00-04:00",
+          "Close": 130.27000427246094
+        },
+        {
+          "Date": "2025-08-19 00:00:00-04:00",
+          "Close": 131.25
+        },
+        {
+          "Date": "2025-08-20 00:00:00-04:00",
+          "Close": 132.44000244140625
+        },
+        {
+          "Date": "2025-08-21 00:00:00-04:00",
+          "Close": 132.0
+        },
+        {
+          "Date": "2025-08-22 00:00:00-04:00",
+          "Close": 132.58999633789062
+        },
+        {
+          "Date": "2025-08-25 00:00:00-04:00",
+          "Close": 131.8699951171875
+        },
+        {
+          "Date": "2025-08-26 00:00:00-04:00",
+          "Close": 131.58999633789062
+        },
+        {
+          "Date": "2025-08-27 00:00:00-04:00",
+          "Close": 131.4600067138672
+        },
+        {
+          "Date": "2025-08-28 00:00:00-04:00",
+          "Close": 131.3699951171875
+        },
+        {
+          "Date": "2025-08-29 00:00:00-04:00",
+          "Close": 132.66000366210938
+        },
+        {
+          "Date": "2025-09-02 00:00:00-04:00",
+          "Close": 131.4600067138672
+        },
+        {
+          "Date": "2025-09-03 00:00:00-04:00",
+          "Close": 132.17999267578125
+        },
+        {
+          "Date": "2025-09-04 00:00:00-04:00",
+          "Close": 132.80999755859375
+        },
+        {
+          "Date": "2025-09-05 00:00:00-04:00",
+          "Close": 132.94000244140625
+        },
+        {
+          "Date": "2025-09-08 00:00:00-04:00",
+          "Close": 132.1999969482422
+        },
+        {
+          "Date": "2025-09-09 00:00:00-04:00",
+          "Close": 131.9499969482422
+        },
+        {
+          "Date": "2025-09-10 00:00:00-04:00",
+          "Close": 129.36000061035156
+        },
+        {
+          "Date": "2025-09-11 00:00:00-04:00",
+          "Close": 132.64999389648438
+        },
+        {
+          "Date": "2025-09-12 00:00:00-04:00",
+          "Close": 133.72999572753906
+        },
+        {
+          "Date": "2025-09-15 00:00:00-04:00",
+          "Close": 131.3300018310547
+        },
+        {
+          "Date": "2025-09-16 00:00:00-04:00",
+          "Close": 132.75999450683594
+        },
+        {
+          "Date": "2025-09-17 00:00:00-04:00",
+          "Close": 134.1699981689453
+        },
+        {
+          "Date": "2025-09-18 00:00:00-04:00",
+          "Close": 134.57000732421875
+        },
+        {
+          "Date": "2025-09-19 00:00:00-04:00",
+          "Close": 136.0399932861328
+        },
+        {
+          "Date": "2025-09-22 00:00:00-04:00",
+          "Close": 136.6199951171875
+        },
+        {
+          "Date": "2025-09-23 00:00:00-04:00",
+          "Close": 135.88999938964844
+        },
+        {
+          "Date": "2025-09-24 00:00:00-04:00",
+          "Close": 133.88999938964844
+        },
+        {
+          "Date": "2025-09-25 00:00:00-04:00",
+          "Close": 133.30999755859375
+        },
+        {
+          "Date": "2025-09-26 00:00:00-04:00",
+          "Close": 133.5500030517578
+        }
+      ],
+      "ALLE": [
+        {
+          "Date": "2025-04-07 00:00:00-04:00",
+          "Close": 120.77999877929688
+        },
+        {
+          "Date": "2025-04-08 00:00:00-04:00",
+          "Close": 118.5199966430664
+        },
+        {
+          "Date": "2025-04-09 00:00:00-04:00",
+          "Close": 124.6500015258789
+        },
+        {
+          "Date": "2025-04-10 00:00:00-04:00",
+          "Close": 122.08000183105469
+        },
+        {
+          "Date": "2025-04-11 00:00:00-04:00",
+          "Close": 125.1500015258789
+        },
+        {
+          "Date": "2025-04-14 00:00:00-04:00",
+          "Close": 126.29000091552734
+        },
+        {
+          "Date": "2025-04-15 00:00:00-04:00",
+          "Close": 126.9000015258789
+        },
+        {
+          "Date": "2025-04-16 00:00:00-04:00",
+          "Close": 125.12999725341797
+        },
+        {
+          "Date": "2025-04-17 00:00:00-04:00",
+          "Close": 126.3499984741211
+        },
+        {
+          "Date": "2025-04-21 00:00:00-04:00",
+          "Close": 123.2699966430664
+        },
+        {
+          "Date": "2025-04-22 00:00:00-04:00",
+          "Close": 126.81999969482422
+        },
+        {
+          "Date": "2025-04-23 00:00:00-04:00",
+          "Close": 126.45999908447266
+        },
+        {
+          "Date": "2025-04-24 00:00:00-04:00",
+          "Close": 139.50999450683594
+        },
+        {
+          "Date": "2025-04-25 00:00:00-04:00",
+          "Close": 136.49000549316406
+        },
+        {
+          "Date": "2025-04-28 00:00:00-04:00",
+          "Close": 137.25999450683594
+        },
+        {
+          "Date": "2025-04-29 00:00:00-04:00",
+          "Close": 138.1999969482422
+        },
+        {
+          "Date": "2025-04-30 00:00:00-04:00",
+          "Close": 139.1999969482422
+        },
+        {
+          "Date": "2025-05-01 00:00:00-04:00",
+          "Close": 138.69000244140625
+        },
+        {
+          "Date": "2025-05-02 00:00:00-04:00",
+          "Close": 140.92999267578125
+        },
+        {
+          "Date": "2025-05-05 00:00:00-04:00",
+          "Close": 140.88999938964844
+        },
+        {
+          "Date": "2025-05-06 00:00:00-04:00",
+          "Close": 139.89999389648438
+        },
+        {
+          "Date": "2025-05-07 00:00:00-04:00",
+          "Close": 140.22999572753906
+        },
+        {
+          "Date": "2025-05-08 00:00:00-04:00",
+          "Close": 140.91000366210938
+        },
+        {
+          "Date": "2025-05-09 00:00:00-04:00",
+          "Close": 141.85000610351562
+        },
+        {
+          "Date": "2025-05-12 00:00:00-04:00",
+          "Close": 143.8000030517578
+        },
+        {
+          "Date": "2025-05-13 00:00:00-04:00",
+          "Close": 142.85000610351562
+        },
+        {
+          "Date": "2025-05-14 00:00:00-04:00",
+          "Close": 141.0800018310547
+        },
+        {
+          "Date": "2025-05-15 00:00:00-04:00",
+          "Close": 142.91000366210938
+        },
+        {
+          "Date": "2025-05-16 00:00:00-04:00",
+          "Close": 145.63999938964844
+        },
+        {
+          "Date": "2025-05-19 00:00:00-04:00",
+          "Close": 144.49000549316406
+        },
+        {
+          "Date": "2025-05-20 00:00:00-04:00",
+          "Close": 143.67999267578125
+        },
+        {
+          "Date": "2025-05-21 00:00:00-04:00",
+          "Close": 141.9600067138672
+        },
+        {
+          "Date": "2025-05-22 00:00:00-04:00",
+          "Close": 141.6300048828125
+        },
+        {
+          "Date": "2025-05-23 00:00:00-04:00",
+          "Close": 141.30999755859375
+        },
+        {
+          "Date": "2025-05-27 00:00:00-04:00",
+          "Close": 144.52999877929688
+        },
+        {
+          "Date": "2025-05-28 00:00:00-04:00",
+          "Close": 143.10000610351562
+        },
+        {
+          "Date": "2025-05-29 00:00:00-04:00",
+          "Close": 143.35000610351562
+        },
+        {
+          "Date": "2025-05-30 00:00:00-04:00",
+          "Close": 142.6999969482422
+        },
+        {
+          "Date": "2025-06-02 00:00:00-04:00",
+          "Close": 139.41000366210938
+        },
+        {
+          "Date": "2025-06-03 00:00:00-04:00",
+          "Close": 139.10000610351562
+        },
+        {
+          "Date": "2025-06-04 00:00:00-04:00",
+          "Close": 138.11000061035156
+        },
+        {
+          "Date": "2025-06-05 00:00:00-04:00",
+          "Close": 138.22999572753906
+        },
+        {
+          "Date": "2025-06-06 00:00:00-04:00",
+          "Close": 139.14999389648438
+        },
+        {
+          "Date": "2025-06-09 00:00:00-04:00",
+          "Close": 139.60000610351562
+        },
+        {
+          "Date": "2025-06-10 00:00:00-04:00",
+          "Close": 139.6699981689453
+        },
+        {
+          "Date": "2025-06-11 00:00:00-04:00",
+          "Close": 137.94000244140625
+        },
+        {
+          "Date": "2025-06-12 00:00:00-04:00",
+          "Close": 138.6699981689453
+        },
+        {
+          "Date": "2025-06-13 00:00:00-04:00",
+          "Close": 135.3000030517578
+        },
+        {
+          "Date": "2025-06-16 00:00:00-04:00",
+          "Close": 136.10000610351562
+        },
+        {
+          "Date": "2025-06-17 00:00:00-04:00",
+          "Close": 136.24000549316406
+        },
+        {
+          "Date": "2025-06-18 00:00:00-04:00",
+          "Close": 136.8000030517578
+        },
+        {
+          "Date": "2025-06-20 00:00:00-04:00",
+          "Close": 137.6300048828125
+        },
+        {
+          "Date": "2025-06-23 00:00:00-04:00",
+          "Close": 142.4499969482422
+        },
+        {
+          "Date": "2025-06-24 00:00:00-04:00",
+          "Close": 143.61000061035156
+        },
+        {
+          "Date": "2025-06-25 00:00:00-04:00",
+          "Close": 142.82000732421875
+        },
+        {
+          "Date": "2025-06-26 00:00:00-04:00",
+          "Close": 143.38999938964844
+        },
+        {
+          "Date": "2025-06-27 00:00:00-04:00",
+          "Close": 143.88999938964844
+        },
+        {
+          "Date": "2025-06-30 00:00:00-04:00",
+          "Close": 144.1199951171875
+        },
+        {
+          "Date": "2025-07-01 00:00:00-04:00",
+          "Close": 147.64999389648438
+        },
+        {
+          "Date": "2025-07-02 00:00:00-04:00",
+          "Close": 147.9499969482422
+        },
+        {
+          "Date": "2025-07-03 00:00:00-04:00",
+          "Close": 148.11000061035156
+        },
+        {
+          "Date": "2025-07-07 00:00:00-04:00",
+          "Close": 148.14999389648438
+        },
+        {
+          "Date": "2025-07-08 00:00:00-04:00",
+          "Close": 148.5399932861328
+        },
+        {
+          "Date": "2025-07-09 00:00:00-04:00",
+          "Close": 150.05999755859375
+        },
+        {
+          "Date": "2025-07-10 00:00:00-04:00",
+          "Close": 151.52999877929688
+        },
+        {
+          "Date": "2025-07-11 00:00:00-04:00",
+          "Close": 148.80999755859375
+        },
+        {
+          "Date": "2025-07-14 00:00:00-04:00",
+          "Close": 148.30999755859375
+        },
+        {
+          "Date": "2025-07-15 00:00:00-04:00",
+          "Close": 145.5500030517578
+        },
+        {
+          "Date": "2025-07-16 00:00:00-04:00",
+          "Close": 146.07000732421875
+        },
+        {
+          "Date": "2025-07-17 00:00:00-04:00",
+          "Close": 153.52999877929688
+        },
+        {
+          "Date": "2025-07-18 00:00:00-04:00",
+          "Close": 152.82000732421875
+        },
+        {
+          "Date": "2025-07-21 00:00:00-04:00",
+          "Close": 149.61000061035156
+        },
+        {
+          "Date": "2025-07-22 00:00:00-04:00",
+          "Close": 152.7100067138672
+        },
+        {
+          "Date": "2025-07-23 00:00:00-04:00",
+          "Close": 154.36000061035156
+        },
+        {
+          "Date": "2025-07-24 00:00:00-04:00",
+          "Close": 163.6699981689453
+        },
+        {
+          "Date": "2025-07-25 00:00:00-04:00",
+          "Close": 165.38999938964844
+        },
+        {
+          "Date": "2025-07-28 00:00:00-04:00",
+          "Close": 163.6699981689453
+        },
+        {
+          "Date": "2025-07-29 00:00:00-04:00",
+          "Close": 164.11000061035156
+        },
+        {
+          "Date": "2025-07-30 00:00:00-04:00",
+          "Close": 164.82000732421875
+        },
+        {
+          "Date": "2025-07-31 00:00:00-04:00",
+          "Close": 165.9199981689453
+        },
+        {
+          "Date": "2025-08-01 00:00:00-04:00",
+          "Close": 165.1300048828125
+        },
+        {
+          "Date": "2025-08-04 00:00:00-04:00",
+          "Close": 166.72999572753906
+        },
+        {
+          "Date": "2025-08-05 00:00:00-04:00",
+          "Close": 165.39999389648438
+        },
+        {
+          "Date": "2025-08-06 00:00:00-04:00",
+          "Close": 164.49000549316406
+        },
+        {
+          "Date": "2025-08-07 00:00:00-04:00",
+          "Close": 163.74000549316406
+        },
+        {
+          "Date": "2025-08-08 00:00:00-04:00",
+          "Close": 163.72000122070312
+        },
+        {
+          "Date": "2025-08-11 00:00:00-04:00",
+          "Close": 164.4499969482422
+        },
+        {
+          "Date": "2025-08-12 00:00:00-04:00",
+          "Close": 166.42999267578125
+        },
+        {
+          "Date": "2025-08-13 00:00:00-04:00",
+          "Close": 169.6199951171875
+        },
+        {
+          "Date": "2025-08-14 00:00:00-04:00",
+          "Close": 168.5500030517578
+        },
+        {
+          "Date": "2025-08-15 00:00:00-04:00",
+          "Close": 167.1699981689453
+        },
+        {
+          "Date": "2025-08-18 00:00:00-04:00",
+          "Close": 167.1999969482422
+        },
+        {
+          "Date": "2025-08-19 00:00:00-04:00",
+          "Close": 169.86000061035156
+        },
+        {
+          "Date": "2025-08-20 00:00:00-04:00",
+          "Close": 168.52000427246094
+        },
+        {
+          "Date": "2025-08-21 00:00:00-04:00",
+          "Close": 167.2100067138672
+        },
+        {
+          "Date": "2025-08-22 00:00:00-04:00",
+          "Close": 172.24000549316406
+        },
+        {
+          "Date": "2025-08-25 00:00:00-04:00",
+          "Close": 169.82000732421875
+        },
+        {
+          "Date": "2025-08-26 00:00:00-04:00",
+          "Close": 171.52999877929688
+        },
+        {
+          "Date": "2025-08-27 00:00:00-04:00",
+          "Close": 172.0
+        },
+        {
+          "Date": "2025-08-28 00:00:00-04:00",
+          "Close": 170.97000122070312
+        },
+        {
+          "Date": "2025-08-29 00:00:00-04:00",
+          "Close": 169.8000030517578
+        },
+        {
+          "Date": "2025-09-02 00:00:00-04:00",
+          "Close": 167.99000549316406
+        },
+        {
+          "Date": "2025-09-03 00:00:00-04:00",
+          "Close": 167.69000244140625
+        },
+        {
+          "Date": "2025-09-04 00:00:00-04:00",
+          "Close": 170.75
+        },
+        {
+          "Date": "2025-09-05 00:00:00-04:00",
+          "Close": 171.86000061035156
+        },
+        {
+          "Date": "2025-09-08 00:00:00-04:00",
+          "Close": 173.10000610351562
+        },
+        {
+          "Date": "2025-09-09 00:00:00-04:00",
+          "Close": 169.97000122070312
+        },
+        {
+          "Date": "2025-09-10 00:00:00-04:00",
+          "Close": 170.42999267578125
+        },
+        {
+          "Date": "2025-09-11 00:00:00-04:00",
+          "Close": 177.17999267578125
+        },
+        {
+          "Date": "2025-09-12 00:00:00-04:00",
+          "Close": 175.02000427246094
+        },
+        {
+          "Date": "2025-09-15 00:00:00-04:00",
+          "Close": 176.1999969482422
+        },
+        {
+          "Date": "2025-09-16 00:00:00-04:00",
+          "Close": 177.0399932861328
+        },
+        {
+          "Date": "2025-09-17 00:00:00-04:00",
+          "Close": 176.61000061035156
+        },
+        {
+          "Date": "2025-09-18 00:00:00-04:00",
+          "Close": 178.77999877929688
+        },
+        {
+          "Date": "2025-09-19 00:00:00-04:00",
+          "Close": 179.3300018310547
+        },
+        {
+          "Date": "2025-09-22 00:00:00-04:00",
+          "Close": 177.80999755859375
+        },
+        {
+          "Date": "2025-09-23 00:00:00-04:00",
+          "Close": 177.44000244140625
+        },
+        {
+          "Date": "2025-09-24 00:00:00-04:00",
+          "Close": 175.33999633789062
+        },
+        {
+          "Date": "2025-09-25 00:00:00-04:00",
+          "Close": 172.97000122070312
+        },
+        {
+          "Date": "2025-09-26 00:00:00-04:00",
+          "Close": 175.00999450683594
+        }
+      ],
+      "MMM": [
+        {
+          "Date": "2025-04-07 00:00:00-04:00",
+          "Close": 128.5500030517578
+        },
+        {
+          "Date": "2025-04-08 00:00:00-04:00",
+          "Close": 127.16000366210938
+        },
+        {
+          "Date": "2025-04-09 00:00:00-04:00",
+          "Close": 138.32000732421875
+        },
+        {
+          "Date": "2025-04-10 00:00:00-04:00",
+          "Close": 132.97000122070312
+        },
+        {
+          "Date": "2025-04-11 00:00:00-04:00",
+          "Close": 135.9499969482422
+        },
+        {
+          "Date": "2025-04-14 00:00:00-04:00",
+          "Close": 136.00999450683594
+        },
+        {
+          "Date": "2025-04-15 00:00:00-04:00",
+          "Close": 135.25999450683594
+        },
+        {
+          "Date": "2025-04-16 00:00:00-04:00",
+          "Close": 130.4600067138672
+        },
+        {
+          "Date": "2025-04-17 00:00:00-04:00",
+          "Close": 130.2100067138672
+        },
+        {
+          "Date": "2025-04-21 00:00:00-04:00",
+          "Close": 126.08999633789062
+        },
+        {
+          "Date": "2025-04-22 00:00:00-04:00",
+          "Close": 136.3300018310547
+        },
+        {
+          "Date": "2025-04-23 00:00:00-04:00",
+          "Close": 136.05999755859375
+        },
+        {
+          "Date": "2025-04-24 00:00:00-04:00",
+          "Close": 138.8800048828125
+        },
+        {
+          "Date": "2025-04-25 00:00:00-04:00",
+          "Close": 137.32000732421875
+        },
+        {
+          "Date": "2025-04-28 00:00:00-04:00",
+          "Close": 137.92999267578125
+        },
+        {
+          "Date": "2025-04-29 00:00:00-04:00",
+          "Close": 138.3800048828125
+        },
+        {
+          "Date": "2025-04-30 00:00:00-04:00",
+          "Close": 138.91000366210938
+        },
+        {
+          "Date": "2025-05-01 00:00:00-04:00",
+          "Close": 137.89999389648438
+        },
+        {
+          "Date": "2025-05-02 00:00:00-04:00",
+          "Close": 142.0800018310547
+        },
+        {
+          "Date": "2025-05-05 00:00:00-04:00",
+          "Close": 140.8000030517578
+        },
+        {
+          "Date": "2025-05-06 00:00:00-04:00",
+          "Close": 138.02000427246094
+        },
+        {
+          "Date": "2025-05-07 00:00:00-04:00",
+          "Close": 138.63999938964844
+        },
+        {
+          "Date": "2025-05-08 00:00:00-04:00",
+          "Close": 141.1199951171875
+        },
+        {
+          "Date": "2025-05-09 00:00:00-04:00",
+          "Close": 142.60000610351562
+        },
+        {
+          "Date": "2025-05-12 00:00:00-04:00",
+          "Close": 150.3300018310547
+        },
+        {
+          "Date": "2025-05-13 00:00:00-04:00",
+          "Close": 150.74000549316406
+        },
+        {
+          "Date": "2025-05-14 00:00:00-04:00",
+          "Close": 147.8800048828125
+        },
+        {
+          "Date": "2025-05-15 00:00:00-04:00",
+          "Close": 148.74000549316406
+        },
+        {
+          "Date": "2025-05-16 00:00:00-04:00",
+          "Close": 153.11000061035156
+        },
+        {
+          "Date": "2025-05-19 00:00:00-04:00",
+          "Close": 154.13999938964844
+        },
+        {
+          "Date": "2025-05-20 00:00:00-04:00",
+          "Close": 154.14999389648438
+        },
+        {
+          "Date": "2025-05-21 00:00:00-04:00",
+          "Close": 149.39999389648438
+        },
+        {
+          "Date": "2025-05-22 00:00:00-04:00",
+          "Close": 149.77999877929688
+        },
+        {
+          "Date": "2025-05-23 00:00:00-04:00",
+          "Close": 147.6199951171875
+        },
+        {
+          "Date": "2025-05-27 00:00:00-04:00",
+          "Close": 149.49000549316406
+        },
+        {
+          "Date": "2025-05-28 00:00:00-04:00",
+          "Close": 148.66000366210938
+        },
+        {
+          "Date": "2025-05-29 00:00:00-04:00",
+          "Close": 149.6300048828125
+        },
+        {
+          "Date": "2025-05-30 00:00:00-04:00",
+          "Close": 148.35000610351562
+        },
+        {
+          "Date": "2025-06-02 00:00:00-04:00",
+          "Close": 146.39999389648438
+        },
+        {
+          "Date": "2025-06-03 00:00:00-04:00",
+          "Close": 148.1300048828125
+        },
+        {
+          "Date": "2025-06-04 00:00:00-04:00",
+          "Close": 146.80999755859375
+        },
+        {
+          "Date": "2025-06-05 00:00:00-04:00",
+          "Close": 146.25999450683594
+        },
+        {
+          "Date": "2025-06-06 00:00:00-04:00",
+          "Close": 145.5
+        },
+        {
+          "Date": "2025-06-09 00:00:00-04:00",
+          "Close": 144.22999572753906
+        },
+        {
+          "Date": "2025-06-10 00:00:00-04:00",
+          "Close": 145.05999755859375
+        },
+        {
+          "Date": "2025-06-11 00:00:00-04:00",
+          "Close": 147.17999267578125
+        },
+        {
+          "Date": "2025-06-12 00:00:00-04:00",
+          "Close": 144.77000427246094
+        },
+        {
+          "Date": "2025-06-13 00:00:00-04:00",
+          "Close": 142.32000732421875
+        },
+        {
+          "Date": "2025-06-16 00:00:00-04:00",
+          "Close": 145.07000732421875
+        },
+        {
+          "Date": "2025-06-17 00:00:00-04:00",
+          "Close": 142.2100067138672
+        },
+        {
+          "Date": "2025-06-18 00:00:00-04:00",
+          "Close": 142.50999450683594
+        },
+        {
+          "Date": "2025-06-20 00:00:00-04:00",
+          "Close": 144.02999877929688
+        },
+        {
+          "Date": "2025-06-23 00:00:00-04:00",
+          "Close": 147.60000610351562
+        },
+        {
+          "Date": "2025-06-24 00:00:00-04:00",
+          "Close": 149.8699951171875
+        },
+        {
+          "Date": "2025-06-25 00:00:00-04:00",
+          "Close": 147.75
+        },
+        {
+          "Date": "2025-06-26 00:00:00-04:00",
+          "Close": 150.75999450683594
+        },
+        {
+          "Date": "2025-06-27 00:00:00-04:00",
+          "Close": 152.02000427246094
+        },
+        {
+          "Date": "2025-06-30 00:00:00-04:00",
+          "Close": 152.24000549316406
+        },
+        {
+          "Date": "2025-07-01 00:00:00-04:00",
+          "Close": 153.80999755859375
+        },
+        {
+          "Date": "2025-07-02 00:00:00-04:00",
+          "Close": 153.97000122070312
+        },
+        {
+          "Date": "2025-07-03 00:00:00-04:00",
+          "Close": 152.94000244140625
+        },
+        {
+          "Date": "2025-07-07 00:00:00-04:00",
+          "Close": 151.83999633789062
+        },
+        {
+          "Date": "2025-07-08 00:00:00-04:00",
+          "Close": 153.74000549316406
+        },
+        {
+          "Date": "2025-07-09 00:00:00-04:00",
+          "Close": 155.97999572753906
+        },
+        {
+          "Date": "2025-07-10 00:00:00-04:00",
+          "Close": 157.32000732421875
+        },
+        {
+          "Date": "2025-07-11 00:00:00-04:00",
+          "Close": 155.83999633789062
+        },
+        {
+          "Date": "2025-07-14 00:00:00-04:00",
+          "Close": 157.91000366210938
+        },
+        {
+          "Date": "2025-07-15 00:00:00-04:00",
+          "Close": 156.58999633789062
+        },
+        {
+          "Date": "2025-07-16 00:00:00-04:00",
+          "Close": 157.55999755859375
+        },
+        {
+          "Date": "2025-07-17 00:00:00-04:00",
+          "Close": 159.0399932861328
+        },
+        {
+          "Date": "2025-07-18 00:00:00-04:00",
+          "Close": 153.22999572753906
+        },
+        {
+          "Date": "2025-07-21 00:00:00-04:00",
+          "Close": 152.82000732421875
+        },
+        {
+          "Date": "2025-07-22 00:00:00-04:00",
+          "Close": 151.1999969482422
+        },
+        {
+          "Date": "2025-07-23 00:00:00-04:00",
+          "Close": 150.82000732421875
+        },
+        {
+          "Date": "2025-07-24 00:00:00-04:00",
+          "Close": 149.3000030517578
+        },
+        {
+          "Date": "2025-07-25 00:00:00-04:00",
+          "Close": 151.27000427246094
+        },
+        {
+          "Date": "2025-07-28 00:00:00-04:00",
+          "Close": 152.0500030517578
+        },
+        {
+          "Date": "2025-07-29 00:00:00-04:00",
+          "Close": 151.7899932861328
+        },
+        {
+          "Date": "2025-07-30 00:00:00-04:00",
+          "Close": 146.6199951171875
+        },
+        {
+          "Date": "2025-07-31 00:00:00-04:00",
+          "Close": 149.22000122070312
+        },
+        {
+          "Date": "2025-08-01 00:00:00-04:00",
+          "Close": 144.41000366210938
+        },
+        {
+          "Date": "2025-08-04 00:00:00-04:00",
+          "Close": 147.8699951171875
+        },
+        {
+          "Date": "2025-08-05 00:00:00-04:00",
+          "Close": 150.08999633789062
+        },
+        {
+          "Date": "2025-08-06 00:00:00-04:00",
+          "Close": 150.82000732421875
+        },
+        {
+          "Date": "2025-08-07 00:00:00-04:00",
+          "Close": 151.74000549316406
+        },
+        {
+          "Date": "2025-08-08 00:00:00-04:00",
+          "Close": 153.3000030517578
+        },
+        {
+          "Date": "2025-08-11 00:00:00-04:00",
+          "Close": 155.30999755859375
+        },
+        {
+          "Date": "2025-08-12 00:00:00-04:00",
+          "Close": 157.85000610351562
+        },
+        {
+          "Date": "2025-08-13 00:00:00-04:00",
+          "Close": 160.1999969482422
+        },
+        {
+          "Date": "2025-08-14 00:00:00-04:00",
+          "Close": 156.64999389648438
+        },
+        {
+          "Date": "2025-08-15 00:00:00-04:00",
+          "Close": 152.38999938964844
+        },
+        {
+          "Date": "2025-08-18 00:00:00-04:00",
+          "Close": 152.86000061035156
+        },
+        {
+          "Date": "2025-08-19 00:00:00-04:00",
+          "Close": 154.33999633789062
+        },
+        {
+          "Date": "2025-08-20 00:00:00-04:00",
+          "Close": 154.75
+        },
+        {
+          "Date": "2025-08-21 00:00:00-04:00",
+          "Close": 154.3800048828125
+        },
+        {
+          "Date": "2025-08-22 00:00:00-04:00",
+          "Close": 158.72000122070312
+        },
+        {
+          "Date": "2025-08-25 00:00:00-04:00",
+          "Close": 155.85000610351562
+        },
+        {
+          "Date": "2025-08-26 00:00:00-04:00",
+          "Close": 156.57000732421875
+        },
+        {
+          "Date": "2025-08-27 00:00:00-04:00",
+          "Close": 156.52999877929688
+        },
+        {
+          "Date": "2025-08-28 00:00:00-04:00",
+          "Close": 157.55999755859375
+        },
+        {
+          "Date": "2025-08-29 00:00:00-04:00",
+          "Close": 155.52999877929688
+        },
+        {
+          "Date": "2025-09-02 00:00:00-04:00",
+          "Close": 154.27000427246094
+        },
+        {
+          "Date": "2025-09-03 00:00:00-04:00",
+          "Close": 152.0
+        },
+        {
+          "Date": "2025-09-04 00:00:00-04:00",
+          "Close": 155.52000427246094
+        },
+        {
+          "Date": "2025-09-05 00:00:00-04:00",
+          "Close": 155.3000030517578
+        },
+        {
+          "Date": "2025-09-08 00:00:00-04:00",
+          "Close": 154.0
+        },
+        {
+          "Date": "2025-09-09 00:00:00-04:00",
+          "Close": 153.0800018310547
+        },
+        {
+          "Date": "2025-09-10 00:00:00-04:00",
+          "Close": 153.57000732421875
+        },
+        {
+          "Date": "2025-09-11 00:00:00-04:00",
+          "Close": 159.47000122070312
+        },
+        {
+          "Date": "2025-09-12 00:00:00-04:00",
+          "Close": 157.8699951171875
+        },
+        {
+          "Date": "2025-09-15 00:00:00-04:00",
+          "Close": 156.66000366210938
+        },
+        {
+          "Date": "2025-09-16 00:00:00-04:00",
+          "Close": 156.5
+        },
+        {
+          "Date": "2025-09-17 00:00:00-04:00",
+          "Close": 155.16000366210938
+        },
+        {
+          "Date": "2025-09-18 00:00:00-04:00",
+          "Close": 155.39999389648438
+        },
+        {
+          "Date": "2025-09-19 00:00:00-04:00",
+          "Close": 156.60000610351562
+        },
+        {
+          "Date": "2025-09-22 00:00:00-04:00",
+          "Close": 153.86000061035156
+        },
+        {
+          "Date": "2025-09-23 00:00:00-04:00",
+          "Close": 156.2899932861328
+        },
+        {
+          "Date": "2025-09-24 00:00:00-04:00",
+          "Close": 154.60000610351562
+        },
+        {
+          "Date": "2025-09-25 00:00:00-04:00",
+          "Close": 153.02999877929688
+        },
+        {
+          "Date": "2025-09-26 00:00:00-04:00",
+          "Close": 152.80999755859375
+        }
+      ]
+    },
+    "backtest": {
+      "average_return": 0.00024324549360943415,
+      "hit_rate": 0.5,
+      "sample_size": 10
+    }
+  }
+}

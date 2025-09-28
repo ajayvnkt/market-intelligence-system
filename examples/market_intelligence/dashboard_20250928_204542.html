@@ -1,0 +1,321 @@
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8" />
+            <title>Market Intelligence Dashboard</title>
+            <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+            <style>
+                body { font-family: 'Inter', Arial, sans-serif; margin: 0; padding: 0; background: #f4f5f9; color: #1f2933; }
+                header { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; padding: 32px; }
+                .container { padding: 24px; max-width: 1200px; margin: 0 auto; }
+                h1 { margin: 0 0 8px; font-size: 32px; }
+                h2 { margin-top: 32px; font-size: 24px; }
+                .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+                .card { background: white; border-radius: 14px; padding: 20px; box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08); }
+                table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+                th, td { padding: 10px 12px; border-bottom: 1px solid #e5e7eb; text-align: left; }
+                th { background: #eef2ff; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; }
+                tr.buy td { border-left: 4px solid #16a34a; }
+                tr.strong-buy td { border-left: 4px solid #2563eb; }
+                tr.hold td { border-left: 4px solid #fbbf24; }
+                tr.sell td { border-left: 4px solid #dc2626; }
+                ul { margin: 0; padding-left: 18px; }
+            </style>
+        </head>
+        <body>
+            <header>
+                <h1>🚀 Market Intelligence Dashboard</h1>
+                <p>Generated: 2025-09-28T20:45:42.882845</p>
+            </header>
+            <div class="container">
+                <div class="grid">
+                    <div class="card">
+                        <h2>Summary</h2>
+                        <p><strong>Stocks Analyzed:</strong> 92</p>
+                        <p><strong>Recommendations:</strong> 50</p>
+                        <p><strong>Strong Buys:</strong> 0</p>
+                        <p><strong>Avg. Risk/Reward:</strong> 2.00</p>
+                    </div>
+                    <div class="card">
+                        <h2>Top Pick Trend</h2>
+                        <div>                            <div id="1043da5d-4dc1-4327-930a-6efc53aff124" class="plotly-graph-div" style="height:320px; width:100%;"></div>            <script type="text/javascript">                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("1043da5d-4dc1-4327-930a-6efc53aff124")) {                    Plotly.newPlot(                        "1043da5d-4dc1-4327-930a-6efc53aff124",                        [{"mode":"lines","name":"Close","x":["2025-04-07 00:00:00-04:00","2025-04-08 00:00:00-04:00","2025-04-09 00:00:00-04:00","2025-04-10 00:00:00-04:00","2025-04-11 00:00:00-04:00","2025-04-14 00:00:00-04:00","2025-04-15 00:00:00-04:00","2025-04-16 00:00:00-04:00","2025-04-17 00:00:00-04:00","2025-04-21 00:00:00-04:00","2025-04-22 00:00:00-04:00","2025-04-23 00:00:00-04:00","2025-04-24 00:00:00-04:00","2025-04-25 00:00:00-04:00","2025-04-28 00:00:00-04:00","2025-04-29 00:00:00-04:00","2025-04-30 00:00:00-04:00","2025-05-01 00:00:00-04:00","2025-05-02 00:00:00-04:00","2025-05-05 00:00:00-04:00","2025-05-06 00:00:00-04:00","2025-05-07 00:00:00-04:00","2025-05-08 00:00:00-04:00","2025-05-09 00:00:00-04:00","2025-05-12 00:00:00-04:00","2025-05-13 00:00:00-04:00","2025-05-14 00:00:00-04:00","2025-05-15 00:00:00-04:00","2025-05-16 00:00:00-04:00","2025-05-19 00:00:00-04:00","2025-05-20 00:00:00-04:00","2025-05-21 00:00:00-04:00","2025-05-22 00:00:00-04:00","2025-05-23 00:00:00-04:00","2025-05-27 00:00:00-04:00","2025-05-28 00:00:00-04:00","2025-05-29 00:00:00-04:00","2025-05-30 00:00:00-04:00","2025-06-02 00:00:00-04:00","2025-06-03 00:00:00-04:00","2025-06-04 00:00:00-04:00","2025-06-05 00:00:00-04:00","2025-06-06 00:00:00-04:00","2025-06-09 00:00:00-04:00","2025-06-10 00:00:00-04:00","2025-06-11 00:00:00-04:00","2025-06-12 00:00:00-04:00","2025-06-13 00:00:00-04:00","2025-06-16 00:00:00-04:00","2025-06-17 00:00:00-04:00","2025-06-18 00:00:00-04:00","2025-06-20 00:00:00-04:00","2025-06-23 00:00:00-04:00","2025-06-24 00:00:00-04:00","2025-06-25 00:00:00-04:00","2025-06-26 00:00:00-04:00","2025-06-27 00:00:00-04:00","2025-06-30 00:00:00-04:00","2025-07-01 00:00:00-04:00","2025-07-02 00:00:00-04:00","2025-07-03 00:00:00-04:00","2025-07-07 00:00:00-04:00","2025-07-08 00:00:00-04:00","2025-07-09 00:00:00-04:00","2025-07-10 00:00:00-04:00","2025-07-11 00:00:00-04:00","2025-07-14 00:00:00-04:00","2025-07-15 00:00:00-04:00","2025-07-16 00:00:00-04:00","2025-07-17 00:00:00-04:00","2025-07-18 00:00:00-04:00","2025-07-21 00:00:00-04:00","2025-07-22 00:00:00-04:00","2025-07-23 00:00:00-04:00","2025-07-24 00:00:00-04:00","2025-07-25 00:00:00-04:00","2025-07-28 00:00:00-04:00","2025-07-29 00:00:00-04:00","2025-07-30 00:00:00-04:00","2025-07-31 00:00:00-04:00","2025-08-01 00:00:00-04:00","2025-08-04 00:00:00-04:00","2025-08-05 00:00:00-04:00","2025-08-06 00:00:00-04:00","2025-08-07 00:00:00-04:00","2025-08-08 00:00:00-04:00","2025-08-11 00:00:00-04:00","2025-08-12 00:00:00-04:00","2025-08-13 00:00:00-04:00","2025-08-14 00:00:00-04:00","2025-08-15 00:00:00-04:00","2025-08-18 00:00:00-04:00","2025-08-19 00:00:00-04:00","2025-08-20 00:00:00-04:00","2025-08-21 00:00:00-04:00","2025-08-22 00:00:00-04:00","2025-08-25 00:00:00-04:00","2025-08-26 00:00:00-04:00","2025-08-27 00:00:00-04:00","2025-08-28 00:00:00-04:00","2025-08-29 00:00:00-04:00","2025-09-02 00:00:00-04:00","2025-09-03 00:00:00-04:00","2025-09-04 00:00:00-04:00","2025-09-05 00:00:00-04:00","2025-09-08 00:00:00-04:00","2025-09-09 00:00:00-04:00","2025-09-10 00:00:00-04:00","2025-09-11 00:00:00-04:00","2025-09-12 00:00:00-04:00","2025-09-15 00:00:00-04:00","2025-09-16 00:00:00-04:00","2025-09-17 00:00:00-04:00","2025-09-18 00:00:00-04:00","2025-09-19 00:00:00-04:00","2025-09-22 00:00:00-04:00","2025-09-23 00:00:00-04:00","2025-09-24 00:00:00-04:00","2025-09-25 00:00:00-04:00","2025-09-26 00:00:00-04:00"],"y":[181.4600067138672,172.4199981689453,198.85000610351562,190.4199981689453,198.14999389648438,202.52000427246094,202.13999938964844,194.27000427246094,196.97999572753906,193.16000366210938,199.74000549316406,204.60000610351562,208.3699951171875,209.27999877929688,210.13999938964844,211.2100067138672,212.5,213.32000732421875,205.35000610351562,198.88999938964844,198.50999450683594,196.25,197.49000549316406,198.52999877929688,210.7899932861328,212.92999267578125,212.3300018310547,211.4499969482422,211.25999450683594,208.77999877929688,206.86000061035156,202.08999633789062,201.36000061035156,195.27000427246094,200.2100067138672,200.4199981689453,199.9499969482422,200.85000610351562,201.6999969482422,203.27000427246094,202.82000732421875,200.6300048828125,203.9199981689453,201.4499969482422,202.6699981689453,198.77999877929688,199.1999969482422,196.4499969482422,198.4199981689453,195.63999938964844,196.5800018310547,201.0,201.5,200.3000030517578,201.55999755859375,201.0,201.0800018310547,205.1699981689453,207.82000732421875,212.44000244140625,213.5500030517578,209.9499969482422,210.00999450683594,211.13999938964844,212.41000366210938,211.16000366210938,208.6199951171875,209.11000061035156,210.16000366210938,210.02000427246094,211.17999267578125,212.47999572753906,214.39999389648438,214.14999389648438,213.75999450683594,213.8800048828125,214.0500030517578,211.27000427246094,209.0500030517578,207.57000732421875,202.3800048828125,203.35000610351562,202.9199981689453,213.25,220.02999877929688,229.35000610351562,227.17999267578125,229.64999389648438,233.3300018310547,232.77999877929688,231.58999633789062,230.88999938964844,230.55999755859375,226.00999450683594,224.89999389648438,227.75999450683594,227.16000366210938,229.30999755859375,230.49000549316406,232.55999755859375,232.13999938964844,229.72000122070312,238.47000122070312,239.77999877929688,239.69000244140625,237.8800048828125,234.35000610351562,226.7899932861328,230.02999877929688,234.07000732421875,236.6999969482422,238.14999389648438,238.99000549316406,237.8800048828125,245.5,256.0799865722656,254.42999267578125,252.30999755859375,256.8699951171875,255.4600067138672],"type":"scatter"}],                        {"height":320,"template":{"data":{"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"#E5ECF6","showlakes":true,"showland":true,"subunitcolor":"white"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2}}},"title":{"text":"AAPL Price (Last 120 sessions)"}},                        {"responsive": true}                    )                };            </script>        </div>
+                    </div>
+                    <div class="card">
+                        <h2>Backtest Snapshot</h2>
+                        <p><strong>Sample Size:</strong> 50</p>
+                        <p><strong>Avg Return:</strong> 1.39%</p>
+                        <p><strong>Hit Rate:</strong> 54.0%</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>Stock Recommendations</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Ticker</th>
+                                <th>Company</th>
+                                <th>Recommendation</th>
+                                <th>Conviction</th>
+                                <th>Entry</th>
+                                <th>Stop Loss</th>
+                                <th>Target</th>
+                                <th>Hold</th>
+                                <th>Risk/Reward</th>
+                                <th>Technical Drivers</th>
+                                <th>Catalysts</th>
+                                <th>Exit Plan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            <tr class="buy">
+                <td><strong>AAPL</strong></td>
+                <td>Apple Inc.</td>
+                <td>BUY</td>
+                <td>67.81%</td>
+                <td>$255.46</td>
+                <td>$244.55</td>
+                <td>$271.82</td>
+                <td>21 days</td>
+                <td>2.00</td>
+                <td>RSI 67 (momentum run); Price above 50-day trend; Golden cross bias (50d > 200d); 1M +9.8% momentum; 3M +24.5% momentum; Patterns: Double Bottom, Cup & Handle; ML upside odds 49%</td>
+                <td>Double Bottom, Cup & Handle; Unusual options flow</td>
+                <td>Enter near $255.46; place stop around $244.55 (2×ATR); target about $271.82 (3×ATR); reassess after 21 days.</td>
+            </tr>
+            
+            <tr class="buy">
+                <td><strong>MO</strong></td>
+                <td>Altria Group, Inc.</td>
+                <td>BUY</td>
+                <td>67.73%</td>
+                <td>$65.71</td>
+                <td>$63.60</td>
+                <td>$68.87</td>
+                <td>10 days</td>
+                <td>2.00</td>
+                <td>RSI 50; Price above 50-day trend; Golden cross bias (50d > 200d); 3M +12.1% momentum; Patterns: Double Bottom, Cup & Handle; ML upside odds 48%</td>
+                <td>Double Bottom, Cup & Handle</td>
+                <td>Enter near $65.71; place stop around $63.60 (2×ATR); target about $68.87 (3×ATR); reassess after 10 days.</td>
+            </tr>
+            
+            <tr class="buy">
+                <td><strong>ABT</strong></td>
+                <td>Abbott Laboratories</td>
+                <td>BUY</td>
+                <td>67.23%</td>
+                <td>$133.55</td>
+                <td>$128.16</td>
+                <td>$141.63</td>
+                <td>9 days</td>
+                <td>2.00</td>
+                <td>RSI 54; Price above 50-day trend; Golden cross bias (50d > 200d); Patterns: Double Bottom; ML upside odds 49%</td>
+                <td>Double Bottom</td>
+                <td>Enter near $133.55; place stop around $128.16 (2×ATR); target about $141.63 (3×ATR); reassess after 9 days.</td>
+            </tr>
+            
+            <tr class="buy">
+                <td><strong>AMZN</strong></td>
+                <td>Amazon.com, Inc.</td>
+                <td>BUY</td>
+                <td>67.11%</td>
+                <td>$219.78</td>
+                <td>$210.00</td>
+                <td>$234.46</td>
+                <td>8 days</td>
+                <td>2.00</td>
+                <td>RSI 28 (oversold rebound); Price below 50-day trend; Golden cross bias (50d > 200d); 1M -5.1% pullback; Patterns: Double Top, Cup & Handle; ML upside odds 50%</td>
+                <td>Double Top, Cup & Handle; Insider accumulation</td>
+                <td>Enter near $219.78; place stop around $210.00 (2×ATR); target about $234.46 (3×ATR); reassess after 8 days.</td>
+            </tr>
+            
+            <tr class="buy">
+                <td><strong>ALLE</strong></td>
+                <td>Allegion plc</td>
+                <td>BUY</td>
+                <td>66.49%</td>
+                <td>$175.01</td>
+                <td>$168.25</td>
+                <td>$185.15</td>
+                <td>9 days</td>
+                <td>2.00</td>
+                <td>RSI 54; Price above 50-day trend; Golden cross bias (50d > 200d); 3M +21.4% momentum; Patterns: Double Bottom, Cup & Handle; ML upside odds 49%</td>
+                <td>Double Bottom, Cup & Handle</td>
+                <td>Enter near $175.01; place stop around $168.25 (2×ATR); target about $185.15 (3×ATR); reassess after 9 days.</td>
+            </tr>
+            
+            <tr class="buy">
+                <td><strong>CDNS</strong></td>
+                <td>Cadence Design Systems, Inc.</td>
+                <td>BUY</td>
+                <td>66.3%</td>
+                <td>$350.11</td>
+                <td>$326.44</td>
+                <td>$385.62</td>
+                <td>8 days</td>
+                <td>2.00</td>
+                <td>RSI 45; Price above 50-day trend; Golden cross bias (50d > 200d); 3M +13.6% momentum; Patterns: Double Bottom, Cup & Handle; ML upside odds 54%</td>
+                <td>Double Bottom, Cup & Handle</td>
+                <td>Enter near $350.11; place stop around $326.44 (2×ATR); target about $385.62 (3×ATR); reassess after 8 days.</td>
+            </tr>
+            
+            <tr class="buy">
+                <td><strong>BX</strong></td>
+                <td>Blackstone Inc.</td>
+                <td>BUY</td>
+                <td>66.29%</td>
+                <td>$175.32</td>
+                <td>$165.65</td>
+                <td>$189.83</td>
+                <td>9 days</td>
+                <td>2.00</td>
+                <td>RSI 53; Price above 50-day trend; Golden cross bias (50d > 200d); 3M +17.2% momentum; Patterns: Double Bottom, Cup & Handle; ML upside odds 53%</td>
+                <td>Double Bottom, Cup & Handle</td>
+                <td>Enter near $175.32; place stop around $165.65 (2×ATR); target about $189.83 (3×ATR); reassess after 9 days.</td>
+            </tr>
+            
+            <tr class="buy">
+                <td><strong>MMM</strong></td>
+                <td>3M Company</td>
+                <td>BUY</td>
+                <td>66.17%</td>
+                <td>$152.81</td>
+                <td>$146.06</td>
+                <td>$162.94</td>
+                <td>9 days</td>
+                <td>2.00</td>
+                <td>RSI 47; Price below 50-day trend; Golden cross bias (50d > 200d); Patterns: Double Bottom, Cup & Handle; ML upside odds 49%</td>
+                <td>Double Bottom, Cup & Handle</td>
+                <td>Enter near $152.81; place stop around $146.06 (2×ATR); target about $162.94 (3×ATR); reassess after 9 days.</td>
+            </tr>
+            
+            <tr class="buy">
+                <td><strong>GOOGL</strong></td>
+                <td>Alphabet Inc.</td>
+                <td>BUY</td>
+                <td>66.06%</td>
+                <td>$246.54</td>
+                <td>$235.74</td>
+                <td>$262.74</td>
+                <td>21 days</td>
+                <td>2.00</td>
+                <td>RSI 68 (momentum run); Price above 50-day trend; Golden cross bias (50d > 200d); 1M +16.5% momentum; 3M +39.9% momentum; Patterns: Double Bottom, Cup & Handle; ML upside odds 53%</td>
+                <td>Double Bottom, Cup & Handle</td>
+                <td>Enter near $246.54; place stop around $235.74 (2×ATR); target about $262.74 (3×ATR); reassess after 21 days.</td>
+            </tr>
+            
+            <tr class="buy">
+                <td><strong>SCHW</strong></td>
+                <td>Charles Schwab Corporation (The</td>
+                <td>BUY</td>
+                <td>65.96%</td>
+                <td>$95.46</td>
+                <td>$91.67</td>
+                <td>$101.15</td>
+                <td>9 days</td>
+                <td>2.00</td>
+                <td>RSI 57; Price below 50-day trend; Golden cross bias (50d > 200d); Patterns: Double Bottom, Cup & Handle; ML upside odds 48%</td>
+                <td>Double Bottom, Cup & Handle</td>
+                <td>Enter near $95.46; place stop around $91.67 (2×ATR); target about $101.15 (3×ATR); reassess after 9 days.</td>
+            </tr>
+            
+            <tr class="buy">
+                <td><strong>AVGO</strong></td>
+                <td>Broadcom Inc.</td>
+                <td>BUY</td>
+                <td>65.82%</td>
+                <td>$334.53</td>
+                <td>$310.11</td>
+                <td>$371.17</td>
+                <td>8 days</td>
+                <td>2.00</td>
+                <td>RSI 44; Price above 50-day trend; Golden cross bias (50d > 200d); 1M +8.4% momentum; 3M +21.4% momentum; Patterns: Double Bottom, Cup & Handle; ML upside odds 53%</td>
+                <td>Double Bottom, Cup & Handle</td>
+                <td>Enter near $334.53; place stop around $310.11 (2×ATR); target about $371.17 (3×ATR); reassess after 8 days.</td>
+            </tr>
+            
+            <tr class="buy">
+                <td><strong>BR</strong></td>
+                <td>Broadridge Financial Solutions,</td>
+                <td>BUY</td>
+                <td>65.44%</td>
+                <td>$236.00</td>
+                <td>$228.19</td>
+                <td>$247.72</td>
+                <td>9 days</td>
+                <td>2.00</td>
+                <td>RSI 20 (oversold rebound); Price below 50-day trend; Golden cross bias (50d > 200d); 1M -8.2% pullback; Patterns: Double Top, Cup & Handle; ML upside odds 47%</td>
+                <td>Double Top, Cup & Handle</td>
+                <td>Enter near $236.00; place stop around $228.19 (2×ATR); target about $247.72 (3×ATR); reassess after 9 days.</td>
+            </tr>
+            
+            <tr class="buy">
+                <td><strong>CBRE</strong></td>
+                <td>CBRE Group Inc</td>
+                <td>BUY</td>
+                <td>65.16%</td>
+                <td>$158.00</td>
+                <td>$151.72</td>
+                <td>$167.42</td>
+                <td>9 days</td>
+                <td>2.00</td>
+                <td>RSI 40; Price above 50-day trend; Golden cross bias (50d > 200d); 3M +12.8% momentum; Patterns: Double Bottom, Cup & Handle; ML upside odds 50%</td>
+                <td>Double Bottom, Cup & Handle</td>
+                <td>Enter near $158.00; place stop around $151.72 (2×ATR); target about $167.42 (3×ATR); reassess after 9 days.</td>
+            </tr>
+            
+            <tr class="buy">
+                <td><strong>ANET</strong></td>
+                <td>Arista Networks, Inc.</td>
+                <td>BUY</td>
+                <td>64.64%</td>
+                <td>$142.50</td>
+                <td>$131.10</td>
+                <td>$159.60</td>
+                <td>7 days</td>
+                <td>2.00</td>
+                <td>RSI 52; Price above 50-day trend; Golden cross bias (50d > 200d); 3M +39.3% momentum; Patterns: Double Bottom, Cup & Handle; ML upside odds 53%</td>
+                <td>Double Bottom, Cup & Handle</td>
+                <td>Enter near $142.50; place stop around $131.10 (2×ATR); target about $159.60 (3×ATR); reassess after 7 days.</td>
+            </tr>
+            
+            <tr class="buy">
+                <td><strong>ADSK</strong></td>
+                <td>Autodesk, Inc.</td>
+                <td>BUY</td>
+                <td>64.5%</td>
+                <td>$322.88</td>
+                <td>$313.45</td>
+                <td>$337.02</td>
+                <td>21 days</td>
+                <td>2.00</td>
+                <td>RSI 43; Price above 50-day trend; Golden cross bias (50d > 200d); 1M +11.9% momentum; Patterns: Double Bottom, Cup & Handle; ML upside odds 47%</td>
+                <td>Double Bottom, Cup & Handle</td>
+                <td>Enter near $322.88; place stop around $313.45 (2×ATR); target about $337.02 (3×ATR); reassess after 21 days.</td>
+            </tr>
+            </tbody>
+                    </table>
+                </div>
+
+                <div class="grid">
+                    <div class="card">
+                        <h2>SEC Filings</h2>
+                        <ul></ul>
+                    </div>
+                    <div class="card">
+                        <h2>Economic Calendar</h2>
+                        <ul><li>CPI MoM — 2025-09-29</li><li>FOMC Rate Decision — 2025-10-01</li></ul>
+                    </div>
+                    <div class="card">
+                        <h2>Options Flow</h2>
+                        <ul><li>NVDA CALL SWEEP exp 2025-10-05 ($4,200,000)</li><li>AAPL CALL BLOCK exp 2025-10-12 ($3,100,000)</li></ul>
+                    </div>
+                    <div class="card">
+                        <h2>News Sentiment</h2>
+                        <ul><li><strong>MSFT</strong> — Microsoft launches Copilot upgrades, analysts cheer AI roadmap</li><li><strong>TSLA</strong> — Tesla faces supply-chain hiccups but demand remains strong</li><li><strong>AAPL</strong> — Apple supplier hints at robust iPhone 16 pre-orders</li><li><strong>NVDA</strong> — Nvidia beats earnings estimates as AI demand accelerates</li></ul>
+                    </div>
+                </div>
+            </div>
+        </body>
+        </html>
+        
