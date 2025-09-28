@@ -97,6 +97,19 @@ saved to the `backdata/` directory.
 jupyter notebook examples/comprehensive_runner.ipynb
 ```
 
+### Custom Portfolio Watchlist
+```bash
+# Analyse a custom list of tickers defined in examples/example2/input_portfolio.csv
+python examples/example2/run_portfolio_analysis.py
+
+# Use a different watchlist or output directory
+python examples/example2/run_portfolio_analysis.py --input my_watchlist.csv --output-dir outputs/my_run
+```
+The script reads the provided CSV (expecting a `ticker` or `symbol` column),
+feeds those tickers into the market intelligence engine, and prints a
+console-friendly summary that includes conviction level, stop loss, target,
+and exit guidance for each holding.
+
 ### Investment Strategy Presets
 
 #### Conservative Investor

@@ -80,6 +80,9 @@ class IntelligenceConfig:
     max_recommendations: int = 25
     min_conviction_score: float = 60.0
 
+    watchlist_path: Optional[Path] = None
+    custom_tickers: Optional[List[str]] = None
+
     sec_api_key: Optional[str] = None
     fred_api_key: Optional[str] = None
     twitter_bearer_token: Optional[str] = None
@@ -93,6 +96,17 @@ class IntelligenceConfig:
             backtrace=True,
             diagnose=True,
         )
+
+        if self.watchlist_path is not None:
+            self.watchlist_path = Path(self.watchlist_path)
+
+        if self.custom_tickers:
+            cleaned = []
+            for ticker in self.custom_tickers:
+                if not ticker:
+                    continue
+                cleaned.append(str(ticker).strip().upper().replace(".", "-"))
+            self.custom_tickers = sorted(dict.fromkeys(cleaned)) or None
 
         if self.tickers_limit is None:
             env_limit = os.getenv("CMI_TICKERS_LIMIT")
@@ -1093,6 +1107,47 @@ class ComprehensiveMarketIntelligence:
         return float((target - price) / (price - stop))
 
     def _get_sp500_tickers(self) -> List[str]:
+        if self.config.custom_tickers:
+            return [ticker.upper() for ticker in self.config.custom_tickers if ticker]
+
+        if self.config.watchlist_path is not None:
+            path = Path(self.config.watchlist_path)
+            if path.exists():
+                try:
+                    df = pd.read_csv(path)
+                    if df.empty:
+                        logger.warning("Watchlist CSV is empty: {}", path)
+                    else:
+                        candidates = [
+                            col
+                            for col in df.columns
+                            if str(col).lower() in {"ticker", "symbol", "tickers", "symbols"}
+                        ]
+                        series = None
+                        if candidates:
+                            series = df[candidates[0]]
+                        elif df.shape[1] >= 1:
+                            series = df.iloc[:, 0]
+
+                        if series is not None:
+                            tickers = (
+                                series.dropna()
+                                .astype(str)
+                                .str.strip()
+                                .str.upper()
+                                .str.replace(".", "-", regex=False)
+                            )
+                            tickers = [t for t in tickers.tolist() if t]
+                            if tickers:
+                                return tickers
+                            logger.warning(
+                                "No ticker symbols could be extracted from {}", path
+                            )
+                except Exception as exc:  # pragma: no cover - robustness for bad CSV input
+                    logger.warning("Failed to read custom watchlist {}: {}", path, exc)
+            else:
+                logger.warning("Watchlist file not found: {}", path)
+
         if hasattr(yf, "tickers_sp500"):
             try:
                 tickers = yf.tickers_sp500()
