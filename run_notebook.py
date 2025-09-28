@@ -3,6 +3,7 @@
 Script to run the comprehensive market intelligence notebook with error handling
 """
 
+import math
 import sys
 from pathlib import Path
 import traceback
@@ -102,24 +103,64 @@ def run_notebook_cells():
         print(f"🔍 Data Sources Active: {report['summary']['data_sources_active']}")
 
         # Display top picks
-        if report.get('top_picks'):
+        top_picks = report.get('top_picks') or []
+        if top_picks:
             print("\n🏆 TOP RECOMMENDATIONS:")
-            for i, pick in enumerate(report['top_picks'][:5], 1):
-                print(f"  {i}. {pick['ticker']} - {pick['recommendation']} "
-                      f"(Conviction: {pick['conviction_score']}%)")
+            for i, pick in enumerate(top_picks[:5], 1):
+                print(
+                    f"  {i}. {pick['ticker']} - {pick['recommendation']} "
+                    f"(Conviction: {pick['conviction_score']}%)"
+                )
                 print(f"     {pick['company']} | Catalysts: {pick['key_catalysts']}")
 
-        # Display HTML dashboard
-        out_dir = config.output_dir
-        html_files = sorted(Path(out_dir).glob("dashboard_*.html"))
-        if html_files:
-            latest_html = html_files[-1]
-            print(f"\n📊 Dashboard generated: {latest_html.name}")
-            print(f"📁 Open this file in your browser: {latest_html.absolute()}")
-        else:
-            print(f"\n⚠️ No HTML dashboard found in {out_dir}")
+                entry = pick.get('entry_price') or pick.get('price')
+                stop = pick.get('stop_loss_price')
+                target = pick.get('target_price')
+                drivers = pick.get('technical_drivers')
+                plan = pick.get('exit_plan') or pick.get('exit_strategy')
 
-        print(f"\n📁 All reports saved to: {out_dir}")
+                def _fmt(value: object) -> str:
+                    if value is None:
+                        return "—"
+                    try:
+                        numeric = float(value)
+                    except (TypeError, ValueError):
+                        return "—"
+                    if math.isnan(numeric):
+                        return "—"
+                    return f"${numeric:.2f}"
+
+                print(
+                    f"     Entry { _fmt(entry) } | Stop { _fmt(stop) } | Target { _fmt(target) } "
+                    f"| Hold {pick.get('exit_review_days') or pick.get('holding_period_days', '—')} days"
+                )
+                if drivers:
+                    print(f"     Technical: {drivers}")
+                if plan:
+                    print(f"     Exit plan: {plan}")
+
+        # Display generated artifacts (JSON/CSV/HTML)
+        artifacts = {
+            name: Path(path) for name, path in (report.get('artifacts') or {}).items()
+        }
+        if artifacts:
+            print("\n📦 Generated artifacts:")
+            for label, path in artifacts.items():
+                pretty = label.upper()
+                print(f"  • {pretty}: {path.resolve() if path else path}")
+
+            html_path = artifacts.get('html')
+            if html_path and html_path.exists():
+                print(f"\n📊 Dashboard generated: {html_path.name}")
+                print(f"📁 Open this file in your browser: {html_path.resolve()}")
+            else:
+                print("\n⚠️ Dashboard artifact missing — check logs for details.")
+        else:
+            out_dir = config.output_dir
+            print("\n⚠️ No artifacts were reported by the engine.")
+            print(f"   Expected outputs to appear under: {Path(out_dir).resolve()}")
+
+        print(f"\n📁 All reports saved to: {Path(config.output_dir).resolve()}")
         print("✅ Market Intelligence Analysis Complete!")
         
         return True
