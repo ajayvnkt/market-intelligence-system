@@ -5,20 +5,27 @@ A comprehensive market intelligence platform that integrates multiple data sourc
 ## 🚀 Features
 
 ### Multi-Source Intelligence Integration
-- **SEC Filings** - Material events, insider trades, quarterly reports
-- **Economic Calendar** - Fed meetings, CPI, employment data, global events
-- **Congressional Trades** - STOCK Act disclosures and political insider activity
-- **Social Sentiment** - Twitter, Reddit, and social media trend analysis
-- **Institutional Activity** - 13F filings and smart money tracking
-- **Technical Analysis** - RSI, momentum, volume patterns, and chart analysis
-- **Fundamental Data** - P/E ratios, market cap, earnings, and financial metrics
+- **SEC Filings** – Material events, insider trades, quarterly reports
+- **Economic Calendar** – Fed meetings, CPI, employment data, global events
+- **Congressional Trades** – STOCK Act disclosures and political insider activity
+- **Social Sentiment** – Reddit, X/Twitter, and broader social trend analysis
+- **Institutional Activity** – 13F filings and smart money tracking
+- **Options Flow** – Unusual call/put sweeps and block trades for confirmation
+- **News Sentiment** – Headline-level NLP scoring via VADER for each ticker
+- **Pre-Market Pulse** – Gap analysis, VWAP, and liquidity during pre-market hours
+- **Technical + Pattern Recognition** – RSI, momentum, VWAP, OBV, ATR, and classical pattern detection
+- **Fundamental Data** – P/E ratios, profitability, growth, and financial quality metrics
 
 ### Advanced Analytics
-- **Weighted Scoring System** - Multi-factor analysis with customizable weights
-- **Conviction Levels** - 0-100% confidence scoring for each recommendation
-- **Risk Assessment** - Built-in risk evaluation and portfolio optimization
-- **Catalyst Identification** - Key drivers and market catalysts for each pick
-- **Real-time Processing** - Concurrent data gathering for faster analysis
+- **Supercharged Scoring Engine** – 17 weighted pillars including machine learning probability, volume anomalies, macro context, and sector rotation signals
+- **Pre-Market Intelligence** – Gap magnitude, VWAP, and liquidity-driven boosts to catch early movers
+- **Pattern & Structure Detection** – Double bottoms, cup & handle, bull flags, and head & shoulders identification
+- **ML Return Forecasting** – Logistic regression pipeline trained on recent price action to estimate 5-day upside probability
+- **Volatility Forecasting** – EWMA (GARCH-lite) projections feeding risk management and exit plans
+- **Backtesting Feedback Loop** – Rolling hit-rate and forward-return estimates for constant calibration
+- **Decade-Deep Replay** – Historical backtester that benchmarks recommendations against the S&P 500 and Nasdaq 100
+- **Catalyst Narratives** – Insider accumulation, options flow confirmation, and social buzz synthesized into readable catalysts
+- **High-Performance Pipeline** – Aggressive concurrency, caching, and rate-limit aware fetchers for faster daily runs
 
 ## 📦 Installation
 
@@ -70,6 +77,19 @@ report = engine.generate_comprehensive_report()
 print(f"Stocks analyzed: {report['summary']['total_stocks_analyzed']}")
 print(f"Recommendations: {report['summary']['recommendations_generated']}")
 ```
+
+### Historical Backtesting
+```bash
+# Replay the engine back to 10 years with monthly rebalances
+python -m src.backtesting.historical_backtester \
+    --start 2014-01-01 \
+    --end 2024-01-01 \
+    --rebalance M \
+    --tickers-limit 75 \
+    --max-recommendations 15
+```
+Artifacts (trades, equity curve, Plotly performance chart, and summary JSON) are
+saved to the `backdata/` directory.
 
 ### Jupyter Notebook Demo
 ```bash
@@ -129,19 +149,29 @@ The system generates multiple output formats:
 ## 🔧 Configuration Options
 
 ### Core Settings
-- `max_workers`: Parallel processing threads (default: 8)
+- `max_workers`: Parallel processing threads for daily screeners (default: 12)
 - `min_conviction_score`: Minimum confidence threshold (default: 60.0)
-- `max_recommendations`: Number of top picks to generate (default: 15)
-- `lookback_days`: Historical data period (default: 252 days)
+- `max_recommendations`: Number of top picks to generate (default: 25)
+- `lookback_days`: Historical data period (default: 252 trading days)
+- `premarket_window_minutes`: Minutes of pre-market activity to analyze (default: 120)
+- `volume_spike_threshold`: Ratio trigger for unusual volume scoring (default: 1.75)
+- `ml_lookahead_days`: Forward horizon (in days) for machine-learning probability (default: 5)
 
-### Scoring Weights
-- `technical_weight`: Technical analysis importance (default: 0.25)
-- `fundamental_weight`: Fundamental analysis importance (default: 0.20)
-- `insider_weight`: Insider trading signals (default: 0.15)
-- `institutional_weight`: Smart money activity (default: 0.15)
-- `social_weight`: Social media sentiment (default: 0.10)
-- `macro_weight`: Macroeconomic factors (default: 0.10)
-- `congressional_weight`: Political insider activity (default: 0.05)
+### Scoring Weights (excerpt)
+- `technical_weight`: Trend, momentum, and RSI edge (default: 0.16)
+- `volume_weight`: Unusual volume / OBV confirmation (default: 0.07)
+- `pattern_weight`: Chart pattern conviction boost (default: 0.05)
+- `ml_weight`: Machine-learning probability of 5-day outperformance (default: 0.12)
+- `premarket_weight`: Pre-market gap/VWAP momentum (default: 0.05)
+- `options_weight`: Unusual options flow impact (default: 0.06)
+- `news_weight`: NLP sentiment contribution (default: 0.05)
+- `rotation_weight`: Sector-relative strength overlay (default: 0.05)
+- `volatility_weight`: EWMA volatility tilt (default: 0.05)
+- `insider_weight`: Insider trading signals (default: 0.05)
+- `institutional_weight`: Smart money activity (default: 0.05)
+- `social_weight`: Social buzz and influence (default: 0.04)
+- `macro_weight`: Sector-specific macro bias (default: 0.04)
+- `congressional_weight`: Political insider activity (default: 0.04)
 
 ## 📈 Performance Metrics
 
@@ -163,12 +193,16 @@ The system generates multiple output formats:
 ```
 market-intelligence-system/
 ├── src/                          # Source code
+│   ├── backtesting/              # Historical replay utilities
+│   │   ├── __init__.py
+│   │   └── historical_backtester.py
 │   └── comprehensive_market_intelligence.py
 ├── examples/                     # Example notebooks and scripts
 │   └── comprehensive_runner.ipynb
 ├── docs/                         # Documentation
 │   └── complete_setup_guide.md
 ├── data/                         # Data storage
+├── backdata/                     # Backtest outputs (trades, charts, summaries)
 ├── outputs/                      # Generated reports and dashboards
 ├── requirements.txt              # Python dependencies
 └── README.md                     # This file
@@ -190,6 +224,8 @@ market-intelligence-system/
 - `requests>=2.28.0` - HTTP requests
 - `beautifulsoup4>=4.12.0` - Web scraping
 - `loguru>=0.7.0` - Logging
+- `scikit-learn>=1.3.0` - Machine learning pipeline for return forecasting
+- `vaderSentiment>=3.3.2` - News headline sentiment scoring
 
 ### Optional Dependencies
 - `matplotlib>=3.7.0` - Plotting
