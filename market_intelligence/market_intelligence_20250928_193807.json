@@ -1,0 +1,150 @@
+{
+  "timestamp": "2025-09-28T19:38:07.156304",
+  "summary": {
+    "total_stocks_analyzed": 18,
+    "recommendations_generated": 8,
+    "strong_buys": 0,
+    "buys": 8,
+    "data_sources_active": 10,
+    "avg_risk_reward": 2.0
+  },
+  "market_intelligence": {
+    "social_trends": [
+      {
+        "ticker": "AAPL",
+        "platform": "Reddit",
+        "trend_type": "r/wallstreetbets momentum",
+        "sentiment": "POSITIVE",
+        "influence_score": 82,
+        "timestamp": "2025-09-28T19:37:56.678154"
+      },
+      {
+        "ticker": "TSLA",
+        "platform": "Twitter",
+        "trend_type": "AI partnership chatter",
+        "sentiment": "POSITIVE",
+        "influence_score": 75,
+        "timestamp": "2025-09-28T19:37:56.678154"
+      }
+    ],
+    "institutional_activity": [
+      {
+        "date": "2025-09-25",
+        "institution": "ARK Invest",
+        "ticker": "TSLA",
+        "action": "BUY",
+        "shares": 450000,
+        "value": 70000000
+      },
+      {
+        "date": "2025-09-23",
+        "institution": "BlackRock",
+        "ticker": "MSFT",
+        "action": "BUY",
+        "shares": 1200000,
+        "value": 360000000
+      }
+    ],
+    "congressional_trades": [
+      {
+        "date": "2025-09-27",
+        "member": "Nancy Pelosi",
+        "party": "D-CA",
+        "ticker": "NVDA",
+        "transaction": "BUY",
+        "amount": "100K-250K"
+      },
+      {
+        "date": "2025-09-26",
+        "member": "Tommy Tuberville",
+        "party": "R-AL",
+        "ticker": "TSLA",
+        "transaction": "BUY",
+        "amount": "50K-100K"
+      }
+    ],
+    "insider_trades": [
+      {
+        "date": "2025-09-27",
+        "ticker": "AMZN",
+        "insider_name": "Andy Jassy",
+        "title": "CEO",
+        "transaction": "BUY",
+        "shares": 10000,
+        "price": 146.2,
+        "value": 1462000,
+        "signal_strength": "STRONG_BUY"
+      }
+    ],
+    "economic_calendar": [
+      {
+        "date": "2025-09-29",
+        "time": "12:30",
+        "event": "CPI MoM",
+        "importance": "HIGH",
+        "expected": "0.3%",
+        "previous": "0.2%"
+      },
+      {
+        "date": "2025-10-01",
+        "time": "18:00",
+        "event": "FOMC Rate Decision",
+        "importance": "HIGH",
+        "expected": "5.25%",
+        "previous": "5.25%"
+      }
+    ],
+    "news_sentiment": [
+      {
+        "timestamp": "2025-09-28T19:37:56.696246",
+        "ticker": "MSFT",
+        "headline": "Microsoft launches Copilot upgrades, analysts cheer AI roadmap",
+        "sentiment_score": 0.5106
+      },
+      {
+        "timestamp": "2025-09-28T19:37:56.696246",
+        "ticker": "TSLA",
+        "headline": "Tesla faces supply-chain hiccups but demand remains strong",
+        "sentiment_score": 0.5719
+      },
+      {
+        "timestamp": "2025-09-28T19:37:56.696246",
+        "ticker": "AAPL",
+        "headline": "Apple supplier hints at robust iPhone 16 pre-orders",
+        "sentiment_score": 0.34
+      },
+      {
+        "timestamp": "2025-09-28T19:37:56.696246",
+        "ticker": "NVDA",
+        "headline": "Nvidia beats earnings estimates as AI demand accelerates",
+        "sentiment_score": -0.128
+      }
+    ],
+    "options_flow": [
+      {
+        "timestamp": "2025-09-28T19:37:56.695681",
+        "ticker": "NVDA",
+        "type": "CALL SWEEP",
+        "expiry": "2025-10-05",
+        "strike": 500,
+        "premium": 4200000,
+        "spot_vs_strike": 1.02,
+        "sweep_ratio": 0.85
+      },
+      {
+        "timestamp": "2025-09-28T19:37:56.695681",
+        "ticker": "AAPL",
+        "type": "CALL BLOCK",
+        "expiry": "2025-10-12",
+        "strike": 200,
+        "premium": 3100000,
+        "spot_vs_strike": 0.98,
+        "sweep_ratio": 0.65
+      }
+    ],
+    "sec_filings": [],
+    "sector_rotation": [
+      {
+        "sector": "Technology",
+        "etf": "XLK",
+        "quarter_return": 

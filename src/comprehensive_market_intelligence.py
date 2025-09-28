@@ -1296,10 +1296,14 @@ class ComprehensiveMarketIntelligence:
         row = rotation[rotation["sector"] == sector]
         if row.empty:
             return 50
-        rel_val = row["relative_to_spy"].iloc[0]
-        momentum_val = row["momentum_20d"].iloc[0]
-        rel = float(rel_val) if pd.notna(rel_val) else 0.0
-        momentum = float(momentum_val) if pd.notna(momentum_val) else 0.0
+        try:
+            rel_val = row["relative_to_spy"].iloc[0]
+            momentum_val = row["momentum_20d"].iloc[0]
+            rel = float(rel_val) if rel_val is not None and not (isinstance(rel_val, float) and rel_val != rel_val) else 0.0
+            momentum = float(momentum_val) if momentum_val is not None and not (isinstance(momentum_val, float) and momentum_val != momentum_val) else 0.0
+        except (ValueError, TypeError, IndexError):
+            rel = 0.0
+            momentum = 0.0
         score = 50 + rel * 120 + momentum * 200
         return float(max(0, min(100, score)))
 
@@ -1452,7 +1456,7 @@ class ComprehensiveMarketIntelligence:
         self._create_html_dashboard(report, intelligence_data, html_path)
 
         with open(json_path, "w") as fp:
-            json.dump(report, fp, indent=2)
+            json.dump(report, fp, indent=2, default=str)
 
         artifacts = {"json": json_path, "html": html_path}
         if csv_path:
