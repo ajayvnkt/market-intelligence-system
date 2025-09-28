@@ -1805,7 +1805,55 @@ def main() -> None:
                 print(f"  {i}. {pick['ticker']} - {pick['recommendation']} (Conviction: {pick['conviction_score']}%)")
                 print(f"     {pick['company']} | Catalysts: {pick['key_catalysts']}")
 
-        print(f"\n📁 Reports saved to: {config.output_dir}")
+                def _fmt(value: object) -> str:
+                    if value is None:
+                        return "—"
+                    try:
+                        numeric = float(value)
+                    except (TypeError, ValueError):
+                        return "—"
+                    if pd.isna(numeric):
+                        return "—"
+                    return f"${numeric:.2f}"
+
+                entry = pick.get('entry_price') or pick.get('price')
+                stop = pick.get('stop_loss_price')
+                target = pick.get('target_price')
+                horizon = pick.get('exit_review_days') or pick.get('holding_period_days') or "—"
+                print(
+                    "     Entry {entry} | Stop {stop} | Target {target} | Hold {horizon} days".format(
+                        entry=_fmt(entry),
+                        stop=_fmt(stop),
+                        target=_fmt(target),
+                        horizon=horizon,
+                    )
+                )
+                drivers = pick.get('technical_drivers')
+                if drivers:
+                    print(f"     Technical: {drivers}")
+                exit_plan = pick.get('exit_plan') or pick.get('exit_strategy')
+                if exit_plan:
+                    print(f"     Exit plan: {exit_plan}")
+
+        artifacts = report.get('artifacts', {})
+        if artifacts:
+            print("\n📦 Generated artifacts:")
+            for label, path in artifacts.items():
+                pretty = label.upper()
+                try:
+                    resolved = Path(path).resolve()
+                except Exception:
+                    resolved = path
+                print(f"  • {pretty}: {resolved}")
+            html_path = artifacts.get('html')
+            if html_path and Path(html_path).exists():
+                resolved = Path(html_path).resolve()
+                print(f"\n📊 Dashboard generated: {Path(html_path).name}")
+                print(f"📁 Open this file in your browser: {resolved}")
+        else:
+            print("\n⚠️ No artifacts reported. Check logs at market_intelligence/intelligence.log")
+
+        print(f"\n📁 Reports saved to: {Path(config.output_dir).resolve()}")
         print("✅ Market Intelligence System Complete!")
     except Exception as exc:
         logger.error(f"System error: {exc}")
