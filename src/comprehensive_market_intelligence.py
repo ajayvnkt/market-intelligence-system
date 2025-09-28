@@ -858,7 +858,9 @@ class ComprehensiveMarketIntelligence:
                 }
 
                 row["holding_period_days"] = self._estimate_holding_period(row)
-                row["exit_strategy"] = self._determine_exit_strategy(row)
+                exit_plan = self._determine_exit_strategy(row)
+                row.update(exit_plan)
+                row["exit_strategy"] = row.get("exit_plan", "")
                 histories[symbol] = hist
                 return row, hist
             except Exception as exc:  # pragma: no cover - per ticker resilience
@@ -966,14 +968,97 @@ class ComprehensiveMarketIntelligence:
         adjustment = (momentum / 20) - (volatility * 10)
         return int(max(lower, min(upper, base + adjustment)))
 
-    def _determine_exit_strategy(self, row: Dict[str, object]) -> str:
-        atr = row.get("atr") or 0
-        price = row.get("price") or 0
-        if atr and price:
-            stop = price - 2 * atr
-            target = price + 3 * atr
-            return f"Trail stop 2xATR (~{stop:.2f}), target +3xATR (~{target:.2f})"
-        return "Price closes below 21-EMA"
+    def _determine_exit_strategy(self, row: Dict[str, object]) -> Dict[str, object]:
+        price = float(row.get("price") or 0.0)
+        atr = float(row.get("atr") or 0.0)
+        hold_days = int(row.get("holding_period_days") or self.config.hold_period_bounds[0])
+
+        entry_price = price if price > 0 else np.nan
+        stop_loss = np.nan
+        target_price = np.nan
+
+        if atr > 0 and price > 0:
+            stop_loss = max(price - 2 * atr, 0)
+            target_price = price + 3 * atr
+            summary = (
+                f"Enter near ${price:.2f}; place stop around ${stop_loss:.2f} (2×ATR); "
+                f"target about ${target_price:.2f} (3×ATR); reassess after {hold_days} days."
+            )
+        else:
+            summary = (
+                f"Enter near ${price:.2f}; trail a stop under the 21-EMA; harvest into prior swing highs; "
+                f"reassess after {hold_days} days."
+            )
+
+        return {
+            "entry_price": entry_price,
+            "stop_loss_price": stop_loss,
+            "target_price": target_price,
+            "exit_review_days": hold_days,
+            "exit_plan": summary,
+        }
+
+    @staticmethod
+    def _summarize_technical_drivers(stock: pd.Series) -> str:
+        parts: List[str] = []
+
+        rsi = stock.get("rsi")
+        if rsi is not None and not pd.isna(rsi):
+            rsi_val = float(rsi)
+            if rsi_val < 35:
+                parts.append(f"RSI {rsi_val:.0f} (oversold rebound)")
+            elif rsi_val > 65:
+                parts.append(f"RSI {rsi_val:.0f} (momentum run)")
+            else:
+                parts.append(f"RSI {rsi_val:.0f}")
+
+        price = stock.get("price")
+        sma_50 = stock.get("sma_50")
+        sma_200 = stock.get("sma_200")
+        if (
+            price is not None
+            and sma_50 is not None
+            and not pd.isna(price)
+            and not pd.isna(sma_50)
+        ):
+            price_val = float(price)
+            sma50_val = float(sma_50)
+            if price_val > sma50_val:
+                parts.append("Price above 50-day trend")
+            else:
+                parts.append("Price below 50-day trend")
+        if (
+            sma_50 is not None
+            and sma_200 is not None
+            and not pd.isna(sma_50)
+            and not pd.isna(sma_200)
+        ):
+            if float(sma_50) > float(sma_200):
+                parts.append("Golden cross bias (50d > 200d)")
+            else:
+                parts.append("Long-term trend weak (50d < 200d)")
+
+        for label in ["ret_1m", "ret_3m"]:
+            val = stock.get(label)
+            if val is not None and not pd.isna(val):
+                if float(val) > 5:
+                    parts.append(f"{label.replace('ret_', '').upper()} +{float(val):.1f}% momentum")
+                elif float(val) < -5:
+                    parts.append(f"{label.replace('ret_', '').upper()} {float(val):.1f}% pullback")
+
+        unusual = stock.get("unusual_volume_ratio")
+        if unusual is not None and not pd.isna(unusual) and float(unusual) >= 1.5:
+            parts.append(f"Volume {float(unusual):.1f}× normal")
+
+        patterns = stock.get("pattern_signals")
+        if patterns and patterns != "None":
+            parts.append(f"Patterns: {patterns}")
+
+        ml_prob = stock.get("ml_probability")
+        if ml_prob is not None and not pd.isna(ml_prob):
+            parts.append(f"ML upside odds {float(ml_prob) * 100:.0f}%")
+
+        return "; ".join(parts) if parts else "Balanced technical setup"
 
     def _compute_risk_reward(self, row: pd.Series) -> float:
         atr = row.get("atr") or np.nan
@@ -1101,6 +1186,18 @@ class ComprehensiveMarketIntelligence:
                     "ml_probability": round(stock.get("ml_probability", 0.5), 4),
                     "holding_period_days": int(stock.get("holding_period_days", 5)),
                     "exit_strategy": stock.get("exit_strategy", ""),
+                    "exit_plan": stock.get("exit_plan", stock.get("exit_strategy", "")),
+                    "entry_price": round(stock.get("entry_price", np.nan), 2)
+                    if not pd.isna(stock.get("entry_price", np.nan))
+                    else np.nan,
+                    "stop_loss_price": round(stock.get("stop_loss_price", np.nan), 2)
+                    if not pd.isna(stock.get("stop_loss_price", np.nan))
+                    else np.nan,
+                    "target_price": round(stock.get("target_price", np.nan), 2)
+                    if not pd.isna(stock.get("target_price", np.nan))
+                    else np.nan,
+                    "exit_review_days": int(stock.get("exit_review_days", stock.get("holding_period_days", 0) or 0)),
+                    "technical_drivers": self._summarize_technical_drivers(stock),
                     "risk_reward_ratio": round(stock.get("risk_reward_ratio", np.nan), 2)
                     if not pd.isna(stock.get("risk_reward_ratio", np.nan))
                     else np.nan,
@@ -1488,6 +1585,17 @@ class ComprehensiveMarketIntelligence:
                 fig.update_layout(title=f"{first['ticker']} Price (Last 120 sessions)", height=320)
                 plotly_div = plot(fig, include_plotlyjs=False, output_type="div")
 
+        def _fmt_price(value: Optional[float]) -> str:
+            if value is None:
+                return "—"
+            try:
+                numeric = float(value)
+            except (TypeError, ValueError):
+                return "—"
+            if pd.isna(numeric):
+                return "—"
+            return f"${numeric:.2f}"
+
         rows = "".join(
             """
             <tr class="{cls}">
@@ -1495,10 +1603,14 @@ class ComprehensiveMarketIntelligence:
                 <td>{company}</td>
                 <td>{recommendation}</td>
                 <td>{conviction_score}%</td>
-                <td>${price:.2f}</td>
+                <td>{entry_price}</td>
+                <td>{stop_loss}</td>
+                <td>{target_price}</td>
                 <td>{holding_period_days} days</td>
                 <td>{risk_reward}</td>
+                <td>{technical_drivers}</td>
                 <td>{key_catalysts}</td>
+                <td>{exit_plan}</td>
             </tr>
             """.format(
                 cls=rec["recommendation"].lower().replace(" ", "-"),
@@ -1506,10 +1618,19 @@ class ComprehensiveMarketIntelligence:
                 company=rec["company"],
                 recommendation=rec["recommendation"],
                 conviction_score=rec["conviction_score"],
-                price=float(rec["price"]),
-                holding_period_days=rec.get("holding_period_days", "-"),
-                risk_reward=f"{rec.get('risk_reward_ratio', '—')}",
+                entry_price=_fmt_price(rec.get("entry_price", rec.get("price"))),
+                stop_loss=_fmt_price(rec.get("stop_loss_price")),
+                target_price=_fmt_price(rec.get("target_price")),
+                holding_period_days=rec.get("exit_review_days") or rec.get("holding_period_days", "-"),
+                risk_reward=(
+                    f"{float(rec.get('risk_reward_ratio')):.2f}"
+                    if rec.get("risk_reward_ratio") is not None
+                    and not pd.isna(rec.get("risk_reward_ratio"))
+                    else "—"
+                ),
+                technical_drivers=rec.get("technical_drivers", ""),
                 key_catalysts=rec.get("key_catalysts", ""),
+                exit_plan=rec.get("exit_plan", rec.get("exit_strategy", "")),
             )
             for rec in recommendations[:15]
         )
@@ -1591,10 +1712,14 @@ class ComprehensiveMarketIntelligence:
                                 <th>Company</th>
                                 <th>Recommendation</th>
                                 <th>Conviction</th>
-                                <th>Price</th>
-                                <th>Holding</th>
+                                <th>Entry</th>
+                                <th>Stop Loss</th>
+                                <th>Target</th>
+                                <th>Hold</th>
                                 <th>Risk/Reward</th>
+                                <th>Technical Drivers</th>
                                 <th>Catalysts</th>
+                                <th>Exit Plan</th>
                             </tr>
                         </thead>
                         <tbody>{rows}</tbody>
@@ -1659,7 +1784,55 @@ def main() -> None:
                 print(f"  {i}. {pick['ticker']} - {pick['recommendation']} (Conviction: {pick['conviction_score']}%)")
                 print(f"     {pick['company']} | Catalysts: {pick['key_catalysts']}")
 
-        print(f"\n📁 Reports saved to: {config.output_dir}")
+                def _fmt(value: object) -> str:
+                    if value is None:
+                        return "—"
+                    try:
+                        numeric = float(value)
+                    except (TypeError, ValueError):
+                        return "—"
+                    if pd.isna(numeric):
+                        return "—"
+                    return f"${numeric:.2f}"
+
+                entry = pick.get('entry_price') or pick.get('price')
+                stop = pick.get('stop_loss_price')
+                target = pick.get('target_price')
+                horizon = pick.get('exit_review_days') or pick.get('holding_period_days') or "—"
+                print(
+                    "     Entry {entry} | Stop {stop} | Target {target} | Hold {horizon} days".format(
+                        entry=_fmt(entry),
+                        stop=_fmt(stop),
+                        target=_fmt(target),
+                        horizon=horizon,
+                    )
+                )
+                drivers = pick.get('technical_drivers')
+                if drivers:
+                    print(f"     Technical: {drivers}")
+                exit_plan = pick.get('exit_plan') or pick.get('exit_strategy')
+                if exit_plan:
+                    print(f"     Exit plan: {exit_plan}")
+
+        artifacts = report.get('artifacts', {})
+        if artifacts:
+            print("\n📦 Generated artifacts:")
+            for label, path in artifacts.items():
+                pretty = label.upper()
+                try:
+                    resolved = Path(path).resolve()
+                except Exception:
+                    resolved = path
+                print(f"  • {pretty}: {resolved}")
+            html_path = artifacts.get('html')
+            if html_path and Path(html_path).exists():
+                resolved = Path(html_path).resolve()
+                print(f"\n📊 Dashboard generated: {Path(html_path).name}")
+                print(f"📁 Open this file in your browser: {resolved}")
+        else:
+            print("\n⚠️ No artifacts reported. Check logs at market_intelligence/intelligence.log")
+
+        print(f"\n📁 Reports saved to: {Path(config.output_dir).resolve()}")
         print("✅ Market Intelligence System Complete!")
     except Exception as exc:
         logger.error(f"System error: {exc}")
