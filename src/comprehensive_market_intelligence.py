@@ -385,14 +385,26 @@ class SectorRotationModel:
         end = datetime.utcnow()
         start = end - timedelta(days=90)
         spy = yf.download("SPY", start=start.strftime("%Y-%m-%d"), end=end.strftime("%Y-%m-%d"), progress=False)
-        spy_ret = spy["Adj Close"].pct_change().add(1).prod() - 1 if not spy.empty else 0.0
+        
+        # Handle different column names
+        close_col = "Adj Close" if "Adj Close" in spy.columns else "Close" if "Close" in spy.columns else None
+        if close_col is None or spy.empty:
+            spy_ret = 0.0
+        else:
+            spy_ret = spy[close_col].pct_change().add(1).prod() - 1
 
         for sector, ticker in self.sector_etfs.items():
             data = yf.download(ticker, start=start.strftime("%Y-%m-%d"), end=end.strftime("%Y-%m-%d"), progress=False)
             if data.empty:
                 continue
-            total_return = data["Adj Close"].pct_change().add(1).prod() - 1
-            momentum_20d = data["Adj Close"].pct_change(20).iloc[-1] if len(data) > 20 else np.nan
+            
+            # Handle different column names
+            close_col = "Adj Close" if "Adj Close" in data.columns else "Close" if "Close" in data.columns else None
+            if close_col is None:
+                continue
+                
+            total_return = data[close_col].pct_change().add(1).prod() - 1
+            momentum_20d = data[close_col].pct_change(20).iloc[-1] if len(data) > 20 else np.nan
             rows.append(
                 {
                     "sector": sector,
@@ -791,17 +803,35 @@ class ComprehensiveMarketIntelligence:
 
         def worker(symbol: str) -> Optional[Tuple[Dict[str, object], pd.DataFrame]]:
             try:
+                # Add small delay to avoid rate limiting
+                import time
+                time.sleep(0.1)
+                
                 ticker = yf.Ticker(symbol)
                 info = ticker.info
+                
+                # Handle case where info is None
+                if info is None:
+                    return None
+                
                 hist = ticker.history(period=f"{self.config.lookback_days}d", auto_adjust=False)
                 if hist.empty:
                     return None
                 hist = hist.dropna(subset=["Close"]).tail(self.config.lookback_days)
 
+                # Handle case where Close column doesn't exist or is empty
+                if "Close" not in hist.columns or hist["Close"].empty:
+                    return None
+                    
                 latest_close = float(hist["Close"].iloc[-1])
                 if latest_close < self.config.min_price:
                     return None
-                avg_vol = float(hist["Volume"].tail(30).mean())
+                    
+                # Handle case where Volume column doesn't exist
+                if "Volume" not in hist.columns:
+                    avg_vol = 0
+                else:
+                    avg_vol = float(hist["Volume"].tail(30).mean())
                 if avg_vol < self.config.min_volume:
                     return None
 
@@ -1266,9 +1296,11 @@ class ComprehensiveMarketIntelligence:
         row = rotation[rotation["sector"] == sector]
         if row.empty:
             return 50
-        rel = row["relative_to_spy"].iloc[0]
-        momentum = row["momentum_20d"].iloc[0]
-        score = 50 + rel * 120 + (momentum or 0) * 200
+        rel_val = row["relative_to_spy"].iloc[0]
+        momentum_val = row["momentum_20d"].iloc[0]
+        rel = float(rel_val) if pd.notna(rel_val) else 0.0
+        momentum = float(momentum_val) if pd.notna(momentum_val) else 0.0
+        score = 50 + rel * 120 + momentum * 200
         return float(max(0, min(100, score)))
 
     def _calculate_volatility_score(self, stock: pd.Series) -> float:
@@ -1374,6 +1406,8 @@ class ComprehensiveMarketIntelligence:
             "total_stocks_analyzed": int(len(stock_df)),
             "recommendations_generated": int(len(recommendations)),
             "strong_buys": int((recommendations["recommendation"] == "STRONG BUY").sum()) if not recommendations.empty else 0,
+            "buys": int((recommendations["recommendation"] == "BUY").sum()) if not recommendations.empty else 0,
+            "data_sources_active": len([k for k, v in intelligence_data.items() if (isinstance(v, pd.DataFrame) and not v.empty) or (isinstance(v, list) and len(v) > 0) or (not isinstance(v, (pd.DataFrame, list)))]),
             "avg_risk_reward": float(recommendations["risk_reward_ratio"].mean()) if "risk_reward_ratio" in recommendations else np.nan,
         }
 
