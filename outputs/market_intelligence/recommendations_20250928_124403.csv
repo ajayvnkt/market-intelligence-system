@@ -1,0 +1,13 @@
+ticker,company,sector,price,recommendation,conviction_score,technical_score,fundamental_score,insider_score,institutional_score,social_score,macro_score,congressional_score,key_catalysts
+AMZN,"Amazon.com, Inc.",Consumer Cyclical,219.77999877929688,BUY,63.5,80,55,80,50,50,55,50,Insider buying
+MRK,"Merck & Company, Inc.",Healthcare,78.55999755859375,BUY,62.5,80,75,50,50,50,50,50,Technical setup
+CMCSA,Comcast Corporation,Communication Services,31.719999313354492,BUY,62.5,80,75,50,50,50,50,50,Technical setup
+HPQ,HP Inc.,Technology,26.709999084472656,BUY,62.5,80,70,50,50,50,60,50,Technical setup
+LEN,Lennar Corporation,Consumer Cyclical,126.04000091552734,BUY,62.0,80,70,50,50,50,55,50,Technical setup
+CAG,"ConAgra Brands, Inc.",Consumer Defensive,18.18000030517578,BUY,62.0,80,70,50,50,50,55,50,Technical setup
+TAP,Molson Coors Beverage Company,Consumer Defensive,44.83000183105469,BUY,62.0,80,70,50,50,50,55,50,Technical setup
+DHI,"D.R. Horton, Inc.",Consumer Cyclical,167.1999969482422,BUY,62.0,80,70,50,50,50,55,50,Technical setup
+LKQ,LKQ Corporation,Consumer Cyclical,30.299999237060547,BUY,62.0,80,70,50,50,50,55,50,Technical setup
+DAL,"Delta Air Lines, Inc.",Industrials,57.20000076293945,BUY,61.5,80,70,50,50,50,50,50,Technical setup
+UAL,"United Airlines Holdings, Inc.",Industrials,97.91000366210938,BUY,61.5,80,70,50,50,50,50,50,Technical setup
+LOW,"Lowe's Companies, Inc.",Consumer Cyclical,257.1199951171875,BUY,61.0,80,65,50,50,50,55,50,Technical setup

@@ -1,0 +1,444 @@
+{
+  "timestamp": "2025-09-28T12:44:03.979049",
+  "summary": {
+    "total_stocks_analyzed": 503,
+    "recommendations_generated": 12,
+    "strong_buys": 0,
+    "buys": 12,
+    "data_sources_active": 7
+  },
+  "market_intelligence": {
+    "sec_filings": [
+      {
+        "date": "",
+        "ticker": null,
+        "company": "Home | EDGAR Search Home |\n Latest Filings |\n Previous Page",
+        "form_type": "",
+        "potential_impact": "LOW"
+      },
+      {
+        "date": "Key to Descriptions\n(Filer)Filing was made by and describes the company named.\n(Subject)Filing describes the company named but was made by another entity.\n(Filed by)Filing was made by the company named but describes a subject company.\n(Reporting)Filing was made by an individual reporting holdings in a company.\n[Paper]Paper filings are available by film number.\n[Cover]Filing contains an SEC-released cover letter or correspondence.\n(Each \"Reporting\" and \"Filed by\" filing has a matching \"Subject\" listing.)",
+        "ticker": null,
+        "company": "Key to Descriptions",
+        "form_type": "(Filer)",
+        "potential_impact": "LOW"
+      },
+      {
+        "date": "",
+        "ticker": null,
+        "company": "Home | EDGAR Search Home |\n Latest Filings |\n Previous Page",
+        "form_type": "",
+        "potential_impact": "LOW"
+      },
+      {
+        "date": "Key to Descriptions\n(Filer)Filing was made by and describes the company named.\n(Subject)Filing describes the company named but was made by another entity.\n(Filed by)Filing was made by the company named but describes a subject company.\n(Reporting)Filing was made by an individual reporting holdings in a company.\n[Paper]Paper filings are available by film number.\n[Cover]Filing contains an SEC-released cover letter or correspondence.\n(Each \"Reporting\" and \"Filed by\" filing has a matching \"Subject\" listing.)",
+        "ticker": null,
+        "company": "Key to Descriptions",
+        "form_type": "(Filer)",
+        "potential_impact": "LOW"
+      },
+      {
+        "date": "",
+        "ticker": null,
+        "company": "Home | EDGAR Search Home |\n Latest Filings |\n Previous Page",
+        "form_type": "",
+        "potential_impact": "LOW"
+      },
+      {
+        "date": "Key to Descriptions\n(Filer)Filing was made by and describes the company named.\n(Subject)Filing describes the company named but was made by another entity.\n(Filed by)Filing was made by the company named but describes a subject company.\n(Reporting)Filing was made by an individual reporting holdings in a company.\n[Paper]Paper filings are available by film number.\n[Cover]Filing contains an SEC-released cover letter or correspondence.\n(Each \"Reporting\" and \"Filed by\" filing has a matching \"Subject\" listing.)",
+        "ticker": null,
+        "company": "Key to Descriptions",
+        "form_type": "(Filer)",
+        "potential_impact": "LOW"
+      },
+      {
+        "date": "",
+        "ticker": null,
+        "company": "Home | EDGAR Search Home |\n Latest Filings |\n Previous Page",
+        "form_type": "",
+        "potential_impact": "LOW"
+      },
+      {
+        "date": "Key to Descriptions\n(Filer)Filing was made by and describes the company named.\n(Subject)Filing describes the company named but was made by another entity.\n(Filed by)Filing was made by the company named but describes a subject company.\n(Reporting)Filing was made by an individual reporting holdings in a company.\n[Paper]Paper filings are available by film number.\n[Cover]Filing contains an SEC-released cover letter or correspondence.\n(Each \"Reporting\" and \"Filed by\" filing has a matching \"Subject\" listing.)",
+        "ticker": null,
+        "company": "Key to Descriptions",
+        "form_type": "(Filer)",
+        "potential_impact": "LOW"
+      },
+      {
+        "date": "",
+        "ticker": null,
+        "company": "Home | EDGAR Search Home |\n Latest Filings |\n Previous Page",
+        "form_type": "",
+        "potential_impact": "LOW"
+      },
+      {
+        "date": "",
+        "ticker": null,
+        "company": "",
+        "form_type": "No matching filings.\n\nhttps://www.sec.gov/cgi-bin/browse-edgar\n\n\n\n\n\nHome | Previous Page\nModified: 07/18/2014",
+        "potential_impact": "LOW"
+      },
+      {
+        "date": "",
+        "ticker": null,
+        "company": "Home | EDGAR Search Home |\n Latest Filings |\n Previous Page",
+        "form_type": "",
+        "potential_impact": "LOW"
+      },
+      {
+        "date": "",
+        "ticker": null,
+        "company": "",
+        "form_type": "No matching filings.\n\nhttps://www.sec.gov/cgi-bin/browse-edgar\n\n\n\n\n\nHome | Previous Page\nModified: 07/18/2014",
+        "potential_impact": "LOW"
+      }
+    ],
+    "economic_calendar": [
+      {
+        "date": "2025-09-29",
+        "time": "08:30",
+        "event": "CPI MoM",
+        "country": "US",
+        "importance": "HIGH",
+        "forecast": "0.2%",
+        "previous": "0.3%",
+        "impact": "Inflation data affects Fed policy"
+      },
+      {
+        "date": "2025-10-01",
+        "time": "14:00",
+        "event": "FOMC Rate Decision",
+        "country": "US",
+        "importance": "HIGH",
+        "forecast": "5.25%",
+        "previous": "5.25%",
+        "impact": "Direct market impact on rates and equities"
+      }
+    ],
+    "congressional_trades": [
+      {
+        "date": "2025-09-27",
+        "member": "Nancy Pelosi",
+        "party": "D-CA",
+        "ticker": "NVDA",
+        "transaction": "BUY",
+        "amount": "$100K-250K",
+        "committee": "Ways and Means",
+        "filing_delay": 15
+      }
+    ],
+    "social_trends": [
+      {
+        "ticker": "AAPL",
+        "platform": "TikTok",
+        "trend_type": "iPhone viral video",
+        "sentiment": "POSITIVE",
+        "volume_spike": 150,
+        "timeframe": "24h",
+        "influence_score": 85
+      }
+    ],
+    "institutional_activity": [
+      {
+        "date": "2025-09-26",
+        "institution": "ARK Invest",
+        "fund": "ARKK",
+        "ticker": "TSLA",
+        "action": "BUY",
+        "shares": 500000,
+        "value": 85000000,
+        "conviction_level": "HIGH"
+      }
+    ],
+    "insider_trades": [
+      {
+        "date": "2025-09-27",
+        "ticker": "AMZN",
+        "insider_name": "Andy Jassy",
+        "title": "CEO",
+        "transaction": "BUY",
+        "shares": 10000,
+        "price": 145.5,
+        "value": 1455000,
+        "signal_strength": "STRONG_BUY"
+      }
+    ]
+  },
+  "recommendations": [
+    {
+      "ticker": "AMZN",
+      "company": "Amazon.com, Inc.",
+      "sector": "Consumer Cyclical",
+      "price": 219.77999877929688,
+      "recommendation": "BUY",
+      "conviction_score": 63.5,
+      "technical_score": 80,
+      "fundamental_score": 55,
+      "insider_score": 80,
+      "institutional_score": 50,
+      "social_score": 50,
+      "macro_score": 55,
+      "congressional_score": 50,
+      "key_catalysts": "Insider buying"
+    },
+    {
+      "ticker": "MRK",
+      "company": "Merck & Company, Inc.",
+      "sector": "Healthcare",
+      "price": 78.55999755859375,
+      "recommendation": "BUY",
+      "conviction_score": 62.5,
+      "technical_score": 80,
+      "fundamental_score": 75,
+      "insider_score": 50,
+      "institutional_score": 50,
+      "social_score": 50,
+      "macro_score": 50,
+      "congressional_score": 50,
+      "key_catalysts": "Technical setup"
+    },
+    {
+      "ticker": "CMCSA",
+      "company": "Comcast Corporation",
+      "sector": "Communication Services",
+      "price": 31.719999313354492,
+      "recommendation": "BUY",
+      "conviction_score": 62.5,
+      "technical_score": 80,
+      "fundamental_score": 75,
+      "insider_score": 50,
+      "institutional_score": 50,
+      "social_score": 50,
+      "macro_score": 50,
+      "congressional_score": 50,
+      "key_catalysts": "Technical setup"
+    },
+    {
+      "ticker": "HPQ",
+      "company": "HP Inc.",
+      "sector": "Technology",
+      "price": 26.709999084472656,
+      "recommendation": "BUY",
+      "conviction_score": 62.5,
+      "technical_score": 80,
+      "fundamental_score": 70,
+      "insider_score": 50,
+      "institutional_score": 50,
+      "social_score": 50,
+      "macro_score": 60,
+      "congressional_score": 50,
+      "key_catalysts": "Technical setup"
+    },
+    {
+      "ticker": "LEN",
+      "company": "Lennar Corporation",
+      "sector": "Consumer Cyclical",
+      "price": 126.04000091552734,
+      "recommendation": "BUY",
+      "conviction_score": 62.0,
+      "technical_score": 80,
+      "fundamental_score": 70,
+      "insider_score": 50,
+      "institutional_score": 50,
+      "social_score": 50,
+      "macro_score": 55,
+      "congressional_score": 50,
+      "key_catalysts": "Technical setup"
+    },
+    {
+      "ticker": "CAG",
+      "company": "ConAgra Brands, Inc.",
+      "sector": "Consumer Defensive",
+      "price": 18.18000030517578,
+      "recommendation": "BUY",
+      "conviction_score": 62.0,
+      "technical_score": 80,
+      "fundamental_score": 70,
+      "insider_score": 50,
+      "institutional_score": 50,
+      "social_score": 50,
+      "macro_score": 55,
+      "congressional_score": 50,
+      "key_catalysts": "Technical setup"
+    },
+    {
+      "ticker": "TAP",
+      "company": "Molson Coors Beverage Company",
+      "sector": "Consumer Defensive",
+      "price": 44.83000183105469,
+      "recommendation": "BUY",
+      "conviction_score": 62.0,
+      "technical_score": 80,
+      "fundamental_score": 70,
+      "insider_score": 50,
+      "institutional_score": 50,
+      "social_score": 50,
+      "macro_score": 55,
+      "congressional_score": 50,
+      "key_catalysts": "Technical setup"
+    },
+    {
+      "ticker": "DHI",
+      "company": "D.R. Horton, Inc.",
+      "sector": "Consumer Cyclical",
+      "price": 167.1999969482422,
+      "recommendation": "BUY",
+      "conviction_score": 62.0,
+      "technical_score": 80,
+      "fundamental_score": 70,
+      "insider_score": 50,
+      "institutional_score": 50,
+      "social_score": 50,
+      "macro_score": 55,
+      "congressional_score": 50,
+      "key_catalysts": "Technical setup"
+    },
+    {
+      "ticker": "LKQ",
+      "company": "LKQ Corporation",
+      "sector": "Consumer Cyclical",
+      "price": 30.299999237060547,
+      "recommendation": "BUY",
+      "conviction_score": 62.0,
+      "technical_score": 80,
+      "fundamental_score": 70,
+      "insider_score": 50,
+      "institutional_score": 50,
+      "social_score": 50,
+      "macro_score": 55,
+      "congressional_score": 50,
+      "key_catalysts": "Technical setup"
+    },
+    {
+      "ticker": "DAL",
+      "company": "Delta Air Lines, Inc.",
+      "sector": "Industrials",
+      "price": 57.20000076293945,
+      "recommendation": "BUY",
+      "conviction_score": 61.5,
+      "technical_score": 80,
+      "fundamental_score": 70,
+      "insider_score": 50,
+      "institutional_score": 50,
+      "social_score": 50,
+      "macro_score": 50,
+      "congressional_score": 50,
+      "key_catalysts": "Technical setup"
+    },
+    {
+      "ticker": "UAL",
+      "company": "United Airlines Holdings, Inc.",
+      "sector": "Industrials",
+      "price": 97.91000366210938,
+      "recommendation": "BUY",
+      "conviction_score": 61.5,
+      "technical_score": 80,
+      "fundamental_score": 70,
+      "insider_score": 50,
+      "institutional_score": 50,
+      "social_score": 50,
+      "macro_score": 50,
+      "congressional_score": 50,
+      "key_catalysts": "Technical setup"
+    },
+    {
+      "ticker": "LOW",
+      "company": "Lowe's Companies, Inc.",
+      "sector": "Consumer Cyclical",
+      "price": 257.1199951171875,
+      "recommendation": "BUY",
+      "conviction_score": 61.0,
+      "technical_score": 80,
+      "fundamental_score": 65,
+      "insider_score": 50,
+      "institutional_score": 50,
+      "social_score": 50,
+      "macro_score": 55,
+      "congressional_score": 50,
+      "key_catalysts": "Technical setup"
+    }
+  ],
+  "top_picks": [
+    {
+      "ticker": "AMZN",
+      "company": "Amazon.com, Inc.",
+      "sector": "Consumer Cyclical",
+      "price": 219.77999877929688,
+      "recommendation": "BUY",
+      "conviction_score": 63.5,
+      "technical_score": 80,
+      "fundamental_score": 55,
+      "insider_score": 80,
+      "institutional_score": 50,
+      "social_score": 50,
+      "macro_score": 55,
+      "congressional_score": 50,
+      "key_catalysts": "Insider buying"
+    },
+    {
+      "ticker": "MRK",
+      "company": "Merck & Company, Inc.",
+      "sector": "Healthcare",
+      "price": 78.55999755859375,
+      "recommendation": "BUY",
+      "conviction_score": 62.5,
+      "technical_score": 80,
+      "fundamental_score": 75,
+      "insider_score": 50,
+      "institutional_score": 50,
+      "social_score": 50,
+      "macro_score": 50,
+      "congressional_score": 50,
+      "key_catalysts": "Technical setup"
+    },
+    {
+      "ticker": "CMCSA",
+      "company": "Comcast Corporation",
+      "sector": "Communication Services",
+      "price": 31.719999313354492,
+      "recommendation": "BUY",
+      "conviction_score": 62.5,
+      "technical_score": 80,
+      "fundamental_score": 75,
+      "insider_score": 50,
+      "institutional_score": 50,
+      "social_score": 50,
+      "macro_score": 50,
+      "congressional_score": 50,
+      "key_catalysts": "Technical setup"
+    },
+    {
+      "ticker": "HPQ",
+      "company": "HP Inc.",
+      "sector": "Technology",
+      "price": 26.709999084472656,
+      "recommendation": "BUY",
+      "conviction_score": 62.5,
+      "technical_score": 80,
+      "fundamental_score": 70,
+      "insider_score": 50,
+      "institutional_score": 50,
+      "social_score": 50,
+      "macro_score": 60,
+      "congressional_score": 50,
+      "key_catalysts": "Technical setup"
+    },
+    {
+      "ticker": "LEN",
+      "company": "Lennar Corporation",
+      "sector": "Consumer Cyclical",
+      "price": 126.04000091552734,
+      "recommendation": "BUY",
+      "conviction_score": 62.0,
+      "technical_score": 80,
+      "fundamental_score": 70,
+      "insider_score": 50,
+      "institutional_score": 50,
+      "social_score": 50,
+      "macro_score": 55,
+      "congressional_score": 50,
+      "key_catalysts": "Technical setup"
+    }
+  ]
+}
