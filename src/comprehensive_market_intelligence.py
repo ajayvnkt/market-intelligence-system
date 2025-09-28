@@ -12,8 +12,8 @@
 # 
 # All integrated into a single recommendation engine for buy/sell decisions
 # 
-# Dependencies: pip install yfinance pandas numpy requests beautifulsoup4 
-#              feedparser tweepy pynance sec-edgar-downloader fredapi
+# Dependencies: pip install yfinance pandas numpy requests beautifulsoup4
+#              tweepy pynance sec-edgar-downloader fredapi
 # ===============================================================================
 
 from __future__ import annotations
@@ -35,7 +35,6 @@ import requests
 import yfinance as yf
 from bs4 import BeautifulSoup
 from loguru import logger
-import feedparser
 from urllib.parse import urljoin
  
 # Optional caching (speeds up repeated runs)
@@ -73,13 +72,15 @@ class IntelligenceConfig:
     institutional_filing_days: int = 30
 
     # Recommendation weights
-    technical_weight: float = 0.25
-    fundamental_weight: float = 0.20
-    insider_weight: float = 0.15
-    institutional_weight: float = 0.15
-    social_weight: float = 0.10
-    macro_weight: float = 0.10
-    congressional_weight: float = 0.05
+    technical_weight: float = 0.20
+    fundamental_weight: float = 0.15
+    quality_weight: float = 0.15
+    risk_weight: float = 0.10
+    insider_weight: float = 0.13
+    institutional_weight: float = 0.12
+    social_weight: float = 0.08
+    macro_weight: float = 0.05
+    congressional_weight: float = 0.02
 
     # Output settings
     output_dir: Path = field(default_factory=lambda: Path.cwd() / "market_intelligence")
@@ -409,8 +410,9 @@ class ComprehensiveMarketIntelligence:
         # Create comprehensive report
         report = self._create_dashboard_report(intelligence_data, recommendations)
 
-        # Save report
-        self._save_report(report)
+        # Save report and attach artifact paths for downstream consumers
+        artifacts = self._save_report(report)
+        report['artifacts'] = {name: str(path) for name, path in artifacts.items()}
 
         return report
 
@@ -433,6 +435,9 @@ class ComprehensiveMarketIntelligence:
 
                     if len(hist) > 50:
                         current_price = hist['Close'].iloc[-1]
+                        returns = hist['Close'].pct_change().dropna()
+                        volatility_3m = returns.tail(63).std() * np.sqrt(252) if len(returns) > 63 else np.nan
+                        max_drawdown = ((hist['Close'] / hist['Close'].cummax()) - 1).min()
 
                         screening_data.append({
                             'ticker': ticker,
@@ -441,10 +446,22 @@ class ComprehensiveMarketIntelligence:
                             'price': current_price,
                             'market_cap': info.get('marketCap', 0),
                             'pe_ratio': info.get('trailingPE', 0),
+                            'forward_pe': info.get('forwardPE'),
+                            'peg_ratio': info.get('pegRatio'),
+                            'profit_margin': info.get('profitMargins'),
+                            'revenue_growth': info.get('revenueGrowth'),
+                            'return_on_equity': info.get('returnOnEquity'),
+                            'beta': info.get('beta'),
                             'ret_1m': ((current_price / hist['Close'].iloc[-21]) - 1) * 100 if len(hist) > 21 else 0,
                             'ret_3m': ((current_price / hist['Close'].iloc[-63]) - 1) * 100 if len(hist) > 63 else 0,
+                            'ret_6m': ((current_price / hist['Close'].iloc[-126]) - 1) * 100 if len(hist) > 126 else 0,
+                            'ret_12m': ((current_price / hist['Close'].iloc[0]) - 1) * 100,
                             'volume_avg': hist['Volume'].tail(20).mean(),
-                            'rsi': self._calculate_rsi(hist['Close']).iloc[-1] if len(hist) > 14 else 50
+                            'rsi': self._calculate_rsi(hist['Close']).iloc[-1] if len(hist) > 14 else 50,
+                            'sma_50': hist['Close'].rolling(window=50).mean().iloc[-1] if len(hist) >= 50 else np.nan,
+                            'sma_200': hist['Close'].rolling(window=200).mean().iloc[-1] if len(hist) >= 200 else np.nan,
+                            'volatility_3m': volatility_3m,
+                            'max_drawdown': max_drawdown
                         })
                 except Exception:
                     continue
@@ -509,9 +526,16 @@ class ComprehensiveMarketIntelligence:
 
         recommendations = []
         stock_data = intelligence_data.get('stock_screening', pd.DataFrame())
+        expected_columns = [
+            'ticker', 'company', 'sector', 'price', 'recommendation',
+            'conviction_score', 'technical_score', 'fundamental_score',
+            'quality_score', 'risk_score', 'insider_score',
+            'institutional_score', 'social_score', 'macro_score',
+            'congressional_score', 'key_catalysts'
+        ]
 
         if stock_data.empty:
-            return pd.DataFrame()
+            return pd.DataFrame(columns=expected_columns)
 
         for _, stock in stock_data.iterrows():
             ticker = stock['ticker']
@@ -519,6 +543,8 @@ class ComprehensiveMarketIntelligence:
             # Calculate individual scores
             technical_score = self._calculate_technical_score(stock)
             fundamental_score = self._calculate_fundamental_score(stock)
+            quality_score = self._calculate_quality_score(stock)
+            risk_score = self._calculate_risk_score(stock)
             insider_score = self._calculate_insider_score(ticker, intelligence_data)
             institutional_score = self._calculate_institutional_score(ticker, intelligence_data)
             social_score = self._calculate_social_score(ticker, intelligence_data)
@@ -529,6 +555,8 @@ class ComprehensiveMarketIntelligence:
             composite_score = (
                 technical_score * self.config.technical_weight +
                 fundamental_score * self.config.fundamental_weight +
+                quality_score * self.config.quality_weight +
+                risk_score * self.config.risk_weight +
                 insider_score * self.config.insider_weight +
                 institutional_score * self.config.institutional_weight +
                 social_score * self.config.social_weight +
@@ -557,6 +585,8 @@ class ComprehensiveMarketIntelligence:
                 'conviction_score': round(composite_score, 1),
                 'technical_score': round(technical_score, 1),
                 'fundamental_score': round(fundamental_score, 1),
+                'quality_score': round(quality_score, 1),
+                'risk_score': round(risk_score, 1),
                 'insider_score': round(insider_score, 1),
                 'institutional_score': round(institutional_score, 1),
                 'social_score': round(social_score, 1),
@@ -566,8 +596,13 @@ class ComprehensiveMarketIntelligence:
             })
 
         df = pd.DataFrame(recommendations)
+        if df.empty:
+            return pd.DataFrame(columns=expected_columns)
+
         df = df[df['conviction_score'] >= self.config.min_conviction_score]
-        return df.sort_values('conviction_score', ascending=False).head(self.config.max_recommendations)
+        df = df.sort_values('conviction_score', ascending=False)
+        df = df.head(self.config.max_recommendations)
+        return df.reindex(columns=expected_columns)
 
     def _calculate_technical_score(self, stock: pd.Series) -> float:
         """Calculate technical analysis score"""
@@ -589,13 +624,37 @@ class ComprehensiveMarketIntelligence:
         # Momentum scoring
         ret_1m = stock.get('ret_1m', 0)
         ret_3m = stock.get('ret_3m', 0)
+        ret_6m = stock.get('ret_6m', 0)
+        ret_12m = stock.get('ret_12m', 0)
 
         if ret_1m > 5 and ret_3m > 10:
-            score += 20  # Strong momentum
+            score += 15  # Strong short-term momentum
         elif ret_1m > 0 and ret_3m > 0:
-            score += 10  # Positive momentum
+            score += 8  # Positive momentum
         elif ret_1m < -10 or ret_3m < -20:
             score -= 20  # Weak momentum
+
+        if ret_6m > 15 and ret_12m > 20:
+            score += 10  # Persistent trend
+        elif ret_6m < -10 and ret_12m < -15:
+            score -= 10
+
+        # Trend structure
+        price = stock.get('price', np.nan)
+        sma_50 = stock.get('sma_50', np.nan)
+        sma_200 = stock.get('sma_200', np.nan)
+
+        if not np.isnan(sma_50) and not np.isnan(sma_200):
+            if sma_50 > sma_200:
+                score += 12  # Golden cross bias
+            else:
+                score -= 8
+
+        if not np.isnan(price) and not np.isnan(sma_50):
+            if price > sma_50:
+                score += 5
+            else:
+                score -= 5
 
         return max(0, min(100, score))
 
@@ -612,10 +671,88 @@ class ComprehensiveMarketIntelligence:
         elif pe > 40:
             score -= 20  # Expensive
 
+        forward_pe = stock.get('forward_pe')
+        if forward_pe is not None and not pd.isna(forward_pe) and forward_pe > 0:
+            if forward_pe <= 18:
+                score += 5
+            elif forward_pe > 30:
+                score -= 5
+
+        peg = stock.get('peg_ratio')
+        if peg is not None and not pd.isna(peg) and peg > 0:
+            if peg < 1:
+                score += 5
+            elif peg > 2:
+                score -= 5
+
         # Market cap (size factor)
         market_cap = stock.get('market_cap', 0)
         if market_cap > 100_000_000_000:  # Large cap
             score += 5  # Stability premium
+
+        return max(0, min(100, score))
+
+    def _calculate_quality_score(self, stock: pd.Series) -> float:
+        """Reward companies with strong profitability and growth."""
+        score = 50
+
+        profit_margin = stock.get('profit_margin')
+        if profit_margin is not None and not pd.isna(profit_margin):
+            if profit_margin > 0.2:
+                score += 15
+            elif profit_margin > 0.1:
+                score += 8
+            elif profit_margin < 0:
+                score -= 15
+
+        revenue_growth = stock.get('revenue_growth')
+        if revenue_growth is not None and not pd.isna(revenue_growth):
+            if revenue_growth > 0.15:
+                score += 15
+            elif revenue_growth > 0.05:
+                score += 7
+            elif revenue_growth < 0:
+                score -= 10
+
+        roe = stock.get('return_on_equity')
+        if roe is not None and not pd.isna(roe):
+            if roe > 0.2:
+                score += 10
+            elif roe > 0.1:
+                score += 5
+            elif roe < 0:
+                score -= 10
+
+        return max(0, min(100, score))
+
+    def _calculate_risk_score(self, stock: pd.Series) -> float:
+        """Penalize excessive volatility and drawdowns."""
+        score = 55  # Start slightly above neutral to reward stability
+
+        volatility = stock.get('volatility_3m')
+        if volatility is not None and not (pd.isna(volatility) or np.isnan(volatility)):
+            if volatility < 0.25:
+                score += 15
+            elif volatility < 0.35:
+                score += 5
+            elif volatility > 0.5:
+                score -= 15
+            elif volatility > 0.4:
+                score -= 8
+
+        drawdown = stock.get('max_drawdown')
+        if drawdown is not None and not (pd.isna(drawdown) or np.isnan(drawdown)):
+            if drawdown > -0.2:
+                score += 10
+            elif drawdown < -0.4:
+                score -= 15
+
+        beta = stock.get('beta')
+        if beta is not None and not (pd.isna(beta) or np.isnan(beta)):
+            if beta < 0.8:
+                score += 5
+            elif beta > 1.4:
+                score -= 8
 
         return max(0, min(100, score))
 
@@ -716,11 +853,32 @@ class ComprehensiveMarketIntelligence:
         """Identify key catalysts for the stock"""
         catalysts = []
 
+        stock_data = intelligence_data.get('stock_screening', pd.DataFrame())
+        stock_row: Optional[pd.Series] = None
+        if isinstance(stock_data, pd.DataFrame) and not stock_data.empty:
+            match = stock_data[stock_data['ticker'] == ticker]
+            if not match.empty:
+                stock_row = match.iloc[0]
+
         # Check insider trades
         insider_trades = intelligence_data.get('insider_trades', pd.DataFrame())
         ticker_insider = insider_trades[insider_trades['ticker'] == ticker]
         if not ticker_insider.empty:
             catalysts.append("Insider buying")
+
+        if stock_row is not None:
+            if stock_row.get('ret_3m', 0) > 10:
+                catalysts.append("Momentum breakout")
+
+            sma_50 = stock_row.get('sma_50')
+            sma_200 = stock_row.get('sma_200')
+            if sma_50 is not None and sma_200 is not None and not np.isnan(sma_50) and not np.isnan(sma_200):
+                if sma_50 > sma_200:
+                    catalysts.append("Bullish trend regime")
+
+            revenue_growth = stock_row.get('revenue_growth')
+            if revenue_growth is not None and not pd.isna(revenue_growth) and revenue_growth > 0.1:
+                catalysts.append("Double-digit revenue growth")
 
         # Check social trends
         social_trends = intelligence_data.get('social_trends', pd.DataFrame())
@@ -766,10 +924,7 @@ class ComprehensiveMarketIntelligence:
         """Save report to files"""
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 
-        # Save JSON report
         json_path = self.config.output_dir / f"market_intelligence_{timestamp}.json"
-        with open(json_path, 'w') as f:
-            json.dump(report, f, indent=2, default=str)
 
         # Save CSV recommendations
         csv_path = None
@@ -782,11 +937,25 @@ class ComprehensiveMarketIntelligence:
         html_path = self.config.output_dir / f"dashboard_{timestamp}.html"
         self._create_html_dashboard(report, html_path)
 
-        logger.success(f"📊 Reports saved:")
-        logger.success(f"  • JSON: {json_path}")
+        artifacts = {
+            'json': json_path,
+            'html': html_path,
+        }
         if csv_path is not None:
-            logger.success(f"  • CSV: {csv_path}")
-        logger.success(f"  • HTML: {html_path}")
+            artifacts['csv'] = csv_path
+
+        report['artifacts'] = {name: str(path) for name, path in artifacts.items()}
+
+        # Save JSON report (include artifact metadata)
+        json_path = self.config.output_dir / f"market_intelligence_{timestamp}.json"
+        with open(json_path, 'w') as f:
+            json.dump(report, f, indent=2, default=str)
+
+        logger.success("📊 Reports saved:")
+        for label, path in artifacts.items():
+            logger.success(f"  • {label.upper()}: {path}")
+
+        return artifacts
 
     def _create_html_dashboard(self, report: Dict, html_path: Path):
         """Create HTML dashboard"""
